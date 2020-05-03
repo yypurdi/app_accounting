@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppBankReconciliationDetail" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.BankReconciliationDetailId.label%></td>
+                <td><input type="text" class="form-control" name="bankReconciliationDetailId" value="<%=record.bank_reconciliation_detail_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.BankReconciliationId.label%></td>
+                <td><input type="text" class="form-control" name="bankReconciliationId" value="<%=record.bank_reconciliation_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.Date.label%></td>
+                <td><input type="text" class="form-control" name="date" value="<%=record.date%>"/></td>
+            </tr><tr>
+                <td><%=resource.ReferenceNo.label%></td>
+                <td><input type="text" class="form-control" name="referenceNo" value="<%=record.reference_no%>"/></td>
+            </tr><tr>
+                <td><%=resource.Note.label%></td>
+                <td><input type="text" class="form-control" name="note" value="<%=record.note%>"/></td>
+            </tr><tr>
+                <td><%=resource.DebitAmount.label%></td>
+                <td><input type="text" class="form-control" name="debitAmount" value="<%=record.debit_amount%>"/></td>
+            </tr><tr>
+                <td><%=resource.CreditAmount.label%></td>
+                <td><input type="text" class="form-control" name="creditAmount" value="<%=record.credit_amount%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsSelected.label%></td>
+                <td><input type="text" class="form-control" name="isSelected" value="<%=record.is_selected%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

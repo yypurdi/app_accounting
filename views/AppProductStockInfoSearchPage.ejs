@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchAppProductStockInfo" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.ProductStockInfoId.label%></td>    
+                <td><input type="text" class="form-control" name="product_stock_info_id"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newAppProductStockInfo">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.AppProductStockInfo.ProductStockInfoId.header%></th>
+                <th><%=resource.AppProductStockInfo.QtyInStock.header%></th>
+                <th><%=resource.AppProductStockInfo.OrderedToVendor.header%></th>
+                <th><%=resource.AppProductStockInfo.OrderedByCustomer.header%></th>
+                <th><%=resource.AppProductStockInfo.MinimumInventory.header%></th>
+                <th><%=resource.AppProductStockInfo.MinimumOrder.header%></th>
+                <th><%=resource.AppProductStockInfo.SalesForecast.header%></th>
+                <th><%=resource.AppProductStockInfo.BuyingPrice.header%></th>
+                <th><%=resource.AppProductStockInfo.ProductId.header%></th>
+                <th><%=resource.AppProductStockInfo.BuyingPriceTax.header%></th>
+                <th><%=resource.AppProductStockInfo.SellingUnitPriceTax.header%></th>
+                <th><%=resource.AppProductStockInfo.UnitCostOrCogs.header%></th>
+                <th><%=resource.AppProductStockInfo.CogsDepartment.header%></th>
+                <th><%=resource.AppProductStockInfo.LocationMaster.header%></th>
+                <th><%=resource.AppProductStockInfo.DeliveryTimeIndays.header%></th>
+                <th><%=resource.AppProductStockInfo.CurrentSellingPrice.header%></th>
+                <th><%=resource.AppProductStockInfo.MainVendor.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.product_stock_info_id%></a></td>
+                <td><a><%=row.qty_in_stock%></a></td>
+                <td><a><%=row.ordered_to_vendor%></a></td>
+                <td><a><%=row.ordered_by_customer%></a></td>
+                <td><a><%=row.minimum_inventory%></a></td>
+                <td><a><%=row.minimum_order%></a></td>
+                <td><a><%=row.sales_forecast%></a></td>
+                <td><a><%=row.buying_price%></a></td>
+                <td><a><%=row.product_id%></a></td>
+                <td><a><%=row.buying_price_tax%></a></td>
+                <td><a><%=row.selling_unit_price_tax%></a></td>
+                <td><a><%=row.unit_cost_or_cogs%></a></td>
+                <td><a><%=row.cogs_department%></a></td>
+                <td><a><%=row.location_master%></a></td>
+                <td><a><%=row.delivery_time_indays%></a></td>
+                <td><a><%=row.current_selling_price%></a></td>
+                <td><a><%=row.main_vendor%></a></td>
+                
+                <td><a href="/readAppProductStockInfo?productStockInfoId=<%=row.product_stock_info_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeAppProductStockInfo?productStockInfoId=<%=row.product_stock_info_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteAppProductStockInfo?productStockInfoId=<%=row.product_stock_info_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

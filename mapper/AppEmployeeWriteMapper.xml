@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppEmployeeMapper">			
+	
+	<update id="writeAppEmployee">
+		update app_employee set employee_id = #{employeeId},
+		employee_number = #{employeeNumber},
+		firstname = #{firstname},
+		middlename = #{middlename},
+		lastname = #{lastname},
+		nationality = #{nationality},
+		dob = #{dob},
+		gender = #{gender},
+		marital_status = #{maritalStatus},
+		ethnicity = #{ethnicity},
+		ktp_number = #{ktpNumber},
+		passport_number = #{passportNumber},
+		driving_licence_no = #{drivingLicenceNo},
+		address_line1 = #{addressLine1},
+		address_line2 = #{addressLine2},
+		city_id = #{cityId},
+		country_id = #{countryId},
+		province_id = #{provinceId},
+		postal_code = #{postalCode},
+		home_phone = #{homePhone},
+		mobile_phone = #{mobilePhone},
+		work_email = #{workEmail},
+		private_email = #{privateEmail},
+		joined_date = #{joinedDate},
+		confirmation_date = #{confirmationDate},
+		termination_date = #{terminationDate},
+		supervisor_name = #{supervisorName},
+		indirect_supervisor_name = #{indirectSupervisorName},
+		first_level_approver = #{firstLevelApprover},
+		second_level_approver = #{secondLevelApprover},
+		third_level_approver = #{thirdLevelApprover},
+		notes = #{notes},
+		department_id = #{departmentId},
+		work_station_id = #{workStationId},
+		job_title_id = #{jobTitleId},
+		pay_grade_id = #{payGradeId},
+		employment_status_id = #{employmentStatusId} where employee_id = #{employeeId};
+	</update>
+
+</mapper>

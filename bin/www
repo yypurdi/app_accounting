@@ -1,0 +1,340 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var debug = require('debug')('node-webapp:server');
+var http = require('http');
+var https = require('https');
+var fs = require('fs');
+var dateFormat = require('dateformat');
+var database = require('../routes/dao');
+var dao = new database.Dao();    
+
+/**
+ * Create HTTP/HTTPS server.
+ */
+const options = {
+  key: fs.readFileSync('encryption/server.key'),
+  cert: fs.readFileSync('encryption/server.cert'),
+};
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+ 
+var app = require('../app');
+var port_3000 = normalizePort(process.env.PORT || '3000');
+app.set('port', port_3000);
+
+var server_3000 = https.createServer(options,app);
+server_3000.listen(port_3000);
+server_3000.on('error', onError);
+server_3000.on('listening', function(){
+	console.log('Web Server listening on port ' + port_3000); 
+});
+
+var api = require('../api');
+var port_3001 = normalizePort(process.env.PORT || '3001');
+api.set('port', port_3001);
+
+var server_3001 = https.createServer(options,api);
+server_3001.listen(port_3001);
+server_3001.on('error', onError);
+server_3001.on('listening', function(){
+	console.log('Restfull API listening on port ' + port_3001); 
+});
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+
+  var port = parseInt(val, 10);
+  if (isNaN(port)) {
+    return val;
+  }
+  if (port >= 0) {
+    return port;
+  }
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+
+  if (error.syscall !== 'listen') {
+    throw error;
+  }  
+  switch (error.code) {
+    case 'EACCES':
+      console.error('Port requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error('Port is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Create Socket.io for Messaging Service
+ */
+var io = require("socket.io").listen(server_3000);
+
+var channels = {};
+var sockets = {};
+var users = {};
+var presence = {};
+
+io.sockets.on('connection', function (socket) {
+
+    socket.channels = {};
+    sockets[socket.id] = socket;
+
+    console.log("["+ socket.id + "] connection accepted");
+    socket.on('disconnect', function () {
+        for (var channel in socket.channels) {
+            part(channel);
+        }
+        console.log("["+ socket.id + "] disconnected");
+        delete sockets[socket.id];
+    });
+
+
+    socket.on('join', function (config) {
+        console.log("["+ socket.id + "] join ", config);
+        var channel = config.channel;
+        var userdata = config.userdata;
+
+        if (channel in socket.channels) {
+            console.log("["+ socket.id + "] ERROR: already joined ", channel);
+            return;
+        }
+
+        if (!(channel in channels)) {
+            channels[channel] = {};
+        }
+
+        for (id in channels[channel]) {
+            channels[channel][id].emit('addPeer', {'peer_id': socket.id, 'should_create_offer': false});
+            socket.emit('addPeer', {'peer_id': id, 'should_create_offer': true});
+        }
+
+        channels[channel][socket.id] = socket;
+        socket.channels[channel] = channel;
+    });
+
+    function part(channel) {
+        console.log("["+ socket.id + "] part ");
+
+        if (!(channel in socket.channels)) {
+            console.log("["+ socket.id + "] ERROR: not in ", channel);
+            return;
+        }
+
+        delete socket.channels[channel];
+        delete channels[channel][socket.id];
+
+        for (id in channels[channel]) {
+            channels[channel][id].emit('removePeer', {'peer_id': socket.id});
+            socket.emit('removePeer', {'peer_id': id});
+        }
+    }
+    socket.on('part', part);
+
+    socket.on('relayICECandidate', function(config) {
+        var peer_id = config.peer_id;
+        var ice_candidate = config.ice_candidate;
+        console.log("["+ socket.id + "] relaying ICE candidate to [" + peer_id + "] ", ice_candidate);
+
+        if (peer_id in sockets) {
+            sockets[peer_id].emit('iceCandidate', {'peer_id': socket.id, 'ice_candidate': ice_candidate});
+        }
+    });
+
+    socket.on('relaySessionDescription', function(config) {
+        var peer_id = config.peer_id;
+        var session_description = config.session_description;
+        console.log("["+ socket.id + "] relaying session description to [" + peer_id + "] ", session_description);
+
+        if (peer_id in sockets) {
+            sockets[peer_id].emit('sessionDescription', {'peer_id': socket.id, 'session_description': session_description});
+        }
+    });
+	
+	/*
+	 * IO Protocol Adapter
+	 */
+	
+	socket.on('auth', (jsonObj) => {
+		console.log('authenticate');
+		let jid = jsonObj.username + '@' + jsonObj.domain;
+		users[jid] = socket;
+		presence[jid] = jsonObj.status;    
+		socket.emit('success',jsonObj);
+		console.log(jsonObj);
+	})
+	
+	socket.on('roster', (jsonObj) => {
+		console.log('roster');
+		var jsonIn = {username:jsonObj.username,rowid:0};    
+		dao.searchAppContact(jsonIn, function(err,rows) {
+			socket.emit('roster',rows);
+		});  
+	});
+
+	socket.on('presence', (jsonObj) => {
+		console.log('presence');
+		jsonObj.show = 'available';
+		jsonObj.status = 'Online';
+		presence = JSON.stringify(jsonObj);
+		socket.broadcast.emit('presence',presence);
+		console.log(jsonObj);
+	})
+
+	socket.on('message', (jsonObj) => {
+		console.log('message');
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		socket.emit('message',jsonObj);
+		if(users[jid]!==undefined){
+		  users[jid].emit('message',jsonObj);
+		}
+		console.log(jsonObj);
+	})
+
+	/*
+	 * SIP Protocol Adapter
+	 */
+	socket.on('register', (jsonObj) => {
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		socket.emit('register',jsonObj);
+		console.log(jsonObj);
+	})
+
+	socket.on('register-login', (jsonObj) => {
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		socket.emit('register-login',jsonObj);
+		console.log(jsonObj);
+	})
+
+	socket.on('invite', function(jsonObj){
+		console.log('invite');
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  socket.emit('trying',jsonObj);
+		  users[jid].emit('invite',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on('ringing', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('ringing',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on('accepted', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('accepted',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on('ack', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('ack',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on('cancel', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('cancel',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on('rejected', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('rejected',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on('bye', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('bye',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on('ok-release', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('ok-release',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+  
+	/*
+	 * WebRTC Protocol with STUN Adapter
+	 */
+	socket.on('webrtc-sdp', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('webrtc-sdp',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on('webrtc-ice', function(jsonObj){
+		let jid = jsonObj.to;
+		let startTime = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+		jsonObj.dtime = startTime;
+		if(users[jid]!==undefined){
+		  users[jid].emit('webrtc-ice',jsonObj);
+		}
+		console.log(jsonObj);
+	});
+
+	socket.on("disconnect", function(){
+		console.info(`client disconnected [id=${socket.id}]`);
+	})	
+});

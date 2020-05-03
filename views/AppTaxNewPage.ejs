@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppTax" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.TaxId.label%></td>
+                <td><input type="text" class="form-control" name="taxId" value="<%=record.taxId%>"/></td>
+            </tr><tr>
+                <td><%=resource.TaxCode.label%></td>
+                <td><input type="text" class="form-control" name="taxCode" value="<%=record.taxCode%>"/></td>
+            </tr><tr>
+                <td><%=resource.Tax.label%></td>
+                <td><input type="text" class="form-control" name="tax" value="<%=record.tax%>"/></td>
+            </tr><tr>
+                <td><%=resource.Percentage.label%></td>
+                <td><input type="text" class="form-control" name="percentage" value="<%=record.percentage%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsCogsDeductible.label%></td>
+                <td><input type="text" class="form-control" name="isCogsDeductible" value="<%=record.isCogsDeductible%>"/></td>
+            </tr><tr>
+                <td><%=resource.AcctCodePurchaseTax.label%></td>
+                <td><input type="text" class="form-control" name="acctCodePurchaseTax" value="<%=record.acctCodePurchaseTax%>"/></td>
+            </tr><tr>
+                <td><%=resource.AcctCodeSales.label%></td>
+                <td><input type="text" class="form-control" name="acctCodeSales" value="<%=record.acctCodeSales%>"/></td>
+            </tr><tr>
+                <td><%=resource.Details.label%></td>
+                <td><input type="text" class="form-control" name="details" value="<%=record.details%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

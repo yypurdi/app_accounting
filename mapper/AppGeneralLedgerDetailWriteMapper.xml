@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppGeneralLedgerDetailMapper">			
+	
+	<update id="writeAppGeneralLedgerDetail">
+		update app_general_ledger_detail set general_ledger_detail_id = #{generalLedgerDetailId},
+		account_no = #{accountNo},
+		date = #{date},
+		note = #{note},
+		debit = #{debit},
+		credit = #{credit},
+		balance = #{balance},
+		reference_no = #{referenceNo} where general_ledger_detail_id = #{generalLedgerDetailId};
+	</update>
+
+</mapper>

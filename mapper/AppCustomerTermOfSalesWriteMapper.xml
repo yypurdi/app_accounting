@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppCustomerTermOfSalesMapper">			
+	
+	<update id="writeAppCustomerTermOfSales">
+		update app_customer_term_of_sales set customer_id = #{customerId},
+		term_of_sales_id = #{termOfSalesId} where customer_id = #{customerId};
+	</update>
+
+</mapper>

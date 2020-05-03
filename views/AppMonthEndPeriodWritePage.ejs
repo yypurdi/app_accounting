@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppMonthEndPeriod" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.MonthEndPeriodId.label%></td>
+                <td><input type="text" class="form-control" name="monthEndPeriodId" value="<%=record.month_end_period_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.Date.label%></td>
+                <td><input type="text" class="form-control" name="date" value="<%=record.date%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsCalculateAndCreateDeprJournal.label%></td>
+                <td><input type="text" class="form-control" name="isCalculateAndCreateDeprJournal" value="<%=record.is_calculate_and_create_depr_journal%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsRecalculateAccountBalance.label%></td>
+                <td><input type="text" class="form-control" name="isRecalculateAccountBalance" value="<%=record.is_recalculate_account_balance%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsRecalculateInventoryAccountBalance.label%></td>
+                <td><input type="text" class="form-control" name="isRecalculateInventoryAccountBalance" value="<%=record.is_recalculate_inventory_account_balance%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsRevaluationForeignCurrency.label%></td>
+                <td><input type="text" class="form-control" name="isRevaluationForeignCurrency" value="<%=record.is_revaluation_foreign_currency%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppBankWriteCheckMapper">			
+	
+	<select id="countAppBankWriteCheckSearch">
+		select count(*) from app_bank_write_check
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankWriteCheckId!=null">
+				and bank_write_check_id like #{bankWriteCheckId}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+			<if test="isPostDatedCheck!=null">
+				and is_post_dated_check like #{isPostDatedCheck}
+			</if>
+			<if test="receivedBy!=null">
+				and received_by like #{receivedBy}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="checkNo!=null">
+				and check_no like #{checkNo}
+			</if>
+			<if test="amount!=null">
+				and amount like #{amount}
+			</if>
+			<if test="memo!=null">
+				and memo like #{memo}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppBankWriteCheck">
+		select * from app_bank_write_check  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankWriteCheckId!=null">
+				bank_write_check_id like #{bankWriteCheckId}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+			<if test="isPostDatedCheck!=null">
+				is_post_dated_check like #{isPostDatedCheck}
+			</if>
+			<if test="receivedBy!=null">
+				received_by like #{receivedBy}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="checkNo!=null">
+				check_no like #{checkNo}
+			</if>
+			<if test="amount!=null">
+				amount like #{amount}
+			</if>
+			<if test="memo!=null">
+				memo like #{memo}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

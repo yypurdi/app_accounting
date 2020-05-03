@@ -1,0 +1,356 @@
+/********** NAVBAR TOGGLE *************/
+.navbar {
+    margin-bottom: 0px;
+}
+
+.navbar-default {
+    background-color: #845220;
+    border-color: #845220;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li:hover>a {
+    color: #845220;
+    background-color:#fff;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-toggle {
+    padding: 11px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: #a32638;
+    border-radius: 0px;
+}
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 14px;
+    line-height: 20px;
+}
+  
+.glyphicon {
+    margin-right: 10px;
+}
+
+span, a, hr {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    background-repeat: no-repeat;
+    list-style-type: none;
+}
+
+a,
+a:visited,
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+/********** END NAVBAR TOGGLE ******/
+
+/********** SIDE NAV BAR ***********/
+.sidenav {
+    height: 100%;
+    width: 100%;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000;
+    display: block;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#sidebar {
+    min-width: auto;
+    max-width: auto;
+    background: #845220;
+    color: #fff;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+    transform-origin: bottom left;
+    border-radius: 4px;
+}
+
+#sidebar.active {
+    margin-left: -200px;
+    transform: rotateY(100deg);
+}
+
+#sidebar .sidebar-header {
+    background: #643200;
+    font-family: initial;
+    font-size: 12px;
+    text-align: left;    
+}
+
+#sidebar .sidebar-header p {
+    margin: 0 0 0 5px;
+}
+
+#sidebar ul.components {
+    padding-left: 20px 0;
+    border-bottom: 1px solid #643200;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 0.9em;
+    display: block;    
+    color: #fff    
+}
+
+#sidebar ul li a:hover {
+    color: #000;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #845220;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+}
+
+ul.CTAs {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+ul.CTAs a {
+    text-align: left;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+a.button_custom {
+    background: #643200;
+    color: #fff;
+}
+
+#main {
+    transition: margin-left .2s;
+    padding: 10px;
+}
+
+.logo {
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    margin: 20px 5px 20px 10px;
+    border-radius: 5%;
+}
+
+/********** END SIDEBAR ************/
+
+/********** INFO-BOX ***************/
+
+.info-box {
+    min-height: 140px;
+    margin-bottom: 30px;
+    padding: 20px;
+    color: white;
+    -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.35), 0 3px 1px -1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.35), 0 3px 1px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.35), 0 3px 1px -1px rgba(0, 0, 0, 0.1);
+}
+
+.info-box i {
+    display: block;
+    height: 100px;
+    font-size: 60px;
+    line-height: 100px;
+    width: 100px;
+    float: left;
+    text-align: center;
+    margin-right: 20px;
+    padding-right: 20px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.info-box .count {
+    margin-top: 20px;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.info-box .title {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.info-box .desc {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.info-box.danger {
+    background: #ff5454;
+    border: 1px solid #ff2121;
+}
+
+.info-box.warning {
+    background: #fabb3d;
+    border: 1px solid #f9aa0b;
+}
+
+.info-box.primary {
+    background: #20a8d8;
+    border: 1px solid #1985ac;
+}
+
+.info-box.info {
+    background: #67c2ef;
+    border: 1px solid #39afea;
+}
+
+.info-box.success {
+    background: #79c447;
+    border: 1px solid #61a434;
+}
+
+/*----------------	color------------------------*/
+
+.dark-heading-bg {
+    background: #4c4f53;
+    border: 1px solid #4c4f53;
+}
+
+.main-bg {
+    background: #e6e8ea;
+}
+
+.badge-bg {
+    color : #fff;
+    background : #d95043;
+    background-color : #d95043;
+}
+
+.box1-bg {
+    color : #fff;
+    background : #d9e2e6;
+    background-color : #57889c;
+}
+
+.box2-bg {
+    color : #fff;
+    background : #d1b993;
+    background-color : #d1b993;
+}
+
+.box3-bg {
+    color : #fff;
+    background : #24426a;
+    background-color : #24426a;
+}
+
+.box4-bg {
+    color : #fff;
+    background : #26c281;
+    background-color : #26c281;
+}
+
+/*************** MAIN *************/
+.body-bg {
+    background: #845220;
+}
+
+.page-header {
+    padding-bottom: 10px;
+    margin: 10px 0 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #845220;
+    border-color: #ddd;
+}
+
+.h4, h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;    
+}
+
+.today-datas li {
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    padding: 10px 10px;
+    text-shadow: 0px 1px 0px #fff;
+    max-width: 100%;
+    text-align: center;
+}
+
+.col-box {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.table-striped > tbody > tr:nth-of-type(1) {
+    background-color: #845220;
+    color: white;
+}

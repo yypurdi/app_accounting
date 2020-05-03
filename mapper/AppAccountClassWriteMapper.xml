@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppAccountClassMapper">			
+	
+	<update id="writeAppAccountClass">
+		update app_account_class set account_class_id = #{accountClassId},
+		classification_name = #{classificationName},
+		desc = #{desc} where account_class_id = #{accountClassId};
+	</update>
+
+</mapper>

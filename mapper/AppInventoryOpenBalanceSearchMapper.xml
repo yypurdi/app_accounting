@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppInventoryOpenBalanceMapper">			
+	
+	<select id="countAppInventoryOpenBalanceSearch">
+		select count(*) from app_inventory_open_balance
+		<trim prefix="where" prefixOverrides="and">
+			<if test="inventoryOpeningBalanceId!=null">
+				and inventory_opening_balance_id like #{inventoryOpeningBalanceId}
+			</if>
+			<if test="locationMaster!=null">
+				and location_master like #{locationMaster}
+			</if>
+			<if test="productId!=null">
+				and product_id like #{productId}
+			</if>
+			<if test="beginningBalance!=null">
+				and beginning_balance like #{beginningBalance}
+			</if>
+			<if test="unitCost!=null">
+				and unit_cost like #{unitCost}
+			</if>
+			<if test="isSerialNumber!=null">
+				and is_serial_number like #{isSerialNumber}
+			</if>
+			<if test="isLotNumber!=null">
+				and is_lot_number like #{isLotNumber}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppInventoryOpenBalance">
+		select * from app_inventory_open_balance  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="inventoryOpeningBalanceId!=null">
+				inventory_opening_balance_id like #{inventoryOpeningBalanceId}
+			</if>
+			<if test="locationMaster!=null">
+				location_master like #{locationMaster}
+			</if>
+			<if test="productId!=null">
+				product_id like #{productId}
+			</if>
+			<if test="beginningBalance!=null">
+				beginning_balance like #{beginningBalance}
+			</if>
+			<if test="unitCost!=null">
+				unit_cost like #{unitCost}
+			</if>
+			<if test="isSerialNumber!=null">
+				is_serial_number like #{isSerialNumber}
+			</if>
+			<if test="isLotNumber!=null">
+				is_lot_number like #{isLotNumber}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

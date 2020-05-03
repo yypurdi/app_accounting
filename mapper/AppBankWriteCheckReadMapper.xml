@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppBankWriteCheckMapper">			
+	
+	<select id="readAppBankWriteCheck">
+		select * from app_bank_write_check where bank_write_check_id = #{bankWriteCheckId};
+	</select>
+
+	<select id="appBankWcFa_JJAH7">         
+		select * from app_bank_wc_fa where bank_write_check_id = #{bankWriteCheckId};
+	</select>
+  
+</mapper>

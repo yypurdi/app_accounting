@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchAppVendor" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.VendorId.label%></td>    
+                <td><input type="text" class="form-control" name="vendor_id"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newAppVendor">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.AppVendor.VendorId.header%></th>
+                <th><%=resource.AppVendor.VendorNo.header%></th>
+                <th><%=resource.AppVendor.VendorName.header%></th>
+                <th><%=resource.AppVendor.VendorType.header%></th>
+                <th><%=resource.AppVendor.VendorClassification.header%></th>
+                <th><%=resource.AppVendor.VendorCategory.header%></th>
+                <th><%=resource.AppVendor.ContactPerson.header%></th>
+                <th><%=resource.AppVendor.ContactPosition.header%></th>
+                <th><%=resource.AppVendor.ContactPersonMobilePhone.header%></th>
+                <th><%=resource.AppVendor.ContactPersonEmail.header%></th>
+                <th><%=resource.AppVendor.VendorTaxId.header%></th>
+                <th><%=resource.AppVendor.VendorCreditLimit.header%></th>
+                <th><%=resource.AppVendor.VendorPhone1.header%></th>
+                <th><%=resource.AppVendor.VendorPhone2.header%></th>
+                <th><%=resource.AppVendor.VendorFax.header%></th>
+                <th><%=resource.AppVendor.VendorEmailCompany.header%></th>
+                <th><%=resource.AppVendor.VendorWebsite.header%></th>
+                <th><%=resource.AppVendor.VendorCurrency.header%></th>
+                <th><%=resource.AppVendor.VendorAddress1.header%></th>
+                <th><%=resource.AppVendor.VendorAddress2.header%></th>
+                <th><%=resource.AppVendor.VendorPostalCode.header%></th>
+                <th><%=resource.AppVendor.CityId.header%></th>
+                <th><%=resource.AppVendor.ProvinceId.header%></th>
+                <th><%=resource.AppVendor.CountryId.header%></th>
+                <th><%=resource.AppVendor.DeliveryAddress1.header%></th>
+                <th><%=resource.AppVendor.DeliveryAddress2.header%></th>
+                <th><%=resource.AppVendor.DeliveryAddressPostalCode.header%></th>
+                <th><%=resource.AppVendor.DeliveryAddressCity.header%></th>
+                <th><%=resource.AppVendor.DeliveryAddressProvince.header%></th>
+                <th><%=resource.AppVendor.DeliveryAddressCountry.header%></th>
+                <th><%=resource.AppVendor.ContactPerson2nd.header%></th>
+                <th><%=resource.AppVendor.ContactPosition2nd.header%></th>
+                <th><%=resource.AppVendor.ContactPersonMobilePhone2nd.header%></th>
+                <th><%=resource.AppVendor.ContactPersonEmail2nd.header%></th>
+                <th><%=resource.AppVendor.ContactPerson3rd.header%></th>
+                <th><%=resource.AppVendor.ContactPosition3rd.header%></th>
+                <th><%=resource.AppVendor.ContactPersonMobilePhone3rd.header%></th>
+                <th><%=resource.AppVendor.ContactPersonEmail3rd.header%></th>
+                <th><%=resource.AppVendor.Image.header%></th>
+                <th><%=resource.AppVendor.NotesDetails.header%></th>
+                <th><%=resource.AppVendor.Status.header%></th>
+                <th><%=resource.AppVendor.FirstContactDate.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.vendor_id%></a></td>
+                <td><a><%=row.vendor_no%></a></td>
+                <td><a><%=row.vendor_name%></a></td>
+                <td><a><%=row.vendor_type%></a></td>
+                <td><a><%=row.vendor_classification%></a></td>
+                <td><a><%=row.vendor_category%></a></td>
+                <td><a><%=row.contact_person%></a></td>
+                <td><a><%=row.contact_position%></a></td>
+                <td><a><%=row.contact_person_mobile_phone%></a></td>
+                <td><a><%=row.contact_person_email%></a></td>
+                <td><a><%=row.vendor_tax_id%></a></td>
+                <td><a><%=row.vendor_credit_limit%></a></td>
+                <td><a><%=row.vendor_phone1%></a></td>
+                <td><a><%=row.vendor_phone2%></a></td>
+                <td><a><%=row.vendor_fax%></a></td>
+                <td><a><%=row.vendor_email_company%></a></td>
+                <td><a><%=row.vendor_website%></a></td>
+                <td><a><%=row.vendor_currency%></a></td>
+                <td><a><%=row.vendor_address1%></a></td>
+                <td><a><%=row.vendor_address2%></a></td>
+                <td><a><%=row.vendor_postal_code%></a></td>
+                <td><a><%=row.city_id%></a></td>
+                <td><a><%=row.province_id%></a></td>
+                <td><a><%=row.country_id%></a></td>
+                <td><a><%=row.delivery_address1%></a></td>
+                <td><a><%=row.delivery_address2%></a></td>
+                <td><a><%=row.delivery_address_postal_code%></a></td>
+                <td><a><%=row.delivery_address_city%></a></td>
+                <td><a><%=row.delivery_address_province%></a></td>
+                <td><a><%=row.delivery_address_country%></a></td>
+                <td><a><%=row.contact_person_2nd%></a></td>
+                <td><a><%=row.contact_position_2nd%></a></td>
+                <td><a><%=row.contact_person_mobile_phone_2nd%></a></td>
+                <td><a><%=row.contact_person_email_2nd%></a></td>
+                <td><a><%=row.contact_person_3rd%></a></td>
+                <td><a><%=row.contact_position_3rd%></a></td>
+                <td><a><%=row.contact_person_mobile_phone_3rd%></a></td>
+                <td><a><%=row.contact_person_email_3rd%></a></td>
+                <td><a><%=row.image%></a></td>
+                <td><a><%=row.notes_details%></a></td>
+                <td><a><%=row.status%></a></td>
+                <td><a><%=dateFormat(row.first_contact_date,'mmm-dd-yyyy')%></a></td>
+                
+                <td><a href="/readAppVendor?vendorId=<%=row.vendor_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeAppVendor?vendorId=<%=row.vendor_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteAppVendor?vendorId=<%=row.vendor_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

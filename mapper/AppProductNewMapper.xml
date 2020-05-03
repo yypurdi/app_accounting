@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppProductMapper">			
+	
+	<insert id="newAppProduct">
+		insert into app_product(product_id,product_code,product_desc,base_unit,report_unit,product_group_1st,product_group_2nd,product_group_3rd,product_group_4th,alias_code,is_use_serial_number,is_use_lot,is_consignment,is_not_active,is_seasonal_product,product_category_id) 
+		values (#{productId},#{productCode},#{productDesc},#{baseUnit},#{reportUnit},#{productGroup1st},#{productGroup2nd},#{productGroup3rd},#{productGroup4th},#{aliasCode},#{isUseSerialNumber},#{isUseLot},#{isConsignment},#{isNotActive},#{isSeasonalProduct},#{productCategoryId});
+	</insert>
+
+</mapper>

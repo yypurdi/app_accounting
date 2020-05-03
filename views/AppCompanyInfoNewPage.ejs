@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppCompanyInfo" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.CompanyInfoId.label%></td>
+                <td><input type="text" class="form-control" name="companyInfoId" value="<%=record.companyInfoId%>"/></td>
+            </tr><tr>
+                <td><%=resource.CompanyName.label%></td>
+                <td><input type="text" class="form-control" name="companyName" value="<%=record.companyName%>"/></td>
+            </tr><tr>
+                <td><%=resource.AddressLine1.label%></td>
+                <td><input type="text" class="form-control" name="addressLine1" value="<%=record.addressLine1%>"/></td>
+            </tr><tr>
+                <td><%=resource.AddressLine2.label%></td>
+                <td><input type="text" class="form-control" name="addressLine2" value="<%=record.addressLine2%>"/></td>
+            </tr><tr>
+                <td><%=resource.CityId.label%></td>
+                <td><input type="text" class="form-control" name="cityId" value="<%=record.cityId%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProvinceId.label%></td>
+                <td><input type="text" class="form-control" name="provinceId" value="<%=record.provinceId%>"/></td>
+            </tr><tr>
+                <td><%=resource.CountryId.label%></td>
+                <td><input type="text" class="form-control" name="countryId" value="<%=record.countryId%>"/></td>
+            </tr><tr>
+                <td><%=resource.PostalCode.label%></td>
+                <td><input type="text" class="form-control" name="postalCode" value="<%=record.postalCode%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

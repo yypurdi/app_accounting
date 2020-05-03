@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppProjectMapper">			
+	
+	<select id="countAppProjectSearch">
+		select count(*) from app_project
+		<trim prefix="where" prefixOverrides="and">
+			<if test="projectId!=null">
+				and project_id like #{projectId}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="projectManager!=null">
+				and project_manager like #{projectManager}
+			</if>
+			<if test="details!=null">
+				and details like #{details}
+			</if>
+			<if test="status!=null">
+				and status like #{status}
+			</if>
+			<if test="customerId!=null">
+				and customer_id like #{customerId}
+			</if>
+			<if test="isJobOrder!=null">
+				and is_job_order like #{isJobOrder}
+			</if>
+			<if test="isActive!=null">
+				and is_active like #{isActive}
+			</if>
+			<if test="jobOrderNo!=null">
+				and job_order_no like #{jobOrderNo}
+			</if>
+			<if test="isUsePhase!=null">
+				and is_use_phase like #{isUsePhase}
+			</if>
+			<if test="orderDate!=null">
+				and order_date like #{orderDate}
+			</if>
+			<if test="deliveryDate!=null">
+				and delivery_date like #{deliveryDate}
+			</if>
+			<if test="contactPerson!=null">
+				and contact_person like #{contactPerson}
+			</if>
+			<if test="percentageFinish!=null">
+				and percentage_finish like #{percentageFinish}
+			</if>
+			<if test="estimationCostBudget!=null">
+				and estimation_cost_budget like #{estimationCostBudget}
+			</if>
+			<if test="estimationIncomeBudget!=null">
+				and estimation_income_budget like #{estimationIncomeBudget}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppProject">
+		select * from app_project  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="projectId!=null">
+				project_id like #{projectId}
+			</if>
+			<if test="name!=null">
+				name like #{name}
+			</if>
+			<if test="projectManager!=null">
+				project_manager like #{projectManager}
+			</if>
+			<if test="details!=null">
+				details like #{details}
+			</if>
+			<if test="status!=null">
+				status like #{status}
+			</if>
+			<if test="customerId!=null">
+				customer_id like #{customerId}
+			</if>
+			<if test="isJobOrder!=null">
+				is_job_order like #{isJobOrder}
+			</if>
+			<if test="isActive!=null">
+				is_active like #{isActive}
+			</if>
+			<if test="jobOrderNo!=null">
+				job_order_no like #{jobOrderNo}
+			</if>
+			<if test="isUsePhase!=null">
+				is_use_phase like #{isUsePhase}
+			</if>
+			<if test="orderDate!=null">
+				order_date like #{orderDate}
+			</if>
+			<if test="deliveryDate!=null">
+				delivery_date like #{deliveryDate}
+			</if>
+			<if test="contactPerson!=null">
+				contact_person like #{contactPerson}
+			</if>
+			<if test="percentageFinish!=null">
+				percentage_finish like #{percentageFinish}
+			</if>
+			<if test="estimationCostBudget!=null">
+				estimation_cost_budget like #{estimationCostBudget}
+			</if>
+			<if test="estimationIncomeBudget!=null">
+				estimation_income_budget like #{estimationIncomeBudget}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

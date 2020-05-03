@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppMessageMapper">			
+	
+	<update id="writeAppMessage">
+		update app_message set username = #{username},
+		jid = #{jid},
+		msgtime = #{msgtime},
+		msgType = #{msgtype},
+		msgSubject = #{msgsubject},
+		msgText = #{msgtext} where username = #{username};
+	</update>
+
+</mapper>

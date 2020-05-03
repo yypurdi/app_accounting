@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppBankFundTransferMapper">			
+	
+	<select id="countAppBankFundTransferSearch">
+		select count(*) from app_bank_fund_transfer
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankFundTransferId!=null">
+				and bank_fund_transfer_id like #{bankFundTransferId}
+			</if>
+			<if test="fromAccountNo!=null">
+				and from_account_no like #{fromAccountNo}
+			</if>
+			<if test="toAccountNo!=null">
+				and to_account_no like #{toAccountNo}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="referenceNo!=null">
+				and reference_no like #{referenceNo}
+			</if>
+			<if test="amount!=null">
+				and amount like #{amount}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppBankFundTransfer">
+		select * from app_bank_fund_transfer  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankFundTransferId!=null">
+				bank_fund_transfer_id like #{bankFundTransferId}
+			</if>
+			<if test="fromAccountNo!=null">
+				from_account_no like #{fromAccountNo}
+			</if>
+			<if test="toAccountNo!=null">
+				to_account_no like #{toAccountNo}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="referenceNo!=null">
+				reference_no like #{referenceNo}
+			</if>
+			<if test="amount!=null">
+				amount like #{amount}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

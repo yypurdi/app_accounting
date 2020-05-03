@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppBankWriteCheckMapper">			
+	
+	<update id="writeAppBankWriteCheck">
+		update app_bank_write_check set bank_write_check_id = #{bankWriteCheckId},
+		account_no = #{accountNo},
+		is_post_dated_check = #{isPostDatedCheck},
+		received_by = #{receivedBy},
+		date = #{date},
+		check_no = #{checkNo},
+		amount = #{amount},
+		memo = #{memo} where bank_write_check_id = #{bankWriteCheckId};
+	</update>
+
+</mapper>

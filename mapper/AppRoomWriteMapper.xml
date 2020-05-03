@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppRoomMapper">			
+	
+	<update id="writeAppRoom">
+		update app_room set meeting_room = #{meetingRoom},
+		subject = #{subject},
+		participant = #{participant},
+		start_date = #{startDate},
+		end_date = #{endDate},
+		status = #{status},
+		ref_value = #{refValue} where meeting_room = #{meetingRoom};
+	</update>
+
+</mapper>

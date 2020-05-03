@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppCustomerMapper">			
+	
+	<select id="readAppCustomer">
+		select * from app_customer where customer_id = #{customerId};
+	</select>
+
+	<select id="appArAging_M86CV">         
+		select * from app_ar_aging where customer_id = #{customerId};
+	</select>
+  
+	<select id="appArCustomerDetail_GZAQW">         
+		select * from app_ar_customer_detail where customer_id = #{customerId};
+	</select>
+  
+	<select id="appArOpeningBalance_VZKZC">         
+		select * from app_ar_opening_balance where customer_id = #{customerId};
+	</select>
+  
+	<select id="appProject_C49CZ">         
+		select * from app_project where customer_id = #{customerId};
+	</select>
+  
+	<select id="appSummaryArAging_M5RJW">         
+		select * from app_summary_ar_aging where customer_id = #{customerId};
+	</select>
+  
+	<select id="appSummaryArCustomer_QHQ0V">         
+		select * from app_summary_ar_customer where customer_id = #{customerId};
+	</select>
+  
+</mapper>

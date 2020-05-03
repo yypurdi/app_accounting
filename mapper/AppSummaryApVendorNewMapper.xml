@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppSummaryApVendorMapper">			
+	
+	<insert id="newAppSummaryApVendor">
+		insert into app_summary_ap_vendor(summary_ap_vendor_id,vendor_id,date,beginning_balance_debit,beginning_balance_credit,debit_mutation,credit_mutation,ending_balance_debit,ending_balance_credit,beginning_balance,delta_from_beg_to_end,ending_balance,paid) 
+		values (#{summaryApVendorId},#{vendorId},#{date},#{beginningBalanceDebit},#{beginningBalanceCredit},#{debitMutation},#{creditMutation},#{endingBalanceDebit},#{endingBalanceCredit},#{beginningBalance},#{deltaFromBegToEnd},#{endingBalance},#{paid});
+	</insert>
+
+</mapper>

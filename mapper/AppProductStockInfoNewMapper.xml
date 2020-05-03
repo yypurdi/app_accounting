@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppProductStockInfoMapper">			
+	
+	<insert id="newAppProductStockInfo">
+		insert into app_product_stock_info(product_stock_info_id,qty_in_stock,ordered_to_vendor,ordered_by_customer,minimum_inventory,minimum_order,sales_forecast,buying_price,product_id,buying_price_tax,selling_unit_price_tax,unit_cost_or_cogs,cogs_department,location_master,delivery_time_indays,current_selling_price,main_vendor) 
+		values (#{productStockInfoId},#{qtyInStock},#{orderedToVendor},#{orderedByCustomer},#{minimumInventory},#{minimumOrder},#{salesForecast},#{buyingPrice},#{productId},#{buyingPriceTax},#{sellingUnitPriceTax},#{unitCostOrCogs},#{cogsDepartment},#{locationMaster},#{deliveryTimeIndays},#{currentSellingPrice},#{mainVendor});
+	</insert>
+
+</mapper>

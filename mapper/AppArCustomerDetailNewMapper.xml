@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppArCustomerDetailMapper">			
+	
+	<insert id="newAppArCustomerDetail">
+		insert into app_ar_customer_detail(ar_customer_detail_id,customer_id,date,note,debit,credit,debit_balance,credit_balance,balance,reference_no,ar_due_date,status) 
+		values (#{arCustomerDetailId},#{customerId},#{date},#{note},#{debit},#{credit},#{debitBalance},#{creditBalance},#{balance},#{referenceNo},#{arDueDate},#{status});
+	</insert>
+
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppSummaryApAgingMapper">			
+	
+	<update id="writeAppSummaryApAging">
+		update app_summary_ap_aging set ap_aging_id = #{apAgingId},
+		vendor_id = #{vendorId},
+		current_date = #{currentDate},
+		day_0_30 = #{day030},
+		day_30_60 = #{day3060},
+		day_60_90 = #{day6090},
+		day_more_than_90 = #{dayMoreThan90} where ap_aging_id = #{apAgingId};
+	</update>
+
+</mapper>

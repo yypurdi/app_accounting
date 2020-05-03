@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppBackupInfoMapper">			
+	
+	<select id="countAppBackupInfoSearch">
+		select count(*) from app_backup_info
+		<trim prefix="where" prefixOverrides="and">
+			<if test="backupInfoId!=null">
+				and backup_info_id like #{backupInfoId}
+			</if>
+			<if test="backupFolder!=null">
+				and backup_folder like #{backupFolder}
+			</if>
+			<if test="archiveFileName!=null">
+				and archive_file_name like #{archiveFileName}
+			</if>
+			<if test="backupDate!=null">
+				and backup_date like #{backupDate}
+			</if>
+			<if test="backupBy!=null">
+				and backup_by like #{backupBy}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppBackupInfo">
+		select * from app_backup_info  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="backupInfoId!=null">
+				backup_info_id like #{backupInfoId}
+			</if>
+			<if test="backupFolder!=null">
+				backup_folder like #{backupFolder}
+			</if>
+			<if test="archiveFileName!=null">
+				archive_file_name like #{archiveFileName}
+			</if>
+			<if test="backupDate!=null">
+				backup_date like #{backupDate}
+			</if>
+			<if test="backupBy!=null">
+				backup_by like #{backupBy}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

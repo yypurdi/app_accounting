@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppCustomerMapper">			
+	
+	<insert id="newAppCustomer">
+		insert into app_customer(customer_id,cust_no,cust_name,cust_type,cust_classification,cust_category,contact_person,contact_position,contact_person_mobile_phone,contact_person_email,cust_tax_id,cust_credit_limit,cust_phone1,cust_phone2,cust_fax,cust_email_company,cust_website,cust_currency,cust_address1,cust_address2,cust_postal_code,city_id,province_id,country_id,delivery_address1,delivery_address2,delivery_address_postal_code,delivery_address_city,delivery_address_province,delivery_address_country,contact_person_2nd,contact_position_2nd,contact_person_mobile_phone_2nd,contact_person_email_2nd,contact_person_3rd,contact_position_3rd,contact_person_mobile_phone_3rd,contact_person_email_3rd,image,notes_details,status,first_contact_date) 
+		values (#{customerId},#{custNo},#{custName},#{custType},#{custClassification},#{custCategory},#{contactPerson},#{contactPosition},#{contactPersonMobilePhone},#{contactPersonEmail},#{custTaxId},#{custCreditLimit},#{custPhone1},#{custPhone2},#{custFax},#{custEmailCompany},#{custWebsite},#{custCurrency},#{custAddress1},#{custAddress2},#{custPostalCode},#{cityId},#{provinceId},#{countryId},#{deliveryAddress1},#{deliveryAddress2},#{deliveryAddressPostalCode},#{deliveryAddressCity},#{deliveryAddressProvince},#{deliveryAddressCountry},#{contactPerson2nd},#{contactPosition2nd},#{contactPersonMobilePhone2nd},#{contactPersonEmail2nd},#{contactPerson3rd},#{contactPosition3rd},#{contactPersonMobilePhone3rd},#{contactPersonEmail3rd},#{image},#{notesDetails},#{status},#{firstContactDate});
+	</insert>
+
+</mapper>

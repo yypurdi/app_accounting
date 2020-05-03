@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppProductAcctCodeMapper">			
+	
+	<update id="writeAppProductAcctCode">
+		update app_product_acct_code set product_acct_code_and_cogs_id = #{productAcctCodeAndCogsId},
+		is_inventory = #{isInventory},
+		is_purchased = #{isPurchased},
+		is_sold = #{isSold},
+		acct_code_cogs = #{acctCodeCogs},
+		acct_code_sales = #{acctCodeSales},
+		acct_code_sales_return = #{acctCodeSalesReturn},
+		acct_code_inventory = #{acctCodeInventory},
+		acct_code_consignment = #{acctCodeConsignment},
+		product_id = #{productId} where product_acct_code_and_cogs_id = #{productAcctCodeAndCogsId};
+	</update>
+
+</mapper>

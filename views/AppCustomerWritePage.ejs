@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppCustomer" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.CustomerId.label%></td>
+                <td><input type="text" class="form-control" name="customerId" value="<%=record.customer_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustNo.label%></td>
+                <td><input type="text" class="form-control" name="custNo" value="<%=record.cust_no%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustName.label%></td>
+                <td><input type="text" class="form-control" name="custName" value="<%=record.cust_name%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustType.label%></td>
+                <td><input type="text" class="form-control" name="custType" value="<%=record.cust_type%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustClassification.label%></td>
+                <td><input type="text" class="form-control" name="custClassification" value="<%=record.cust_classification%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustCategory.label%></td>
+                <td><input type="text" class="form-control" name="custCategory" value="<%=record.cust_category%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPerson.label%></td>
+                <td><input type="text" class="form-control" name="contactPerson" value="<%=record.contact_person%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPosition.label%></td>
+                <td><input type="text" class="form-control" name="contactPosition" value="<%=record.contact_position%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonMobilePhone.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonMobilePhone" value="<%=record.contact_person_mobile_phone%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonEmail.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonEmail" value="<%=record.contact_person_email%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustTaxId.label%></td>
+                <td><input type="text" class="form-control" name="custTaxId" value="<%=record.cust_tax_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustCreditLimit.label%></td>
+                <td><input type="text" class="form-control" name="custCreditLimit" value="<%=record.cust_credit_limit%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustPhone1.label%></td>
+                <td><input type="text" class="form-control" name="custPhone1" value="<%=record.cust_phone1%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustPhone2.label%></td>
+                <td><input type="text" class="form-control" name="custPhone2" value="<%=record.cust_phone2%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustFax.label%></td>
+                <td><input type="text" class="form-control" name="custFax" value="<%=record.cust_fax%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustEmailCompany.label%></td>
+                <td><input type="text" class="form-control" name="custEmailCompany" value="<%=record.cust_email_company%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustWebsite.label%></td>
+                <td><input type="text" class="form-control" name="custWebsite" value="<%=record.cust_website%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustCurrency.label%></td>
+                <td><input type="text" class="form-control" name="custCurrency" value="<%=record.cust_currency%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustAddress1.label%></td>
+                <td><input type="text" class="form-control" name="custAddress1" value="<%=record.cust_address1%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustAddress2.label%></td>
+                <td><input type="text" class="form-control" name="custAddress2" value="<%=record.cust_address2%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustPostalCode.label%></td>
+                <td><input type="text" class="form-control" name="custPostalCode" value="<%=record.cust_postal_code%>"/></td>
+            </tr><tr>
+                <td><%=resource.CityId.label%></td>
+                <td><input type="text" class="form-control" name="cityId" value="<%=record.city_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProvinceId.label%></td>
+                <td><input type="text" class="form-control" name="provinceId" value="<%=record.province_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.CountryId.label%></td>
+                <td><input type="text" class="form-control" name="countryId" value="<%=record.country_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddress1.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddress1" value="<%=record.delivery_address1%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddress2.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddress2" value="<%=record.delivery_address2%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddressPostalCode.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddressPostalCode" value="<%=record.delivery_address_postal_code%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddressCity.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddressCity" value="<%=record.delivery_address_city%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddressProvince.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddressProvince" value="<%=record.delivery_address_province%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddressCountry.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddressCountry" value="<%=record.delivery_address_country%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPerson2nd.label%></td>
+                <td><input type="text" class="form-control" name="contactPerson2nd" value="<%=record.contact_person_2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPosition2nd.label%></td>
+                <td><input type="text" class="form-control" name="contactPosition2nd" value="<%=record.contact_position_2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonMobilePhone2nd.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonMobilePhone2nd" value="<%=record.contact_person_mobile_phone_2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonEmail2nd.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonEmail2nd" value="<%=record.contact_person_email_2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPerson3rd.label%></td>
+                <td><input type="text" class="form-control" name="contactPerson3rd" value="<%=record.contact_person_3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPosition3rd.label%></td>
+                <td><input type="text" class="form-control" name="contactPosition3rd" value="<%=record.contact_position_3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonMobilePhone3rd.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonMobilePhone3rd" value="<%=record.contact_person_mobile_phone_3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonEmail3rd.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonEmail3rd" value="<%=record.contact_person_email_3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.Image.label%></td>
+                <td><input type="text" class="form-control" name="image" value="<%=record.image%>"/></td>
+            </tr><tr>
+                <td><%=resource.NotesDetails.label%></td>
+                <td><input type="text" class="form-control" name="notesDetails" value="<%=record.notes_details%>"/></td>
+            </tr><tr>
+                <td><%=resource.Status.label%></td>
+                <td><input type="text" class="form-control" name="status" value="<%=record.status%>"/></td>
+            </tr><tr>
+                <td><%=resource.FirstContactDate.label%></td>
+                <td><input type="text" class="form-control" name="firstContactDate" value="<%=record.first_contact_date%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

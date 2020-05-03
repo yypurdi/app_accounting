@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppRptCashFlowMapper">			
+	
+	<select id="countAppRptCashFlowSearch">
+		select count(*) from app_rpt_cash_flow
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rptCashFlowId!=null">
+				and rpt_cash_flow_id like #{rptCashFlowId}
+			</if>
+			<if test="rptCashFlowName!=null">
+				and rpt_cash_flow_name like #{rptCashFlowName}
+			</if>
+			<if test="dateFrom!=null">
+				and date_from like #{dateFrom}
+			</if>
+			<if test="dateUntil!=null">
+				and date_until like #{dateUntil}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+			<if test="endingBalanceDebit!=null">
+				and ending_balance_debit like #{endingBalanceDebit}
+			</if>
+			<if test="endingBalanceCredit!=null">
+				and ending_balance_credit like #{endingBalanceCredit}
+			</if>
+			<if test="dateCreated!=null">
+				and date_created like #{dateCreated}
+			</if>
+			<if test="createdBy!=null">
+				and created_by like #{createdBy}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppRptCashFlow">
+		select * from app_rpt_cash_flow  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rptCashFlowId!=null">
+				rpt_cash_flow_id like #{rptCashFlowId}
+			</if>
+			<if test="rptCashFlowName!=null">
+				rpt_cash_flow_name like #{rptCashFlowName}
+			</if>
+			<if test="dateFrom!=null">
+				date_from like #{dateFrom}
+			</if>
+			<if test="dateUntil!=null">
+				date_until like #{dateUntil}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+			<if test="endingBalanceDebit!=null">
+				ending_balance_debit like #{endingBalanceDebit}
+			</if>
+			<if test="endingBalanceCredit!=null">
+				ending_balance_credit like #{endingBalanceCredit}
+			</if>
+			<if test="dateCreated!=null">
+				date_created like #{dateCreated}
+			</if>
+			<if test="createdBy!=null">
+				created_by like #{createdBy}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

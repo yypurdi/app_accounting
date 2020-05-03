@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppSummaryApVendorMapper">			
+	
+	<update id="writeAppSummaryApVendor">
+		update app_summary_ap_vendor set summary_ap_vendor_id = #{summaryApVendorId},
+		vendor_id = #{vendorId},
+		date = #{date},
+		beginning_balance_debit = #{beginningBalanceDebit},
+		beginning_balance_credit = #{beginningBalanceCredit},
+		debit_mutation = #{debitMutation},
+		credit_mutation = #{creditMutation},
+		ending_balance_debit = #{endingBalanceDebit},
+		ending_balance_credit = #{endingBalanceCredit},
+		beginning_balance = #{beginningBalance},
+		delta_from_beg_to_end = #{deltaFromBegToEnd},
+		ending_balance = #{endingBalance},
+		paid = #{paid} where summary_ap_vendor_id = #{summaryApVendorId};
+	</update>
+
+</mapper>

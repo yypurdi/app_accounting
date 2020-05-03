@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchAppRestoreInfo" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.RestoreInfoId.label%></td>    
+                <td><input type="text" class="form-control" name="restore_info_id"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newAppRestoreInfo">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.AppRestoreInfo.RestoreInfoId.header%></th>
+                <th><%=resource.AppRestoreInfo.ArchiveFileName.header%></th>
+                <th><%=resource.AppRestoreInfo.NewLocationFolder.header%></th>
+                <th><%=resource.AppRestoreInfo.NewArchiveFileName.header%></th>
+                <th><%=resource.AppRestoreInfo.ServerName.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.restore_info_id%></a></td>
+                <td><a><%=row.archive_file_name%></a></td>
+                <td><a><%=row.new_location_folder%></a></td>
+                <td><a><%=row.new_archive_file_name%></a></td>
+                <td><a><%=row.server_name%></a></td>
+                
+                <td><a href="/readAppRestoreInfo?restoreInfoId=<%=row.restore_info_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeAppRestoreInfo?restoreInfoId=<%=row.restore_info_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteAppRestoreInfo?restoreInfoId=<%=row.restore_info_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

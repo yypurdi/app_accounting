@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.EmployeeId.label%></td>
+                        <td><%=record.employee_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.EmployeeNumber.label%></td>
+                        <td><%=record.employee_number%></td>						
+                    </tr><tr>
+                        <td><%=resource.Firstname.label%></td>
+                        <td><%=record.firstname%></td>						
+                    </tr><tr>
+                        <td><%=resource.Middlename.label%></td>
+                        <td><%=record.middlename%></td>						
+                    </tr><tr>
+                        <td><%=resource.Lastname.label%></td>
+                        <td><%=record.lastname%></td>						
+                    </tr><tr>
+                        <td><%=resource.Nationality.label%></td>
+                        <td><%=record.nationality%></td>						
+                    </tr><tr>
+                        <td><%=resource.Dob.label%></td>
+                        <td><%=dateFormat(record.dob,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.Gender.label%></td>
+                        <td><%=record.gender%></td>						
+                    </tr><tr>
+                        <td><%=resource.MaritalStatus.label%></td>
+                        <td><%=record.marital_status%></td>						
+                    </tr><tr>
+                        <td><%=resource.Ethnicity.label%></td>
+                        <td><%=record.ethnicity%></td>						
+                    </tr><tr>
+                        <td><%=resource.KtpNumber.label%></td>
+                        <td><%=record.ktp_number%></td>						
+                    </tr><tr>
+                        <td><%=resource.PassportNumber.label%></td>
+                        <td><%=record.passport_number%></td>						
+                    </tr><tr>
+                        <td><%=resource.DrivingLicenceNo.label%></td>
+                        <td><%=record.driving_licence_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.AddressLine1.label%></td>
+                        <td><%=record.address_line1%></td>						
+                    </tr><tr>
+                        <td><%=resource.AddressLine2.label%></td>
+                        <td><%=record.address_line2%></td>						
+                    </tr><tr>
+                        <td><%=resource.CityId.label%></td>
+                        <td><%=record.city_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.CountryId.label%></td>
+                        <td><%=record.country_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProvinceId.label%></td>
+                        <td><%=record.province_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.PostalCode.label%></td>
+                        <td><%=record.postal_code%></td>						
+                    </tr><tr>
+                        <td><%=resource.HomePhone.label%></td>
+                        <td><%=record.home_phone%></td>						
+                    </tr><tr>
+                        <td><%=resource.MobilePhone.label%></td>
+                        <td><%=record.mobile_phone%></td>						
+                    </tr><tr>
+                        <td><%=resource.WorkEmail.label%></td>
+                        <td><%=record.work_email%></td>						
+                    </tr><tr>
+                        <td><%=resource.PrivateEmail.label%></td>
+                        <td><%=record.private_email%></td>						
+                    </tr><tr>
+                        <td><%=resource.JoinedDate.label%></td>
+                        <td><%=dateFormat(record.joined_date,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.ConfirmationDate.label%></td>
+                        <td><%=dateFormat(record.confirmation_date,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.TerminationDate.label%></td>
+                        <td><%=dateFormat(record.termination_date,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.SupervisorName.label%></td>
+                        <td><%=record.supervisor_name%></td>						
+                    </tr><tr>
+                        <td><%=resource.IndirectSupervisorName.label%></td>
+                        <td><%=record.indirect_supervisor_name%></td>						
+                    </tr><tr>
+                        <td><%=resource.FirstLevelApprover.label%></td>
+                        <td><%=record.first_level_approver%></td>						
+                    </tr><tr>
+                        <td><%=resource.SecondLevelApprover.label%></td>
+                        <td><%=record.second_level_approver%></td>						
+                    </tr><tr>
+                        <td><%=resource.ThirdLevelApprover.label%></td>
+                        <td><%=record.third_level_approver%></td>						
+                    </tr><tr>
+                        <td><%=resource.Notes.label%></td>
+                        <td><%=record.notes%></td>						
+                    </tr><tr>
+                        <td><%=resource.DepartmentId.label%></td>
+                        <td><%=record.department_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.WorkStationId.label%></td>
+                        <td><%=record.work_station_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.JobTitleId.label%></td>
+                        <td><%=record.job_title_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.PayGradeId.label%></td>
+                        <td><%=record.pay_grade_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.EmploymentStatusId.label%></td>
+                        <td><%=record.employment_status_id%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppEmployee?employeeId=<%=record.employee_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppEmployee?employeeId=<%=record.employee_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

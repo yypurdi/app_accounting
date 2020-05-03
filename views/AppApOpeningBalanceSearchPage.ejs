@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchAppApOpeningBalance" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.ApOpeningBalanceId.label%></td>    
+                <td><input type="text" class="form-control" name="ap_opening_balance_id"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newAppApOpeningBalance">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.AppApOpeningBalance.ApOpeningBalanceId.header%></th>
+                <th><%=resource.AppApOpeningBalance.VendorId.header%></th>
+                <th><%=resource.AppApOpeningBalance.Date.header%></th>
+                <th><%=resource.AppApOpeningBalance.InvoiceNo.header%></th>
+                <th><%=resource.AppApOpeningBalance.PurchaseOrderNo.header%></th>
+                <th><%=resource.AppApOpeningBalance.CurrencyId.header%></th>
+                <th><%=resource.AppApOpeningBalance.PayableValue.header%></th>
+                <th><%=resource.AppApOpeningBalance.TermOfPaymentId.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.ap_opening_balance_id%></a></td>
+                <td><a><%=row.vendor_id%></a></td>
+                <td><a><%=dateFormat(row.date,'mmm-dd-yyyy')%></a></td>
+                <td><a><%=row.invoice_no%></a></td>
+                <td><a><%=row.purchase_order_no%></a></td>
+                <td><a><%=row.currency_id%></a></td>
+                <td><a><%=row.payable_value%></a></td>
+                <td><a><%=row.term_of_payment_id%></a></td>
+                
+                <td><a href="/readAppApOpeningBalance?apOpeningBalanceId=<%=row.ap_opening_balance_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeAppApOpeningBalance?apOpeningBalanceId=<%=row.ap_opening_balance_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteAppApOpeningBalance?apOpeningBalanceId=<%=row.ap_opening_balance_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

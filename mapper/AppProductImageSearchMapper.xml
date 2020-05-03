@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppProductImageMapper">			
+	
+	<select id="countAppProductImageSearch">
+		select count(*) from app_product_image
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productImageId!=null">
+				and product_image_id like #{productImageId}
+			</if>
+			<if test="image!=null">
+				and image like #{image}
+			</if>
+			<if test="productId!=null">
+				and product_id like #{productId}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppProductImage">
+		select * from app_product_image  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productImageId!=null">
+				product_image_id like #{productImageId}
+			</if>
+			<if test="image!=null">
+				image like #{image}
+			</if>
+			<if test="productId!=null">
+				product_id like #{productId}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

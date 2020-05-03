@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppCurrencyMapper">			
+	
+	<select id="readAppCurrency">
+		select * from app_currency where currency_id = #{currencyId};
+	</select>
+
+	<select id="appApOpeningBalance_VM8K0">         
+		select * from app_ap_opening_balance where currency_id = #{currencyId};
+	</select>
+  
+	<select id="appArOpeningBalance_PE7Q8">         
+		select * from app_ar_opening_balance where currency_id = #{currencyId};
+	</select>
+  
+	<select id="appChartOfAccount_NJ4BI">         
+		select * from app_chart_of_account where currency_id = #{currencyId};
+	</select>
+  
+	<select id="appCurrencyFluctuation_W8MEV">         
+		select * from app_currency_fluctuation where currency_id = #{currencyId};
+	</select>
+  
+	<select id="appRptBalanceSheet_QKBC0">         
+		select * from app_rpt_balance_sheet where currency_id = #{currencyId};
+	</select>
+  
+	<select id="appRptProfitAndLoss_QME9V">         
+		select * from app_rpt_profit_and_loss where currency_id = #{currencyId};
+	</select>
+  
+	<select id="appRptTrialBalance_K9AG3">         
+		select * from app_rpt_trial_balance where currency_id = #{currencyId};
+	</select>
+  
+</mapper>

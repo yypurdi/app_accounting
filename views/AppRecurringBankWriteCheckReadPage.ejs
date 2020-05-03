@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appRecurringBankWcFa-tab" data-toggle="tab" href="#appRecurringBankWcFa" role="tab" aria-controls="appRecurringBankWcFa" aria-selected="true"><h4><%=resource.AppRecurringBankWcFa.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.RecurringBankWriteCheckId.label%></td>
+                        <td><%=record.recurring_bank_write_check_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.TransactionName.label%></td>
+                        <td><%=record.transaction_name%></td>						
+                    </tr><tr>
+                        <td><%=resource.Frequency.label%></td>
+                        <td><%=record.frequency%></td>						
+                    </tr><tr>
+                        <td><%=resource.AccountNo.label%></td>
+                        <td><%=record.account_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.IsPostDatedCheck.label%></td>
+                        <td><%=record.is_post_dated_check%></td>						
+                    </tr><tr>
+                        <td><%=resource.ReceivedBy.label%></td>
+                        <td><%=record.received_by%></td>						
+                    </tr><tr>
+                        <td><%=resource.Date.label%></td>
+                        <td><%=dateFormat(record.date,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.CheckNo.label%></td>
+                        <td><%=record.check_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.Amount.label%></td>
+                        <td><%=record.amount%></td>						
+                    </tr><tr>
+                        <td><%=resource.Memo.label%></td>
+                        <td><%=record.memo%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppRecurringBankWriteCheck?recurringBankWriteCheckId=<%=record.recurring_bank_write_check_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppRecurringBankWriteCheck?recurringBankWriteCheckId=<%=record.recurring_bank_write_check_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appRecurringBankWcFa" role="tabpanel" aria-labelledby="appRecurringBankWcFa-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppRecurringBankWcFa.RecurringBankWcFaId.header%></th>
+                    <th><%=resource.AppRecurringBankWcFa.RecurringBankWriteCheckId.header%></th>
+                    <th><%=resource.AppRecurringBankWcFa.AccountNo.header%></th>
+                    <th><%=resource.AppRecurringBankWcFa.DepartmentId.header%></th>
+                    <th><%=resource.AppRecurringBankWcFa.Amount.header%></th>
+                    <th><%=resource.AppRecurringBankWcFa.JobOrderNo.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appRecurringBankWcFa){ let rec = record.appRecurringBankWcFa[i] %>
+                <tr>
+                    <td><a><%=rec.recurring_bank_wc_fa_id%></a></td>
+                    <td><a><%=rec.recurring_bank_write_check_id%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    <td><a><%=rec.department_id%></a></td>
+                    <td><a><%=rec.amount%></a></td>
+                    <td><a><%=rec.job_order_no%></a></td>
+                    
+                    <td><a href="/readAppRecurringBankWcFa?recurringBankWcFaId=<%=rec.recurring_bank_wc_fa_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppRecurringBankWcFa?recurringBankWcFaId=<%=rec.recurring_bank_wc_fa_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppRecurringBankWcFa?recurringBankWcFaId=<%=rec.recurring_bank_wc_fa_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppRecurringBankWcFa">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

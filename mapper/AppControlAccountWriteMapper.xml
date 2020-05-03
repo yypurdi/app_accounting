@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppControlAccountMapper">			
+	
+	<update id="writeAppControlAccount">
+		update app_control_account set control_account_id = #{controlAccountId},
+		control_account_name = #{controlAccountName},
+		control_account_desc = #{controlAccountDesc},
+		account_no = #{accountNo} where control_account_id = #{controlAccountId};
+	</update>
+
+</mapper>

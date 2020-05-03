@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchAppCompanyInfo" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.CompanyInfoId.label%></td>    
+                <td><input type="text" class="form-control" name="company_info_id"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newAppCompanyInfo">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.AppCompanyInfo.CompanyInfoId.header%></th>
+                <th><%=resource.AppCompanyInfo.CompanyName.header%></th>
+                <th><%=resource.AppCompanyInfo.AddressLine1.header%></th>
+                <th><%=resource.AppCompanyInfo.AddressLine2.header%></th>
+                <th><%=resource.AppCompanyInfo.CityId.header%></th>
+                <th><%=resource.AppCompanyInfo.ProvinceId.header%></th>
+                <th><%=resource.AppCompanyInfo.CountryId.header%></th>
+                <th><%=resource.AppCompanyInfo.PostalCode.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.company_info_id%></a></td>
+                <td><a><%=row.company_name%></a></td>
+                <td><a><%=row.address_line1%></a></td>
+                <td><a><%=row.address_line2%></a></td>
+                <td><a><%=row.city_id%></a></td>
+                <td><a><%=row.province_id%></a></td>
+                <td><a><%=row.country_id%></a></td>
+                <td><a><%=row.postal_code%></a></td>
+                
+                <td><a href="/readAppCompanyInfo?companyInfoId=<%=row.company_info_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeAppCompanyInfo?companyInfoId=<%=row.company_info_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteAppCompanyInfo?companyInfoId=<%=row.company_info_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

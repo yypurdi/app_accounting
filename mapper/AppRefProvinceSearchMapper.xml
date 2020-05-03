@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppRefProvinceMapper">			
+	
+	<select id="countAppRefProvinceSearch">
+		select count(*) from app_ref_province
+		<trim prefix="where" prefixOverrides="and">
+			<if test="provinceId!=null">
+				and province_id like #{provinceId}
+			</if>
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="details!=null">
+				and details like #{details}
+			</if>
+			<if test="countryId!=null">
+				and country_id like #{countryId}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppRefProvince">
+		select * from app_ref_province  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="provinceId!=null">
+				province_id like #{provinceId}
+			</if>
+			<if test="name!=null">
+				name like #{name}
+			</if>
+			<if test="details!=null">
+				details like #{details}
+			</if>
+			<if test="countryId!=null">
+				country_id like #{countryId}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

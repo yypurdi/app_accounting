@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppStockCardMapper">			
+	
+	<select id="countAppStockCardSearch">
+		select count(*) from app_stock_card
+		<trim prefix="where" prefixOverrides="and">
+			<if test="stockCardId!=null">
+				and stock_card_id like #{stockCardId}
+			</if>
+			<if test="productId!=null">
+				and product_id like #{productId}
+			</if>
+			<if test="transactionDate!=null">
+				and transaction_date like #{transactionDate}
+			</if>
+			<if test="refNo!=null">
+				and ref_no like #{refNo}
+			</if>
+			<if test="docType!=null">
+				and doc_type like #{docType}
+			</if>
+			<if test="transactionType!=null">
+				and transaction_type like #{transactionType}
+			</if>
+			<if test="transactionQty!=null">
+				and transaction_qty like #{transactionQty}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppStockCard">
+		select * from app_stock_card  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="stockCardId!=null">
+				stock_card_id like #{stockCardId}
+			</if>
+			<if test="productId!=null">
+				product_id like #{productId}
+			</if>
+			<if test="transactionDate!=null">
+				transaction_date like #{transactionDate}
+			</if>
+			<if test="refNo!=null">
+				ref_no like #{refNo}
+			</if>
+			<if test="docType!=null">
+				doc_type like #{docType}
+			</if>
+			<if test="transactionType!=null">
+				transaction_type like #{transactionType}
+			</if>
+			<if test="transactionQty!=null">
+				transaction_qty like #{transactionQty}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

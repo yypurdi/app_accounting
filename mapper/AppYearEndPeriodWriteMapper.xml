@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppYearEndPeriodMapper">			
+	
+	<update id="writeAppYearEndPeriod">
+		update app_year_end_period set year_end_period_id = #{yearEndPeriodId},
+		date = #{date},
+		status = #{status},
+		created_by = #{createdBy} where year_end_period_id = #{yearEndPeriodId};
+	</update>
+
+</mapper>

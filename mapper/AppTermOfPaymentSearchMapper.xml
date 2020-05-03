@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppTermOfPaymentMapper">			
+	
+	<select id="countAppTermOfPaymentSearch">
+		select count(*) from app_term_of_payment
+		<trim prefix="where" prefixOverrides="and">
+			<if test="termOfPaymentId!=null">
+				and term_of_payment_id like #{termOfPaymentId}
+			</if>
+			<if test="topCode!=null">
+				and top_code like #{topCode}
+			</if>
+			<if test="topDesc!=null">
+				and top_desc like #{topDesc}
+			</if>
+			<if test="discountDaysIndays!=null">
+				and discount_days_indays like #{discountDaysIndays}
+			</if>
+			<if test="dueDateIndays!=null">
+				and due_date_indays like #{dueDateIndays}
+			</if>
+			<if test="earlyDiscountInpercentage!=null">
+				and early_discount_inpercentage like #{earlyDiscountInpercentage}
+			</if>
+			<if test="lateChargesInpercentage!=null">
+				and late_charges_inpercentage like #{lateChargesInpercentage}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppTermOfPayment">
+		select * from app_term_of_payment  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="termOfPaymentId!=null">
+				term_of_payment_id like #{termOfPaymentId}
+			</if>
+			<if test="topCode!=null">
+				top_code like #{topCode}
+			</if>
+			<if test="topDesc!=null">
+				top_desc like #{topDesc}
+			</if>
+			<if test="discountDaysIndays!=null">
+				discount_days_indays like #{discountDaysIndays}
+			</if>
+			<if test="dueDateIndays!=null">
+				due_date_indays like #{dueDateIndays}
+			</if>
+			<if test="earlyDiscountInpercentage!=null">
+				early_discount_inpercentage like #{earlyDiscountInpercentage}
+			</if>
+			<if test="lateChargesInpercentage!=null">
+				late_charges_inpercentage like #{lateChargesInpercentage}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

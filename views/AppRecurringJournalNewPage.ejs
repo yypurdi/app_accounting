@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppRecurringJournal" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.RecurringJournalId.label%></td>
+                <td><input type="text" class="form-control" name="recurringJournalId" value="<%=record.recurringJournalId%>"/></td>
+            </tr><tr>
+                <td><%=resource.TransactionName.label%></td>
+                <td><input type="text" class="form-control" name="transactionName" value="<%=record.transactionName%>"/></td>
+            </tr><tr>
+                <td><%=resource.Frequency.label%></td>
+                <td><input type="text" class="form-control" name="frequency" value="<%=record.frequency%>"/></td>
+            </tr><tr>
+                <td><%=resource.Reference.label%></td>
+                <td><input type="text" class="form-control" name="reference" value="<%=record.reference%>"/></td>
+            </tr><tr>
+                <td><%=resource.Date.label%></td>
+                <td><input type="text" class="form-control" name="date" value="<%=record.date%>"/></td>
+            </tr><tr>
+                <td><%=resource.Note.label%></td>
+                <td><input type="text" class="form-control" name="note" value="<%=record.note%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

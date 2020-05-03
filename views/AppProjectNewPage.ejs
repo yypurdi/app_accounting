@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppProject" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.ProjectId.label%></td>
+                <td><input type="text" class="form-control" name="projectId" value="<%=record.projectId%>"/></td>
+            </tr><tr>
+                <td><%=resource.Name.label%></td>
+                <td><input type="text" class="form-control" name="name" value="<%=record.name%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProjectManager.label%></td>
+                <td><input type="text" class="form-control" name="projectManager" value="<%=record.projectManager%>"/></td>
+            </tr><tr>
+                <td><%=resource.Details.label%></td>
+                <td><input type="text" class="form-control" name="details" value="<%=record.details%>"/></td>
+            </tr><tr>
+                <td><%=resource.Status.label%></td>
+                <td><input type="text" class="form-control" name="status" value="<%=record.status%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustomerId.label%></td>
+                <td><input type="text" class="form-control" name="customerId" value="<%=record.customerId%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsJobOrder.label%></td>
+                <td><input type="text" class="form-control" name="isJobOrder" value="<%=record.isJobOrder%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsActive.label%></td>
+                <td><input type="text" class="form-control" name="isActive" value="<%=record.isActive%>"/></td>
+            </tr><tr>
+                <td><%=resource.JobOrderNo.label%></td>
+                <td><input type="text" class="form-control" name="jobOrderNo" value="<%=record.jobOrderNo%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsUsePhase.label%></td>
+                <td><input type="text" class="form-control" name="isUsePhase" value="<%=record.isUsePhase%>"/></td>
+            </tr><tr>
+                <td><%=resource.OrderDate.label%></td>
+                <td><input type="text" class="form-control" name="orderDate" value="<%=record.orderDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryDate.label%></td>
+                <td><input type="text" class="form-control" name="deliveryDate" value="<%=record.deliveryDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPerson.label%></td>
+                <td><input type="text" class="form-control" name="contactPerson" value="<%=record.contactPerson%>"/></td>
+            </tr><tr>
+                <td><%=resource.PercentageFinish.label%></td>
+                <td><input type="text" class="form-control" name="percentageFinish" value="<%=record.percentageFinish%>"/></td>
+            </tr><tr>
+                <td><%=resource.EstimationCostBudget.label%></td>
+                <td><input type="text" class="form-control" name="estimationCostBudget" value="<%=record.estimationCostBudget%>"/></td>
+            </tr><tr>
+                <td><%=resource.EstimationIncomeBudget.label%></td>
+                <td><input type="text" class="form-control" name="estimationIncomeBudget" value="<%=record.estimationIncomeBudget%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

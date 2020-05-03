@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppCompanyInfoMapper">			
+	
+	<insert id="newAppCompanyInfo">
+		insert into app_company_info(company_info_id,company_name,address_line1,address_line2,city_id,province_id,country_id,postal_code) 
+		values (#{companyInfoId},#{companyName},#{addressLine1},#{addressLine2},#{cityId},#{provinceId},#{countryId},#{postalCode});
+	</insert>
+
+</mapper>

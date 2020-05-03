@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppProductSellingPriceMapper">			
+	
+	<update id="writeAppProductSellingPrice">
+		update app_product_selling_price set product_price_id = #{productPriceId},
+		changed_date = #{changedDate},
+		Changed_by = #{changedBy},
+		normal_price_effective_date = #{normalPriceEffectiveDate},
+		calculation_method = #{calculationMethod},
+		amount_of_calculation_method = #{amountOfCalculationMethod},
+		round_up = #{roundUp},
+		smallest_unit = #{smallestUnit},
+		pricing_base = #{pricingBase},
+		is_include_tax_to_selling_price = #{isIncludeTaxToSellingPrice},
+		is_selected_item = #{isSelectedItem},
+		current_selling_price = #{currentSellingPrice},
+		new_selling_price = #{newSellingPrice},
+		effective_date_of_new_selling_price = #{effectiveDateOfNewSellingPrice},
+		product_id = #{productId} where product_price_id = #{productPriceId};
+	</update>
+
+</mapper>

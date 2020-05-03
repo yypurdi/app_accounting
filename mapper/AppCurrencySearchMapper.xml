@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppCurrencyMapper">			
+	
+	<select id="countAppCurrencySearch">
+		select count(*) from app_currency
+		<trim prefix="where" prefixOverrides="and">
+			<if test="currencyId!=null">
+				and currency_id like #{currencyId}
+			</if>
+			<if test="currencyCode!=null">
+				and currency_code like #{currencyCode}
+			</if>
+			<if test="currencyName!=null">
+				and currency_name like #{currencyName}
+			</if>
+			<if test="currencySymbol!=null">
+				and currency_symbol like #{currencySymbol}
+			</if>
+			<if test="exchangeRate!=null">
+				and exchange_rate like #{exchangeRate}
+			</if>
+			<if test="byDate!=null">
+				and by_date like #{byDate}
+			</if>
+			<if test="controlAccountAr!=null">
+				and control_account_ar like #{controlAccountAr}
+			</if>
+			<if test="controlAccountAp!=null">
+				and control_account_ap like #{controlAccountAp}
+			</if>
+			<if test="controlAccountBankPayment!=null">
+				and control_account_bank_payment like #{controlAccountBankPayment}
+			</if>
+			<if test="controlAccountCashPayment!=null">
+				and control_account_cash_payment like #{controlAccountCashPayment}
+			</if>
+			<if test="isCurrencyBase!=null">
+				and is_currency_base like #{isCurrencyBase}
+			</if>
+			<if test="isForeignCurrency!=null">
+				and is_foreign_currency like #{isForeignCurrency}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppCurrency">
+		select * from app_currency  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="currencyId!=null">
+				currency_id like #{currencyId}
+			</if>
+			<if test="currencyCode!=null">
+				currency_code like #{currencyCode}
+			</if>
+			<if test="currencyName!=null">
+				currency_name like #{currencyName}
+			</if>
+			<if test="currencySymbol!=null">
+				currency_symbol like #{currencySymbol}
+			</if>
+			<if test="exchangeRate!=null">
+				exchange_rate like #{exchangeRate}
+			</if>
+			<if test="byDate!=null">
+				by_date like #{byDate}
+			</if>
+			<if test="controlAccountAr!=null">
+				control_account_ar like #{controlAccountAr}
+			</if>
+			<if test="controlAccountAp!=null">
+				control_account_ap like #{controlAccountAp}
+			</if>
+			<if test="controlAccountBankPayment!=null">
+				control_account_bank_payment like #{controlAccountBankPayment}
+			</if>
+			<if test="controlAccountCashPayment!=null">
+				control_account_cash_payment like #{controlAccountCashPayment}
+			</if>
+			<if test="isCurrencyBase!=null">
+				is_currency_base like #{isCurrencyBase}
+			</if>
+			<if test="isForeignCurrency!=null">
+				is_foreign_currency like #{isForeignCurrency}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

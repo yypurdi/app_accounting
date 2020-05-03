@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppRefCity" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.CityId.label%></td>
+                <td><input type="text" class="form-control" name="cityId" value="<%=record.cityId%>"/></td>
+            </tr><tr>
+                <td><%=resource.Name.label%></td>
+                <td><input type="text" class="form-control" name="name" value="<%=record.name%>"/></td>
+            </tr><tr>
+                <td><%=resource.Details.label%></td>
+                <td><input type="text" class="form-control" name="details" value="<%=record.details%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProvinceId.label%></td>
+                <td><input type="text" class="form-control" name="provinceId" value="<%=record.provinceId%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

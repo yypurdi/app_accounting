@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppVendorMapper">			
+	
+	<update id="writeAppVendor">
+		update app_vendor set vendor_id = #{vendorId},
+		vendor_no = #{vendorNo},
+		vendor_name = #{vendorName},
+		vendor_type = #{vendorType},
+		vendor_classification = #{vendorClassification},
+		vendor_category = #{vendorCategory},
+		contact_person = #{contactPerson},
+		contact_position = #{contactPosition},
+		contact_person_mobile_phone = #{contactPersonMobilePhone},
+		contact_person_email = #{contactPersonEmail},
+		vendor_tax_id = #{vendorTaxId},
+		vendor_credit_limit = #{vendorCreditLimit},
+		vendor_phone1 = #{vendorPhone1},
+		vendor_phone2 = #{vendorPhone2},
+		vendor_fax = #{vendorFax},
+		vendor_email_company = #{vendorEmailCompany},
+		vendor_website = #{vendorWebsite},
+		vendor_currency = #{vendorCurrency},
+		vendor_address1 = #{vendorAddress1},
+		vendor_address2 = #{vendorAddress2},
+		vendor_postal_code = #{vendorPostalCode},
+		city_id = #{cityId},
+		province_id = #{provinceId},
+		country_id = #{countryId},
+		delivery_address1 = #{deliveryAddress1},
+		delivery_address2 = #{deliveryAddress2},
+		delivery_address_postal_code = #{deliveryAddressPostalCode},
+		delivery_address_city = #{deliveryAddressCity},
+		delivery_address_province = #{deliveryAddressProvince},
+		delivery_address_country = #{deliveryAddressCountry},
+		contact_person_2nd = #{contactPerson2nd},
+		contact_position_2nd = #{contactPosition2nd},
+		contact_person_mobile_phone_2nd = #{contactPersonMobilePhone2nd},
+		contact_person_email_2nd = #{contactPersonEmail2nd},
+		contact_person_3rd = #{contactPerson3rd},
+		contact_position_3rd = #{contactPosition3rd},
+		contact_person_mobile_phone_3rd = #{contactPersonMobilePhone3rd},
+		contact_person_email_3rd = #{contactPersonEmail3rd},
+		image = #{image},
+		notes_details = #{notesDetails},
+		status = #{status},
+		first_contact_date = #{firstContactDate} where vendor_id = #{vendorId};
+	</update>
+
+</mapper>

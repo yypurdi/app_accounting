@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppTermOfPaymentMapper">			
+	
+	<insert id="newAppTermOfPayment">
+		insert into app_term_of_payment(term_of_payment_id,top_code,top_desc,discount_days_indays,due_date_indays,early_discount_inpercentage,late_charges_inpercentage) 
+		values (#{termOfPaymentId},#{topCode},#{topDesc},#{discountDaysIndays},#{dueDateIndays},#{earlyDiscountInpercentage},#{lateChargesInpercentage});
+	</insert>
+
+</mapper>

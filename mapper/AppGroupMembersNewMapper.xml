@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppGroupMembersMapper">			
+	
+	<insert id="newAppGroupMembers">
+		insert into app_group_members(group_id,group_member_id,username) 
+		values (#{groupId},#{groupMemberId},#{username});
+	</insert>
+
+</mapper>

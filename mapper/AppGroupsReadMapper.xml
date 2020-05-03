@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppGroupsMapper">			
+	
+	<select id="readAppGroups">
+		select * from app_groups where group_id = #{groupId};
+	</select>
+
+	<select id="appGroupAuthorities_SHBMG">         
+		select * from app_group_authorities where group_id = #{groupId};
+	</select>
+  
+	<select id="appGroupMembers_B2IUQ">         
+		select * from app_group_members where group_id = #{groupId};
+	</select>
+  
+</mapper>

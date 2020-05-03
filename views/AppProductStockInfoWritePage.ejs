@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppProductStockInfo" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.ProductStockInfoId.label%></td>
+                <td><input type="text" class="form-control" name="productStockInfoId" value="<%=record.product_stock_info_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.QtyInStock.label%></td>
+                <td><input type="text" class="form-control" name="qtyInStock" value="<%=record.qty_in_stock%>"/></td>
+            </tr><tr>
+                <td><%=resource.OrderedToVendor.label%></td>
+                <td><input type="text" class="form-control" name="orderedToVendor" value="<%=record.ordered_to_vendor%>"/></td>
+            </tr><tr>
+                <td><%=resource.OrderedByCustomer.label%></td>
+                <td><input type="text" class="form-control" name="orderedByCustomer" value="<%=record.ordered_by_customer%>"/></td>
+            </tr><tr>
+                <td><%=resource.MinimumInventory.label%></td>
+                <td><input type="text" class="form-control" name="minimumInventory" value="<%=record.minimum_inventory%>"/></td>
+            </tr><tr>
+                <td><%=resource.MinimumOrder.label%></td>
+                <td><input type="text" class="form-control" name="minimumOrder" value="<%=record.minimum_order%>"/></td>
+            </tr><tr>
+                <td><%=resource.SalesForecast.label%></td>
+                <td><input type="text" class="form-control" name="salesForecast" value="<%=record.sales_forecast%>"/></td>
+            </tr><tr>
+                <td><%=resource.BuyingPrice.label%></td>
+                <td><input type="text" class="form-control" name="buyingPrice" value="<%=record.buying_price%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductId.label%></td>
+                <td><input type="text" class="form-control" name="productId" value="<%=record.product_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.BuyingPriceTax.label%></td>
+                <td><input type="text" class="form-control" name="buyingPriceTax" value="<%=record.buying_price_tax%>"/></td>
+            </tr><tr>
+                <td><%=resource.SellingUnitPriceTax.label%></td>
+                <td><input type="text" class="form-control" name="sellingUnitPriceTax" value="<%=record.selling_unit_price_tax%>"/></td>
+            </tr><tr>
+                <td><%=resource.UnitCostOrCogs.label%></td>
+                <td><input type="text" class="form-control" name="unitCostOrCogs" value="<%=record.unit_cost_or_cogs%>"/></td>
+            </tr><tr>
+                <td><%=resource.CogsDepartment.label%></td>
+                <td><input type="text" class="form-control" name="cogsDepartment" value="<%=record.cogs_department%>"/></td>
+            </tr><tr>
+                <td><%=resource.LocationMaster.label%></td>
+                <td><input type="text" class="form-control" name="locationMaster" value="<%=record.location_master%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryTimeIndays.label%></td>
+                <td><input type="text" class="form-control" name="deliveryTimeIndays" value="<%=record.delivery_time_indays%>"/></td>
+            </tr><tr>
+                <td><%=resource.CurrentSellingPrice.label%></td>
+                <td><input type="text" class="form-control" name="currentSellingPrice" value="<%=record.current_selling_price%>"/></td>
+            </tr><tr>
+                <td><%=resource.MainVendor.label%></td>
+                <td><input type="text" class="form-control" name="mainVendor" value="<%=record.main_vendor%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

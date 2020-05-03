@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppProductSellingPriceMapper">			
+	
+	<select id="countAppProductSellingPriceSearch">
+		select count(*) from app_product_selling_price
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productPriceId!=null">
+				and product_price_id like #{productPriceId}
+			</if>
+			<if test="changedDate!=null">
+				and changed_date like #{changedDate}
+			</if>
+			<if test="changedBy!=null">
+				and Changed_by like #{changedBy}
+			</if>
+			<if test="normalPriceEffectiveDate!=null">
+				and normal_price_effective_date like #{normalPriceEffectiveDate}
+			</if>
+			<if test="calculationMethod!=null">
+				and calculation_method like #{calculationMethod}
+			</if>
+			<if test="amountOfCalculationMethod!=null">
+				and amount_of_calculation_method like #{amountOfCalculationMethod}
+			</if>
+			<if test="roundUp!=null">
+				and round_up like #{roundUp}
+			</if>
+			<if test="smallestUnit!=null">
+				and smallest_unit like #{smallestUnit}
+			</if>
+			<if test="pricingBase!=null">
+				and pricing_base like #{pricingBase}
+			</if>
+			<if test="isIncludeTaxToSellingPrice!=null">
+				and is_include_tax_to_selling_price like #{isIncludeTaxToSellingPrice}
+			</if>
+			<if test="isSelectedItem!=null">
+				and is_selected_item like #{isSelectedItem}
+			</if>
+			<if test="currentSellingPrice!=null">
+				and current_selling_price like #{currentSellingPrice}
+			</if>
+			<if test="newSellingPrice!=null">
+				and new_selling_price like #{newSellingPrice}
+			</if>
+			<if test="effectiveDateOfNewSellingPrice!=null">
+				and effective_date_of_new_selling_price like #{effectiveDateOfNewSellingPrice}
+			</if>
+			<if test="productId!=null">
+				and product_id like #{productId}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppProductSellingPrice">
+		select * from app_product_selling_price  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productPriceId!=null">
+				product_price_id like #{productPriceId}
+			</if>
+			<if test="changedDate!=null">
+				changed_date like #{changedDate}
+			</if>
+			<if test="changedBy!=null">
+				Changed_by like #{changedBy}
+			</if>
+			<if test="normalPriceEffectiveDate!=null">
+				normal_price_effective_date like #{normalPriceEffectiveDate}
+			</if>
+			<if test="calculationMethod!=null">
+				calculation_method like #{calculationMethod}
+			</if>
+			<if test="amountOfCalculationMethod!=null">
+				amount_of_calculation_method like #{amountOfCalculationMethod}
+			</if>
+			<if test="roundUp!=null">
+				round_up like #{roundUp}
+			</if>
+			<if test="smallestUnit!=null">
+				smallest_unit like #{smallestUnit}
+			</if>
+			<if test="pricingBase!=null">
+				pricing_base like #{pricingBase}
+			</if>
+			<if test="isIncludeTaxToSellingPrice!=null">
+				is_include_tax_to_selling_price like #{isIncludeTaxToSellingPrice}
+			</if>
+			<if test="isSelectedItem!=null">
+				is_selected_item like #{isSelectedItem}
+			</if>
+			<if test="currentSellingPrice!=null">
+				current_selling_price like #{currentSellingPrice}
+			</if>
+			<if test="newSellingPrice!=null">
+				new_selling_price like #{newSellingPrice}
+			</if>
+			<if test="effectiveDateOfNewSellingPrice!=null">
+				effective_date_of_new_selling_price like #{effectiveDateOfNewSellingPrice}
+			</if>
+			<if test="productId!=null">
+				product_id like #{productId}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

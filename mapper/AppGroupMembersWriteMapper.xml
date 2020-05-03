@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppGroupMembersMapper">			
+	
+	<update id="writeAppGroupMembers">
+		update app_group_members set group_id = #{groupId},
+		group_member_id = #{groupMemberId},
+		username = #{username} where group_id = #{groupId};
+	</update>
+
+</mapper>

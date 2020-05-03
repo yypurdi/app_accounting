@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchAppProject" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.ProjectId.label%></td>    
+                <td><input type="text" class="form-control" name="project_id"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newAppProject">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.AppProject.ProjectId.header%></th>
+                <th><%=resource.AppProject.Name.header%></th>
+                <th><%=resource.AppProject.ProjectManager.header%></th>
+                <th><%=resource.AppProject.Details.header%></th>
+                <th><%=resource.AppProject.Status.header%></th>
+                <th><%=resource.AppProject.CustomerId.header%></th>
+                <th><%=resource.AppProject.IsJobOrder.header%></th>
+                <th><%=resource.AppProject.IsActive.header%></th>
+                <th><%=resource.AppProject.JobOrderNo.header%></th>
+                <th><%=resource.AppProject.IsUsePhase.header%></th>
+                <th><%=resource.AppProject.OrderDate.header%></th>
+                <th><%=resource.AppProject.DeliveryDate.header%></th>
+                <th><%=resource.AppProject.ContactPerson.header%></th>
+                <th><%=resource.AppProject.PercentageFinish.header%></th>
+                <th><%=resource.AppProject.EstimationCostBudget.header%></th>
+                <th><%=resource.AppProject.EstimationIncomeBudget.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.project_id%></a></td>
+                <td><a><%=row.name%></a></td>
+                <td><a><%=row.project_manager%></a></td>
+                <td><a><%=row.details%></a></td>
+                <td><a><%=row.status%></a></td>
+                <td><a><%=row.customer_id%></a></td>
+                <td><a><%=row.is_job_order%></a></td>
+                <td><a><%=row.is_active%></a></td>
+                <td><a><%=row.job_order_no%></a></td>
+                <td><a><%=row.is_use_phase%></a></td>
+                <td><a><%=dateFormat(row.order_date,'mmm-dd-yyyy')%></a></td>
+                <td><a><%=dateFormat(row.delivery_date,'mmm-dd-yyyy')%></a></td>
+                <td><a><%=row.contact_person%></a></td>
+                <td><a><%=row.percentage_finish%></a></td>
+                <td><a><%=row.estimation_cost_budget%></a></td>
+                <td><a><%=row.estimation_income_budget%></a></td>
+                
+                <td><a href="/readAppProject?projectId=<%=row.project_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeAppProject?projectId=<%=row.project_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteAppProject?projectId=<%=row.project_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

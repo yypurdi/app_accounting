@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppBankCashReceiveMapper">			
+	
+	<select id="readAppBankCashReceive">
+		select * from app_bank_cash_receive where bank_cash_receive_id = #{bankCashReceiveId};
+	</select>
+
+	<select id="appBankCrFa_RYZCR">         
+		select * from app_bank_cr_fa where bank_cash_receive_id = #{bankCashReceiveId};
+	</select>
+  
+</mapper>

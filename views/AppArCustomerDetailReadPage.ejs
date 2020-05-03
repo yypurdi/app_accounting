@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.ArCustomerDetailId.label%></td>
+                        <td><%=record.ar_customer_detail_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.CustomerId.label%></td>
+                        <td><%=record.customer_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.Date.label%></td>
+                        <td><%=dateFormat(record.date,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.Note.label%></td>
+                        <td><%=record.note%></td>						
+                    </tr><tr>
+                        <td><%=resource.Debit.label%></td>
+                        <td><%=record.debit%></td>						
+                    </tr><tr>
+                        <td><%=resource.Credit.label%></td>
+                        <td><%=record.credit%></td>						
+                    </tr><tr>
+                        <td><%=resource.DebitBalance.label%></td>
+                        <td><%=record.debit_balance%></td>						
+                    </tr><tr>
+                        <td><%=resource.CreditBalance.label%></td>
+                        <td><%=record.credit_balance%></td>						
+                    </tr><tr>
+                        <td><%=resource.Balance.label%></td>
+                        <td><%=record.balance%></td>						
+                    </tr><tr>
+                        <td><%=resource.ReferenceNo.label%></td>
+                        <td><%=record.reference_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.ArDueDate.label%></td>
+                        <td><%=dateFormat(record.ar_due_date,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.Status.label%></td>
+                        <td><%=record.status%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppArCustomerDetail?arCustomerDetailId=<%=record.ar_customer_detail_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppArCustomerDetail?arCustomerDetailId=<%=record.ar_customer_detail_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

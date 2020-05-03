@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppRefCityMapper">			
+	
+	<select id="readAppRefCity">
+		select * from app_ref_city where city_id = #{cityId};
+	</select>
+
+	<select id="appBankData_XXS8F">         
+		select * from app_bank_data where city_id = #{cityId};
+	</select>
+  
+	<select id="appCompanyInfo_R2P2M">         
+		select * from app_company_info where city_id = #{cityId};
+	</select>
+  
+	<select id="appCustomer_RLDUR">         
+		select * from app_customer where city_id = #{cityId};
+	</select>
+  
+	<select id="appEmployee_JVBTV">         
+		select * from app_employee where city_id = #{cityId};
+	</select>
+  
+	<select id="appVendor_JPHJN">         
+		select * from app_vendor where city_id = #{cityId};
+	</select>
+  
+</mapper>

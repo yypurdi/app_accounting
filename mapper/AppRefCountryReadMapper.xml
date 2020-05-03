@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppRefCountryMapper">			
+	
+	<select id="readAppRefCountry">
+		select * from app_ref_country where country_id = #{countryId};
+	</select>
+
+	<select id="appCompanyInfo_WS9C7">         
+		select * from app_company_info where country_id = #{countryId};
+	</select>
+  
+	<select id="appCustomer_AX5D2">         
+		select * from app_customer where country_id = #{countryId};
+	</select>
+  
+	<select id="appEmployee_HWINZ">         
+		select * from app_employee where country_id = #{countryId};
+	</select>
+  
+	<select id="appRefProvince_J4QTN">         
+		select * from app_ref_province where country_id = #{countryId};
+	</select>
+  
+	<select id="appVendor_N8VBE">         
+		select * from app_vendor where country_id = #{countryId};
+	</select>
+  
+</mapper>

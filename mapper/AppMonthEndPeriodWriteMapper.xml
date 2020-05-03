@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppMonthEndPeriodMapper">			
+	
+	<update id="writeAppMonthEndPeriod">
+		update app_month_end_period set month_end_period_id = #{monthEndPeriodId},
+		date = #{date},
+		is_calculate_and_create_depr_journal = #{isCalculateAndCreateDeprJournal},
+		is_recalculate_account_balance = #{isRecalculateAccountBalance},
+		is_recalculate_inventory_account_balance = #{isRecalculateInventoryAccountBalance},
+		is_revaluation_foreign_currency = #{isRevaluationForeignCurrency} where month_end_period_id = #{monthEndPeriodId};
+	</update>
+
+</mapper>

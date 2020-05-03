@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppApVendorDetailMapper">			
+	
+	<update id="writeAppApVendorDetail">
+		update app_ap_vendor_detail set ap_vendor_detail_id = #{apVendorDetailId},
+		vendor_id = #{vendorId},
+		date = #{date},
+		note = #{note},
+		debit = #{debit},
+		credit = #{credit},
+		debit_balance = #{debitBalance},
+		credit_balance = #{creditBalance},
+		balance = #{balance},
+		reference_no = #{referenceNo},
+		ar_due_date = #{arDueDate},
+		status = #{status} where ap_vendor_detail_id = #{apVendorDetailId};
+	</update>
+
+</mapper>

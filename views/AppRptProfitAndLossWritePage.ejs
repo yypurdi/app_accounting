@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppRptProfitAndLoss" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.RptProfitAndLossId.label%></td>
+                <td><input type="text" class="form-control" name="rptProfitAndLossId" value="<%=record.rpt_profit_and_loss_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.RptProfitAndLossName.label%></td>
+                <td><input type="text" class="form-control" name="rptProfitAndLossName" value="<%=record.rpt_profit_and_loss_name%>"/></td>
+            </tr><tr>
+                <td><%=resource.DepartmentFrom.label%></td>
+                <td><input type="text" class="form-control" name="departmentFrom" value="<%=record.department_from%>"/></td>
+            </tr><tr>
+                <td><%=resource.DepartmentTo.label%></td>
+                <td><input type="text" class="form-control" name="departmentTo" value="<%=record.department_to%>"/></td>
+            </tr><tr>
+                <td><%=resource.CurrencyId.label%></td>
+                <td><input type="text" class="form-control" name="currencyId" value="<%=record.currency_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.Revenue.label%></td>
+                <td><input type="text" class="form-control" name="revenue" value="<%=record.revenue%>"/></td>
+            </tr><tr>
+                <td><%=resource.RevenueExpenditure.label%></td>
+                <td><input type="text" class="form-control" name="revenueExpenditure" value="<%=record.revenue_expenditure%>"/></td>
+            </tr><tr>
+                <td><%=resource.GrossMargin.label%></td>
+                <td><input type="text" class="form-control" name="grossMargin" value="<%=record.gross_margin%>"/></td>
+            </tr><tr>
+                <td><%=resource.OperationalExpenditure.label%></td>
+                <td><input type="text" class="form-control" name="operationalExpenditure" value="<%=record.operational_expenditure%>"/></td>
+            </tr><tr>
+                <td><%=resource.OperatingProfit.label%></td>
+                <td><input type="text" class="form-control" name="operatingProfit" value="<%=record.operating_profit%>"/></td>
+            </tr><tr>
+                <td><%=resource.OtherRevenue.label%></td>
+                <td><input type="text" class="form-control" name="otherRevenue" value="<%=record.other_revenue%>"/></td>
+            </tr><tr>
+                <td><%=resource.OtherExpenditure.label%></td>
+                <td><input type="text" class="form-control" name="otherExpenditure" value="<%=record.other_expenditure%>"/></td>
+            </tr><tr>
+                <td><%=resource.NetProfit.label%></td>
+                <td><input type="text" class="form-control" name="netProfit" value="<%=record.net_profit%>"/></td>
+            </tr><tr>
+                <td><%=resource.ComparativeRevenue.label%></td>
+                <td><input type="text" class="form-control" name="comparativeRevenue" value="<%=record.comparative_revenue%>"/></td>
+            </tr><tr>
+                <td><%=resource.ComparativeRevenueExpenditure.label%></td>
+                <td><input type="text" class="form-control" name="comparativeRevenueExpenditure" value="<%=record.comparative_revenue_expenditure%>"/></td>
+            </tr><tr>
+                <td><%=resource.ComparativeGrossMargin.label%></td>
+                <td><input type="text" class="form-control" name="comparativeGrossMargin" value="<%=record.comparative_gross_margin%>"/></td>
+            </tr><tr>
+                <td><%=resource.ComparativeOperationalExpenditure.label%></td>
+                <td><input type="text" class="form-control" name="comparativeOperationalExpenditure" value="<%=record.comparative_operational_expenditure%>"/></td>
+            </tr><tr>
+                <td><%=resource.ComparativeOperatingProfit.label%></td>
+                <td><input type="text" class="form-control" name="comparativeOperatingProfit" value="<%=record.comparative_operating_profit%>"/></td>
+            </tr><tr>
+                <td><%=resource.ComparativeOtherRevenue.label%></td>
+                <td><input type="text" class="form-control" name="comparativeOtherRevenue" value="<%=record.comparative_other_revenue%>"/></td>
+            </tr><tr>
+                <td><%=resource.ComparativeOtherExpenditure.label%></td>
+                <td><input type="text" class="form-control" name="comparativeOtherExpenditure" value="<%=record.comparative_other_expenditure%>"/></td>
+            </tr><tr>
+                <td><%=resource.ComparativeNetProfit.label%></td>
+                <td><input type="text" class="form-control" name="comparativeNetProfit" value="<%=record.comparative_net_profit%>"/></td>
+            </tr><tr>
+                <td><%=resource.DateCreated.label%></td>
+                <td><input type="text" class="form-control" name="dateCreated" value="<%=record.date_created%>"/></td>
+            </tr><tr>
+                <td><%=resource.CreatedBy.label%></td>
+                <td><input type="text" class="form-control" name="createdBy" value="<%=record.created_by%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

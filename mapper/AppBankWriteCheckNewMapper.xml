@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppBankWriteCheckMapper">			
+	
+	<insert id="newAppBankWriteCheck">
+		insert into app_bank_write_check(bank_write_check_id,account_no,is_post_dated_check,received_by,date,check_no,amount,memo) 
+		values (#{bankWriteCheckId},#{accountNo},#{isPostDatedCheck},#{receivedBy},#{date},#{checkNo},#{amount},#{memo});
+	</insert>
+
+</mapper>

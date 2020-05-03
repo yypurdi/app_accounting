@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppBankCashReceiveMapper">			
+	
+	<update id="writeAppBankCashReceive">
+		update app_bank_cash_receive set bank_cash_receive_id = #{bankCashReceiveId},
+		account_no = #{accountNo},
+		is_post_dated_check = #{isPostDatedCheck},
+		from = #{from},
+		date = #{date},
+		reference_no = #{referenceNo},
+		amount = #{amount},
+		memo = #{memo} where bank_cash_receive_id = #{bankCashReceiveId};
+	</update>
+
+</mapper>

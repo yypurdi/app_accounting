@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppProductCategoryMapper">			
+	
+	<select id="countAppProductCategorySearch">
+		select count(*) from app_product_category
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productCategoryId!=null">
+				and product_category_id like #{productCategoryId}
+			</if>
+			<if test="categoryName!=null">
+				and category_name like #{categoryName}
+			</if>
+			<if test="location!=null">
+				and location like #{location}
+			</if>
+			<if test="departmentId!=null">
+				and department_id like #{departmentId}
+			</if>
+			<if test="isInventory!=null">
+				and is_inventory like #{isInventory}
+			</if>
+			<if test="isPurchased!=null">
+				and is_purchased like #{isPurchased}
+			</if>
+			<if test="isSold!=null">
+				and is_sold like #{isSold}
+			</if>
+			<if test="inventoryMethod!=null">
+				and inventory_method like #{inventoryMethod}
+			</if>
+			<if test="acctCodeCogs!=null">
+				and acct_code_cogs like #{acctCodeCogs}
+			</if>
+			<if test="acctCodeSales!=null">
+				and acct_code_sales like #{acctCodeSales}
+			</if>
+			<if test="acctCodeSalesReturn!=null">
+				and acct_code_sales_return like #{acctCodeSalesReturn}
+			</if>
+			<if test="acctCodeInventory!=null">
+				and acct_code_inventory like #{acctCodeInventory}
+			</if>
+			<if test="acctCodeConsignment!=null">
+				and acct_code_consignment like #{acctCodeConsignment}
+			</if>
+			<if test="image!=null">
+				and image like #{image}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppProductCategory">
+		select * from app_product_category  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productCategoryId!=null">
+				product_category_id like #{productCategoryId}
+			</if>
+			<if test="categoryName!=null">
+				category_name like #{categoryName}
+			</if>
+			<if test="location!=null">
+				location like #{location}
+			</if>
+			<if test="departmentId!=null">
+				department_id like #{departmentId}
+			</if>
+			<if test="isInventory!=null">
+				is_inventory like #{isInventory}
+			</if>
+			<if test="isPurchased!=null">
+				is_purchased like #{isPurchased}
+			</if>
+			<if test="isSold!=null">
+				is_sold like #{isSold}
+			</if>
+			<if test="inventoryMethod!=null">
+				inventory_method like #{inventoryMethod}
+			</if>
+			<if test="acctCodeCogs!=null">
+				acct_code_cogs like #{acctCodeCogs}
+			</if>
+			<if test="acctCodeSales!=null">
+				acct_code_sales like #{acctCodeSales}
+			</if>
+			<if test="acctCodeSalesReturn!=null">
+				acct_code_sales_return like #{acctCodeSalesReturn}
+			</if>
+			<if test="acctCodeInventory!=null">
+				acct_code_inventory like #{acctCodeInventory}
+			</if>
+			<if test="acctCodeConsignment!=null">
+				acct_code_consignment like #{acctCodeConsignment}
+			</if>
+			<if test="image!=null">
+				image like #{image}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

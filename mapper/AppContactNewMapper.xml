@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppContactMapper">			
+	
+	<insert id="newAppContact">
+		insert into app_contact(username,subscription,jid,nickname,joindate,show,status,lastseen,unread,key) 
+		values (#{username},#{subscription},#{jid},#{nickname},#{joindate},#{show},#{status},#{lastseen},#{unread},#{key});
+	</insert>
+
+</mapper>

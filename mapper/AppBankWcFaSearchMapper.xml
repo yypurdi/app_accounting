@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppBankWcFaMapper">			
+	
+	<select id="countAppBankWcFaSearch">
+		select count(*) from app_bank_wc_fa
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankWcFaId!=null">
+				and bank_wc_fa_id like #{bankWcFaId}
+			</if>
+			<if test="bankWriteCheckId!=null">
+				and bank_write_check_id like #{bankWriteCheckId}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+			<if test="departmentId!=null">
+				and department_id like #{departmentId}
+			</if>
+			<if test="amount!=null">
+				and amount like #{amount}
+			</if>
+			<if test="jobOrderNo!=null">
+				and job_order_no like #{jobOrderNo}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppBankWcFa">
+		select * from app_bank_wc_fa  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankWcFaId!=null">
+				bank_wc_fa_id like #{bankWcFaId}
+			</if>
+			<if test="bankWriteCheckId!=null">
+				bank_write_check_id like #{bankWriteCheckId}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+			<if test="departmentId!=null">
+				department_id like #{departmentId}
+			</if>
+			<if test="amount!=null">
+				amount like #{amount}
+			</if>
+			<if test="jobOrderNo!=null">
+				job_order_no like #{jobOrderNo}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

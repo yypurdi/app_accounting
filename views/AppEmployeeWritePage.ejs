@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppEmployee" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.EmployeeId.label%></td>
+                <td><input type="text" class="form-control" name="employeeId" value="<%=record.employee_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.EmployeeNumber.label%></td>
+                <td><input type="text" class="form-control" name="employeeNumber" value="<%=record.employee_number%>"/></td>
+            </tr><tr>
+                <td><%=resource.Firstname.label%></td>
+                <td><input type="text" class="form-control" name="firstname" value="<%=record.firstname%>"/></td>
+            </tr><tr>
+                <td><%=resource.Middlename.label%></td>
+                <td><input type="text" class="form-control" name="middlename" value="<%=record.middlename%>"/></td>
+            </tr><tr>
+                <td><%=resource.Lastname.label%></td>
+                <td><input type="text" class="form-control" name="lastname" value="<%=record.lastname%>"/></td>
+            </tr><tr>
+                <td><%=resource.Nationality.label%></td>
+                <td><input type="text" class="form-control" name="nationality" value="<%=record.nationality%>"/></td>
+            </tr><tr>
+                <td><%=resource.Dob.label%></td>
+                <td><input type="text" class="form-control" name="dob" value="<%=record.dob%>"/></td>
+            </tr><tr>
+                <td><%=resource.Gender.label%></td>
+                <td><input type="text" class="form-control" name="gender" value="<%=record.gender%>"/></td>
+            </tr><tr>
+                <td><%=resource.MaritalStatus.label%></td>
+                <td><input type="text" class="form-control" name="maritalStatus" value="<%=record.marital_status%>"/></td>
+            </tr><tr>
+                <td><%=resource.Ethnicity.label%></td>
+                <td><input type="text" class="form-control" name="ethnicity" value="<%=record.ethnicity%>"/></td>
+            </tr><tr>
+                <td><%=resource.KtpNumber.label%></td>
+                <td><input type="text" class="form-control" name="ktpNumber" value="<%=record.ktp_number%>"/></td>
+            </tr><tr>
+                <td><%=resource.PassportNumber.label%></td>
+                <td><input type="text" class="form-control" name="passportNumber" value="<%=record.passport_number%>"/></td>
+            </tr><tr>
+                <td><%=resource.DrivingLicenceNo.label%></td>
+                <td><input type="text" class="form-control" name="drivingLicenceNo" value="<%=record.driving_licence_no%>"/></td>
+            </tr><tr>
+                <td><%=resource.AddressLine1.label%></td>
+                <td><input type="text" class="form-control" name="addressLine1" value="<%=record.address_line1%>"/></td>
+            </tr><tr>
+                <td><%=resource.AddressLine2.label%></td>
+                <td><input type="text" class="form-control" name="addressLine2" value="<%=record.address_line2%>"/></td>
+            </tr><tr>
+                <td><%=resource.CityId.label%></td>
+                <td><input type="text" class="form-control" name="cityId" value="<%=record.city_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.CountryId.label%></td>
+                <td><input type="text" class="form-control" name="countryId" value="<%=record.country_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProvinceId.label%></td>
+                <td><input type="text" class="form-control" name="provinceId" value="<%=record.province_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.PostalCode.label%></td>
+                <td><input type="text" class="form-control" name="postalCode" value="<%=record.postal_code%>"/></td>
+            </tr><tr>
+                <td><%=resource.HomePhone.label%></td>
+                <td><input type="text" class="form-control" name="homePhone" value="<%=record.home_phone%>"/></td>
+            </tr><tr>
+                <td><%=resource.MobilePhone.label%></td>
+                <td><input type="text" class="form-control" name="mobilePhone" value="<%=record.mobile_phone%>"/></td>
+            </tr><tr>
+                <td><%=resource.WorkEmail.label%></td>
+                <td><input type="text" class="form-control" name="workEmail" value="<%=record.work_email%>"/></td>
+            </tr><tr>
+                <td><%=resource.PrivateEmail.label%></td>
+                <td><input type="text" class="form-control" name="privateEmail" value="<%=record.private_email%>"/></td>
+            </tr><tr>
+                <td><%=resource.JoinedDate.label%></td>
+                <td><input type="text" class="form-control" name="joinedDate" value="<%=record.joined_date%>"/></td>
+            </tr><tr>
+                <td><%=resource.ConfirmationDate.label%></td>
+                <td><input type="text" class="form-control" name="confirmationDate" value="<%=record.confirmation_date%>"/></td>
+            </tr><tr>
+                <td><%=resource.TerminationDate.label%></td>
+                <td><input type="text" class="form-control" name="terminationDate" value="<%=record.termination_date%>"/></td>
+            </tr><tr>
+                <td><%=resource.SupervisorName.label%></td>
+                <td><input type="text" class="form-control" name="supervisorName" value="<%=record.supervisor_name%>"/></td>
+            </tr><tr>
+                <td><%=resource.IndirectSupervisorName.label%></td>
+                <td><input type="text" class="form-control" name="indirectSupervisorName" value="<%=record.indirect_supervisor_name%>"/></td>
+            </tr><tr>
+                <td><%=resource.FirstLevelApprover.label%></td>
+                <td><input type="text" class="form-control" name="firstLevelApprover" value="<%=record.first_level_approver%>"/></td>
+            </tr><tr>
+                <td><%=resource.SecondLevelApprover.label%></td>
+                <td><input type="text" class="form-control" name="secondLevelApprover" value="<%=record.second_level_approver%>"/></td>
+            </tr><tr>
+                <td><%=resource.ThirdLevelApprover.label%></td>
+                <td><input type="text" class="form-control" name="thirdLevelApprover" value="<%=record.third_level_approver%>"/></td>
+            </tr><tr>
+                <td><%=resource.Notes.label%></td>
+                <td><input type="text" class="form-control" name="notes" value="<%=record.notes%>"/></td>
+            </tr><tr>
+                <td><%=resource.DepartmentId.label%></td>
+                <td><input type="text" class="form-control" name="departmentId" value="<%=record.department_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.WorkStationId.label%></td>
+                <td><input type="text" class="form-control" name="workStationId" value="<%=record.work_station_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.JobTitleId.label%></td>
+                <td><input type="text" class="form-control" name="jobTitleId" value="<%=record.job_title_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.PayGradeId.label%></td>
+                <td><input type="text" class="form-control" name="payGradeId" value="<%=record.pay_grade_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.EmploymentStatusId.label%></td>
+                <td><input type="text" class="form-control" name="employmentStatusId" value="<%=record.employment_status_id%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

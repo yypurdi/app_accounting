@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.RptCashFlowId.label%></td>
+                        <td><%=record.rpt_cash_flow_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.RptCashFlowName.label%></td>
+                        <td><%=record.rpt_cash_flow_name%></td>						
+                    </tr><tr>
+                        <td><%=resource.DateFrom.label%></td>
+                        <td><%=dateFormat(record.date_from,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.DateUntil.label%></td>
+                        <td><%=dateFormat(record.date_until,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.AccountNo.label%></td>
+                        <td><%=record.account_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.EndingBalanceDebit.label%></td>
+                        <td><%=record.ending_balance_debit%></td>						
+                    </tr><tr>
+                        <td><%=resource.EndingBalanceCredit.label%></td>
+                        <td><%=record.ending_balance_credit%></td>						
+                    </tr><tr>
+                        <td><%=resource.DateCreated.label%></td>
+                        <td><%=dateFormat(record.date_created,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.CreatedBy.label%></td>
+                        <td><%=record.created_by%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppRptCashFlow?rptCashFlowId=<%=record.rpt_cash_flow_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppRptCashFlow?rptCashFlowId=<%=record.rpt_cash_flow_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

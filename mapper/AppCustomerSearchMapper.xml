@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppCustomerMapper">			
+	
+	<select id="countAppCustomerSearch">
+		select count(*) from app_customer
+		<trim prefix="where" prefixOverrides="and">
+			<if test="customerId!=null">
+				and customer_id like #{customerId}
+			</if>
+			<if test="custNo!=null">
+				and cust_no like #{custNo}
+			</if>
+			<if test="custName!=null">
+				and cust_name like #{custName}
+			</if>
+			<if test="custType!=null">
+				and cust_type like #{custType}
+			</if>
+			<if test="custClassification!=null">
+				and cust_classification like #{custClassification}
+			</if>
+			<if test="custCategory!=null">
+				and cust_category like #{custCategory}
+			</if>
+			<if test="contactPerson!=null">
+				and contact_person like #{contactPerson}
+			</if>
+			<if test="contactPosition!=null">
+				and contact_position like #{contactPosition}
+			</if>
+			<if test="contactPersonMobilePhone!=null">
+				and contact_person_mobile_phone like #{contactPersonMobilePhone}
+			</if>
+			<if test="contactPersonEmail!=null">
+				and contact_person_email like #{contactPersonEmail}
+			</if>
+			<if test="custTaxId!=null">
+				and cust_tax_id like #{custTaxId}
+			</if>
+			<if test="custCreditLimit!=null">
+				and cust_credit_limit like #{custCreditLimit}
+			</if>
+			<if test="custPhone1!=null">
+				and cust_phone1 like #{custPhone1}
+			</if>
+			<if test="custPhone2!=null">
+				and cust_phone2 like #{custPhone2}
+			</if>
+			<if test="custFax!=null">
+				and cust_fax like #{custFax}
+			</if>
+			<if test="custEmailCompany!=null">
+				and cust_email_company like #{custEmailCompany}
+			</if>
+			<if test="custWebsite!=null">
+				and cust_website like #{custWebsite}
+			</if>
+			<if test="custCurrency!=null">
+				and cust_currency like #{custCurrency}
+			</if>
+			<if test="custAddress1!=null">
+				and cust_address1 like #{custAddress1}
+			</if>
+			<if test="custAddress2!=null">
+				and cust_address2 like #{custAddress2}
+			</if>
+			<if test="custPostalCode!=null">
+				and cust_postal_code like #{custPostalCode}
+			</if>
+			<if test="cityId!=null">
+				and city_id like #{cityId}
+			</if>
+			<if test="provinceId!=null">
+				and province_id like #{provinceId}
+			</if>
+			<if test="countryId!=null">
+				and country_id like #{countryId}
+			</if>
+			<if test="deliveryAddress1!=null">
+				and delivery_address1 like #{deliveryAddress1}
+			</if>
+			<if test="deliveryAddress2!=null">
+				and delivery_address2 like #{deliveryAddress2}
+			</if>
+			<if test="deliveryAddressPostalCode!=null">
+				and delivery_address_postal_code like #{deliveryAddressPostalCode}
+			</if>
+			<if test="deliveryAddressCity!=null">
+				and delivery_address_city like #{deliveryAddressCity}
+			</if>
+			<if test="deliveryAddressProvince!=null">
+				and delivery_address_province like #{deliveryAddressProvince}
+			</if>
+			<if test="deliveryAddressCountry!=null">
+				and delivery_address_country like #{deliveryAddressCountry}
+			</if>
+			<if test="contactPerson2nd!=null">
+				and contact_person_2nd like #{contactPerson2nd}
+			</if>
+			<if test="contactPosition2nd!=null">
+				and contact_position_2nd like #{contactPosition2nd}
+			</if>
+			<if test="contactPersonMobilePhone2nd!=null">
+				and contact_person_mobile_phone_2nd like #{contactPersonMobilePhone2nd}
+			</if>
+			<if test="contactPersonEmail2nd!=null">
+				and contact_person_email_2nd like #{contactPersonEmail2nd}
+			</if>
+			<if test="contactPerson3rd!=null">
+				and contact_person_3rd like #{contactPerson3rd}
+			</if>
+			<if test="contactPosition3rd!=null">
+				and contact_position_3rd like #{contactPosition3rd}
+			</if>
+			<if test="contactPersonMobilePhone3rd!=null">
+				and contact_person_mobile_phone_3rd like #{contactPersonMobilePhone3rd}
+			</if>
+			<if test="contactPersonEmail3rd!=null">
+				and contact_person_email_3rd like #{contactPersonEmail3rd}
+			</if>
+			<if test="image!=null">
+				and image like #{image}
+			</if>
+			<if test="notesDetails!=null">
+				and notes_details like #{notesDetails}
+			</if>
+			<if test="status!=null">
+				and status like #{status}
+			</if>
+			<if test="firstContactDate!=null">
+				and first_contact_date like #{firstContactDate}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppCustomer">
+		select * from app_customer  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="customerId!=null">
+				customer_id like #{customerId}
+			</if>
+			<if test="custNo!=null">
+				cust_no like #{custNo}
+			</if>
+			<if test="custName!=null">
+				cust_name like #{custName}
+			</if>
+			<if test="custType!=null">
+				cust_type like #{custType}
+			</if>
+			<if test="custClassification!=null">
+				cust_classification like #{custClassification}
+			</if>
+			<if test="custCategory!=null">
+				cust_category like #{custCategory}
+			</if>
+			<if test="contactPerson!=null">
+				contact_person like #{contactPerson}
+			</if>
+			<if test="contactPosition!=null">
+				contact_position like #{contactPosition}
+			</if>
+			<if test="contactPersonMobilePhone!=null">
+				contact_person_mobile_phone like #{contactPersonMobilePhone}
+			</if>
+			<if test="contactPersonEmail!=null">
+				contact_person_email like #{contactPersonEmail}
+			</if>
+			<if test="custTaxId!=null">
+				cust_tax_id like #{custTaxId}
+			</if>
+			<if test="custCreditLimit!=null">
+				cust_credit_limit like #{custCreditLimit}
+			</if>
+			<if test="custPhone1!=null">
+				cust_phone1 like #{custPhone1}
+			</if>
+			<if test="custPhone2!=null">
+				cust_phone2 like #{custPhone2}
+			</if>
+			<if test="custFax!=null">
+				cust_fax like #{custFax}
+			</if>
+			<if test="custEmailCompany!=null">
+				cust_email_company like #{custEmailCompany}
+			</if>
+			<if test="custWebsite!=null">
+				cust_website like #{custWebsite}
+			</if>
+			<if test="custCurrency!=null">
+				cust_currency like #{custCurrency}
+			</if>
+			<if test="custAddress1!=null">
+				cust_address1 like #{custAddress1}
+			</if>
+			<if test="custAddress2!=null">
+				cust_address2 like #{custAddress2}
+			</if>
+			<if test="custPostalCode!=null">
+				cust_postal_code like #{custPostalCode}
+			</if>
+			<if test="cityId!=null">
+				city_id like #{cityId}
+			</if>
+			<if test="provinceId!=null">
+				province_id like #{provinceId}
+			</if>
+			<if test="countryId!=null">
+				country_id like #{countryId}
+			</if>
+			<if test="deliveryAddress1!=null">
+				delivery_address1 like #{deliveryAddress1}
+			</if>
+			<if test="deliveryAddress2!=null">
+				delivery_address2 like #{deliveryAddress2}
+			</if>
+			<if test="deliveryAddressPostalCode!=null">
+				delivery_address_postal_code like #{deliveryAddressPostalCode}
+			</if>
+			<if test="deliveryAddressCity!=null">
+				delivery_address_city like #{deliveryAddressCity}
+			</if>
+			<if test="deliveryAddressProvince!=null">
+				delivery_address_province like #{deliveryAddressProvince}
+			</if>
+			<if test="deliveryAddressCountry!=null">
+				delivery_address_country like #{deliveryAddressCountry}
+			</if>
+			<if test="contactPerson2nd!=null">
+				contact_person_2nd like #{contactPerson2nd}
+			</if>
+			<if test="contactPosition2nd!=null">
+				contact_position_2nd like #{contactPosition2nd}
+			</if>
+			<if test="contactPersonMobilePhone2nd!=null">
+				contact_person_mobile_phone_2nd like #{contactPersonMobilePhone2nd}
+			</if>
+			<if test="contactPersonEmail2nd!=null">
+				contact_person_email_2nd like #{contactPersonEmail2nd}
+			</if>
+			<if test="contactPerson3rd!=null">
+				contact_person_3rd like #{contactPerson3rd}
+			</if>
+			<if test="contactPosition3rd!=null">
+				contact_position_3rd like #{contactPosition3rd}
+			</if>
+			<if test="contactPersonMobilePhone3rd!=null">
+				contact_person_mobile_phone_3rd like #{contactPersonMobilePhone3rd}
+			</if>
+			<if test="contactPersonEmail3rd!=null">
+				contact_person_email_3rd like #{contactPersonEmail3rd}
+			</if>
+			<if test="image!=null">
+				image like #{image}
+			</if>
+			<if test="notesDetails!=null">
+				notes_details like #{notesDetails}
+			</if>
+			<if test="status!=null">
+				status like #{status}
+			</if>
+			<if test="firstContactDate!=null">
+				first_contact_date like #{firstContactDate}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

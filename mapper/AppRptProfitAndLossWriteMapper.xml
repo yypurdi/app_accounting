@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppRptProfitAndLossMapper">			
+	
+	<update id="writeAppRptProfitAndLoss">
+		update app_rpt_profit_and_loss set rpt_profit_and_loss_id = #{rptProfitAndLossId},
+		rpt_profit_and_loss_name = #{rptProfitAndLossName},
+		department_from = #{departmentFrom},
+		department_to = #{departmentTo},
+		currency_id = #{currencyId},
+		revenue = #{revenue},
+		revenue_expenditure = #{revenueExpenditure},
+		gross_margin = #{grossMargin},
+		operational_expenditure = #{operationalExpenditure},
+		operating_profit = #{operatingProfit},
+		other_revenue = #{otherRevenue},
+		other_expenditure = #{otherExpenditure},
+		net_profit = #{netProfit},
+		comparative_revenue = #{comparativeRevenue},
+		comparative_revenue_expenditure = #{comparativeRevenueExpenditure},
+		comparative_gross_margin = #{comparativeGrossMargin},
+		comparative_operational_expenditure = #{comparativeOperationalExpenditure},
+		comparative_operating_profit = #{comparativeOperatingProfit},
+		comparative_other_revenue = #{comparativeOtherRevenue},
+		comparative_other_expenditure = #{comparativeOtherExpenditure},
+		comparative_net_profit = #{comparativeNetProfit},
+		date_created = #{dateCreated},
+		created_by = #{createdBy} where rpt_profit_and_loss_id = #{rptProfitAndLossId};
+	</update>
+
+</mapper>

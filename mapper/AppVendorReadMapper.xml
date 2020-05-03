@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppVendorMapper">			
+	
+	<select id="readAppVendor">
+		select * from app_vendor where vendor_id = #{vendorId};
+	</select>
+
+	<select id="appApAging_KI8QB">         
+		select * from app_ap_aging where vendor_id = #{vendorId};
+	</select>
+  
+	<select id="appApOpeningBalance_Q97ON">         
+		select * from app_ap_opening_balance where vendor_id = #{vendorId};
+	</select>
+  
+	<select id="appApVendorDetail_P8P2H">         
+		select * from app_ap_vendor_detail where vendor_id = #{vendorId};
+	</select>
+  
+	<select id="appProductStockInfo_JA2OB">         
+		select * from app_product_stock_info where vendor_id = #{vendorId};
+	</select>
+  
+	<select id="appSummaryApAging_IPPNF">         
+		select * from app_summary_ap_aging where vendor_id = #{vendorId};
+	</select>
+  
+	<select id="appSummaryApVendor_OACB5">         
+		select * from app_summary_ap_vendor where vendor_id = #{vendorId};
+	</select>
+  
+</mapper>

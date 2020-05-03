@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppBankFundTransferMapper">			
+	
+	<insert id="newAppBankFundTransfer">
+		insert into app_bank_fund_transfer(bank_fund_transfer_id,from_account_no,to_account_no,date,reference_no,amount) 
+		values (#{bankFundTransferId},#{fromAccountNo},#{toAccountNo},#{date},#{referenceNo},#{amount});
+	</insert>
+
+</mapper>

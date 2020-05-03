@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppRptTrialBalance" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.RptTrialBalanceId.label%></td>
+                <td><input type="text" class="form-control" name="rptTrialBalanceId" value="<%=record.rptTrialBalanceId%>"/></td>
+            </tr><tr>
+                <td><%=resource.RptTrialBalanceName.label%></td>
+                <td><input type="text" class="form-control" name="rptTrialBalanceName" value="<%=record.rptTrialBalanceName%>"/></td>
+            </tr><tr>
+                <td><%=resource.DepartmentFrom.label%></td>
+                <td><input type="text" class="form-control" name="departmentFrom" value="<%=record.departmentFrom%>"/></td>
+            </tr><tr>
+                <td><%=resource.DepartmentTo.label%></td>
+                <td><input type="text" class="form-control" name="departmentTo" value="<%=record.departmentTo%>"/></td>
+            </tr><tr>
+                <td><%=resource.CurrencyId.label%></td>
+                <td><input type="text" class="form-control" name="currencyId" value="<%=record.currencyId%>"/></td>
+            </tr><tr>
+                <td><%=resource.AccountNo.label%></td>
+                <td><input type="text" class="form-control" name="accountNo" value="<%=record.accountNo%>"/></td>
+            </tr><tr>
+                <td><%=resource.EndingBalanceDebit.label%></td>
+                <td><input type="text" class="form-control" name="endingBalanceDebit" value="<%=record.endingBalanceDebit%>"/></td>
+            </tr><tr>
+                <td><%=resource.EndingBalanceCredit.label%></td>
+                <td><input type="text" class="form-control" name="endingBalanceCredit" value="<%=record.endingBalanceCredit%>"/></td>
+            </tr><tr>
+                <td><%=resource.DateCreated.label%></td>
+                <td><input type="text" class="form-control" name="dateCreated" value="<%=record.dateCreated%>"/></td>
+            </tr><tr>
+                <td><%=resource.CreatedBy.label%></td>
+                <td><input type="text" class="form-control" name="createdBy" value="<%=record.createdBy%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

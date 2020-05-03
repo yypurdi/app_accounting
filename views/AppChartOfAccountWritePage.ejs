@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppChartOfAccount" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.ChartOfAccountId.label%></td>
+                <td><input type="text" class="form-control" name="chartOfAccountId" value="<%=record.chart_of_account_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.AccountSubClassId.label%></td>
+                <td><input type="text" class="form-control" name="accountSubClassId" value="<%=record.account_sub_class_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.AccountNo.label%></td>
+                <td><input type="text" class="form-control" name="accountNo" value="<%=record.account_no%>"/></td>
+            </tr><tr>
+                <td><%=resource.AccountName.label%></td>
+                <td><input type="text" class="form-control" name="accountName" value="<%=record.account_name%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsCashOrBank.label%></td>
+                <td><input type="text" class="form-control" name="isCashOrBank" value="<%=record.is_cash_or_bank%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsNotActive.label%></td>
+                <td><input type="text" class="form-control" name="isNotActive" value="<%=record.is_not_active%>"/></td>
+            </tr><tr>
+                <td><%=resource.CurrencyId.label%></td>
+                <td><input type="text" class="form-control" name="currencyId" value="<%=record.currency_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.DepartmentId.label%></td>
+                <td><input type="text" class="form-control" name="departmentId" value="<%=record.department_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.NormalBalance.label%></td>
+                <td><input type="text" class="form-control" name="normalBalance" value="<%=record.normal_balance%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

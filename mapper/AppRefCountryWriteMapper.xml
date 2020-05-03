@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppRefCountryMapper">			
+	
+	<update id="writeAppRefCountry">
+		update app_ref_country set country_id = #{countryId},
+		name = #{name},
+		details = #{details} where country_id = #{countryId};
+	</update>
+
+</mapper>

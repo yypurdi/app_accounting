@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppTaxMapper">			
+	
+	<insert id="newAppTax">
+		insert into app_tax(tax_id,tax_code,tax,percentage,is_cogs_deductible,acct_code_purchase_tax,acct_code_sales,details) 
+		values (#{taxId},#{taxCode},#{tax},#{percentage},#{isCogsDeductible},#{acctCodePurchaseTax},#{acctCodeSales},#{details});
+	</insert>
+
+</mapper>

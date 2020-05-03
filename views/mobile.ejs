@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Micro Application</title>
+    <link rel="icon" type="image/png" href="images/logo.jpg" />    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link href="stylesheets/style-mobile.css" rel="stylesheet">
+</head>
+
+<body class="body-bg">
+  <div id="menu_sidenav" class="sidenav">
+      <!-- Sidebar Holder -->
+      <nav id="sidebar">
+          <div class="sidebar-header">
+              <table>
+                  <tr>
+                      <td><img src="images/logo.jpg" alt="" class="logo"></td>
+                      <td>
+                          <p style="font-weight: bold">KOMA Admin</p>
+                          <p style="font-size: 11px">Administrator</p>
+                          <p style="font-size: 11px">Online</p>
+                      </td>
+                  </tr>
+              </table>              
+          </div>
+          <ul class="list-unstyled components">
+			<li>
+			  <a href="/"><span class="glyphicon glyphicon-dashboard" style="font-size: 18px;top:5px"></span>Dashboard</a>
+			</li>
+            <li>
+                <a href="/searchAppCustomer"><span class="glyphicon glyphicon-user" style="font-size: 18px;top:5px"></span>Customer</a>
+            </li>
+            <li>
+                <a href="/searchAppVendor"><span class="glyphicon glyphicon-globe" style="font-size: 18px;top:5px"></span>Supplier</a>
+            </li>
+            <li>
+                <a href="/searchAppProduct"><span class="glyphicon glyphicon-tags" style="font-size: 18px;top:5px"></span>Product</a>
+            </li>
+            <li>
+                <a href="#repSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <span class="glyphicon glyphicon-stats" style="font-size: 18px;top:5px"></span>Reports
+                </a>
+                <ul class="collapse list-unstyled" id="repSubmenu">
+					<li><a href="/searchAppRptBalanceSheet"><span class="glyphicon glyphicon-stats"></span>Balance Sheet</a></li>
+					<li><a href="/searchAppRptCashFlow"><span class="glyphicon glyphicon-stats"></span>Cash Flow</a></li>
+					<li><a href="/searchAppRptProfitAndLoss"><span class="glyphicon glyphicon-stats"></span>Profit and Loss</a></li>
+					<li><a href="/searchAppRptTrialBalance"><span class="glyphicon glyphicon-stats"></span>Trial Balance</a></li>                    
+                </ul>
+            </li>			
+          </ul>
+  
+          <ul class="list-unstyled CTAs">
+              <li>
+                  <a id="chatPanel" class="button_custom"><span class="glyphicon glyphicon-comment"></span>Chat</a>
+              </li>
+              <li>
+                  <a href="javascript:void(0)" class="button_custom"><span class="glyphicon glyphicon-facetime-video"></span>Video Conference</a>
+              </li>
+              <li>
+                  <a href="javascript:void(0)" class="button_custom"><span class="glyphicon glyphicon-copy"></span>Screen Capture</a>
+              </li>    
+          </ul>
+      </nav>    
+  </div>    
+
+  <input type='hidden' id='username' value='<%=session.username%>'>
+  <input type='hidden' id='domain' value='<%=session.domain%>'>
+  <input type='hidden' id='sessionid' value='<%=session.sessionid%>'>
+  <div class="popup-box chat-popup" id="signinForm">
+    <div class="popup-head">
+    </div>
+    <div class="popup-content">
+      <div class="login-form">
+        <h1>SignIn</h1>
+        <form action="#" method="POST">
+          <input class="form-control" type="text" name="username" placeholder="Username" required />
+          <input class="form-control" type="password" name="password" placeholder="Password" required />
+          <button id="signin" class="form-control" type="button">
+            <i class="glyphicon glyphicon-log-in"></i>SignIn
+          </button>
+          <button id="signup" class="form-control" type="button">
+            <i class="glyphicon glyphicon-copy"></i>SignUp
+          </button>
+        </form>
+      </div>
+    </div>
+  
+    <div class="popup-footer">
+      <div class="btn-footer">
+        <button class="bg_none" data-widget="remove" id="signinClose" type="button">
+          <i class="glyphicon glyphicon-off"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popup-box chat-popup" id="signupForm">
+  
+    <div class="popup-head">
+    </div>
+  
+    <div class="popup-content">
+      <div class="login-form">
+        <h1>Sign Up</h1>
+        <form action="#" method="POST">
+          <input class="form-control" type="text" name="username" placeholder="Username" required />
+          <input class="form-control" type="text" name="password" placeholder="Password" required />
+          <input class="form-control" type="text" name="mobile" placeholder="Mobile Number" required />
+          <input class="form-control" type="text" name="email" placeholder="Email" required />
+          <input class="form-control" type="text" name="nickname" placeholder="Nickname" required />
+          <button id="signupBack" class="form-control" type="button">
+            <i class="glyphicon glyphicon-chevron-left"></i>Back
+          </button>
+          <button id="register" class="form-control" type="button">
+            <i class="glyphicon glyphicon-copy"></i>Ok
+          </button>
+        </form>
+      </div>
+    </div>
+  
+    <div class="popup-footer">
+      <div class="btn-footer">
+        <button class="bg_none" data-widget="remove" id="signupClose" type="button">
+          <i class="glyphicon glyphicon-off"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popup-box chat-popup" id="inbox">
+    <div class="popup-head">
+      <table>
+        <tr>
+          <td><img src="images/avatar1.png" alt="" class="avatar"></td>
+          <td class="card">
+            <p class="name">Administrator</p>
+            <p class="status">Online</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  
+    <div id="inbox_chat" class="popup-content">
+      <table id="inbox_chat_list">
+      </table>
+    </div>
+  
+    <div class="popup-footer">
+      <div class="btn-footer">
+        <button class="bg_none" data-widget="remove" id="closeInbox" type="button">
+          <i class="glyphicon glyphicon-off"></i>
+        </button>
+        <button class="bg_none pull-right" type="button" id="openContact">
+          <i class="glyphicon glyphicon-comment"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popup-box chat-popup" id="contacts">
+    <div class="popup-head">
+      <table>
+        <tr>
+          <td><img src="images/avatar1.png" alt="" class="avatar"></td>
+          <td class="card">
+            <p class="name">Administrator</p>
+            <p class="status">Contacts</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  
+    <div id="contact_chat" class="popup-content-contacts">
+      <input class="form-control" placeholder="Search" type="text" id="searchContact" onkeyup="myFunction()">
+      <table id="contactTable">
+      </table>
+    </div>
+  
+    <div class="popup-footer">
+      <div class="btn-footer">
+        <button class="bg_none" data-widget="remove" id="closeContact" type="button">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popup-box chat-popup" id="messages">
+    <div class="popup-head">
+      <table>
+        <tr id="jid">
+        </tr>
+      </table>
+    </div>
+  
+    <div id="message_text" class="popup-content-messages">
+      <div class="container left">
+        <div class="content">
+          <p>Selamat Datang di KOMA - Kawasan Online Mandiri</p>
+          <p class="dt"><%=new Date().toUTCString()%></p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="popup-footer">
+      <textarea id="message_chat" placeholder="Type a message..." rows="10" cols="40" name="message"></textarea>
+      <div class="btn-footer">
+        <button class="bg_none" data-widget="remove" id="closeChat" type="button">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+        </button>
+        <button class="bg_none pull-right" type="button" id="startSendIcon"><i class="glyphicon glyphicon-thumbs-up"></i> </button>
+        <button class="bg_none pull-right" type="button" id="startAttachment"><i class="glyphicon glyphicon-paperclip"></i> </button>
+        <button class="bg_none pull-right" type="button" id="startVoiceCall"><i class="glyphicon glyphicon-earphone"></i> </button>
+        <button class="bg_none pull-right" type="button" id="inviteVideoCall"><i class="glyphicon glyphicon-facetime-video"></i> </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popup-box chat-popup" id="outgoingCallBox">
+    <div class="popup-head">
+        <table>
+          <tr id="jid-outgoing">
+          </tr>
+        </table>
+    </div>
+  
+    <div id="outgoingcall" class="popup-content">
+      <audio id="outgoingtone">
+        <source src="sound/outgoing.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="ringing">
+        <p>Outgoing Call</p>
+        <img src="images/0005.gif" alt="">
+      </div>
+    </div>
+  
+    <div class="popup-footer">
+      <div class="btn-footer">
+        <button class="bg_none" data-widget="remove" id="cancelCall" type="button"><i class="glyphicon glyphicon-off"></i></button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popup-box chat-popup" id="incomingCallBox">
+    <div class="popup-head">
+      <table>
+        <tr id="jid-incoming">
+        </tr>
+      </table>
+    </div>
+  
+    <div id="incomingcall" class="popup-content">
+      <audio id="incomingtone">
+        <source src="sound/ringing.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="ringing">
+        <p>Incomming Call</p>        
+        <img src="images/0005.gif" alt="">
+    </div>
+    </div>
+  
+    <div class="popup-footer">
+      <div class="btn-footer">
+        <button class="bg_none" data-widget="remove" id="rejectCall" type="button"><i class="glyphicon glyphicon-off"></i></button>
+        <button class="bg_none pull-right" id="acceptCall" type="button"><i class="glyphicon glyphicon-earphone"></i></button>
+      </div>
+    </div>
+  </div>
+    
+  <div class="popup-box chat-popup" id="localVideoBox">
+    <div class="popup-head">
+        <table>
+          <tr id="jid-vc">
+          </tr>
+        </table>
+    </div>
+  
+    <div id="message_chat" class="popup-content">
+      <video id="remoteVideo1" autoplay controls class="remotevideo"></video>
+      <video id="localVideo1" autoplay controls muted class="localvideo"></video>
+    </div>
+  
+    <div class="popup-footer">
+      <div class="btn-footer">
+        <button class="bg_none" data-widget="remove" id="stopVideoCall" type="button">
+          <i class="glyphicon glyphicon-off"></i>
+        </button>
+        <button class="bg_none pull-right" id="videoCall" type="button">
+          <i class="glyphicon glyphicon-earphone"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <script src="javascripts/chat.js"></script>
+  <link href="stylesheets/chat-mobile.css" rel="stylesheet" />
+  
+  <script>
+      function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchContact");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("contactTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+  </script>
+
+</body>
+</html>

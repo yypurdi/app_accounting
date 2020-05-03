@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppCurrencyFluctuationMapper">			
+	
+	<select id="countAppCurrencyFluctuationSearch">
+		select count(*) from app_currency_fluctuation
+		<trim prefix="where" prefixOverrides="and">
+			<if test="currencyFluctuationId!=null">
+				and currency_fluctuation_id like #{currencyFluctuationId}
+			</if>
+			<if test="currencyId!=null">
+				and currency_id like #{currencyId}
+			</if>
+			<if test="byDate!=null">
+				and by_date like #{byDate}
+			</if>
+			<if test="exchangeRate!=null">
+				and exchange_rate like #{exchangeRate}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppCurrencyFluctuation">
+		select * from app_currency_fluctuation  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="currencyFluctuationId!=null">
+				currency_fluctuation_id like #{currencyFluctuationId}
+			</if>
+			<if test="currencyId!=null">
+				currency_id like #{currencyId}
+			</if>
+			<if test="byDate!=null">
+				by_date like #{byDate}
+			</if>
+			<if test="exchangeRate!=null">
+				exchange_rate like #{exchangeRate}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppCompanyInfoAccPeriodMapper">			
+	
+	<select id="countAppCompanyInfoAccPeriodSearch">
+		select count(*) from app_company_info_acc_period
+		<trim prefix="where" prefixOverrides="and">
+			<if test="accountingPeriodId!=null">
+				and accounting_period_id like #{accountingPeriodId}
+			</if>
+			<if test="month!=null">
+				and month like #{month}
+			</if>
+			<if test="year!=null">
+				and year like #{year}
+			</if>
+			<if test="yearEnd!=null">
+				and year_end like #{yearEnd}
+			</if>
+			<if test="isCreateChartOfAccount!=null">
+				and is_create_chart_of_account like #{isCreateChartOfAccount}
+			</if>
+			<if test="fileName!=null">
+				and file_name like #{fileName}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppCompanyInfoAccPeriod">
+		select * from app_company_info_acc_period  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="accountingPeriodId!=null">
+				accounting_period_id like #{accountingPeriodId}
+			</if>
+			<if test="month!=null">
+				month like #{month}
+			</if>
+			<if test="year!=null">
+				year like #{year}
+			</if>
+			<if test="yearEnd!=null">
+				year_end like #{yearEnd}
+			</if>
+			<if test="isCreateChartOfAccount!=null">
+				is_create_chart_of_account like #{isCreateChartOfAccount}
+			</if>
+			<if test="fileName!=null">
+				file_name like #{fileName}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

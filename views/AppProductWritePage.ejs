@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppProduct" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.ProductId.label%></td>
+                <td><input type="text" class="form-control" name="productId" value="<%=record.product_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductCode.label%></td>
+                <td><input type="text" class="form-control" name="productCode" value="<%=record.product_code%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductDesc.label%></td>
+                <td><input type="text" class="form-control" name="productDesc" value="<%=record.product_desc%>"/></td>
+            </tr><tr>
+                <td><%=resource.BaseUnit.label%></td>
+                <td><input type="text" class="form-control" name="baseUnit" value="<%=record.base_unit%>"/></td>
+            </tr><tr>
+                <td><%=resource.ReportUnit.label%></td>
+                <td><input type="text" class="form-control" name="reportUnit" value="<%=record.report_unit%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductGroup1st.label%></td>
+                <td><input type="text" class="form-control" name="productGroup1st" value="<%=record.product_group_1st%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductGroup2nd.label%></td>
+                <td><input type="text" class="form-control" name="productGroup2nd" value="<%=record.product_group_2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductGroup3rd.label%></td>
+                <td><input type="text" class="form-control" name="productGroup3rd" value="<%=record.product_group_3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductGroup4th.label%></td>
+                <td><input type="text" class="form-control" name="productGroup4th" value="<%=record.product_group_4th%>"/></td>
+            </tr><tr>
+                <td><%=resource.AliasCode.label%></td>
+                <td><input type="text" class="form-control" name="aliasCode" value="<%=record.alias_code%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsUseSerialNumber.label%></td>
+                <td><input type="text" class="form-control" name="isUseSerialNumber" value="<%=record.is_use_serial_number%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsUseLot.label%></td>
+                <td><input type="text" class="form-control" name="isUseLot" value="<%=record.is_use_lot%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsConsignment.label%></td>
+                <td><input type="text" class="form-control" name="isConsignment" value="<%=record.is_consignment%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsNotActive.label%></td>
+                <td><input type="text" class="form-control" name="isNotActive" value="<%=record.is_not_active%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsSeasonalProduct.label%></td>
+                <td><input type="text" class="form-control" name="isSeasonalProduct" value="<%=record.is_seasonal_product%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductCategoryId.label%></td>
+                <td><input type="text" class="form-control" name="productCategoryId" value="<%=record.product_category_id%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

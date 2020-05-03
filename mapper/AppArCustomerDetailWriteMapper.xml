@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppArCustomerDetailMapper">			
+	
+	<update id="writeAppArCustomerDetail">
+		update app_ar_customer_detail set ar_customer_detail_id = #{arCustomerDetailId},
+		customer_id = #{customerId},
+		date = #{date},
+		note = #{note},
+		debit = #{debit},
+		credit = #{credit},
+		debit_balance = #{debitBalance},
+		credit_balance = #{creditBalance},
+		balance = #{balance},
+		reference_no = #{referenceNo},
+		ar_due_date = #{arDueDate},
+		status = #{status} where ar_customer_detail_id = #{arCustomerDetailId};
+	</update>
+
+</mapper>

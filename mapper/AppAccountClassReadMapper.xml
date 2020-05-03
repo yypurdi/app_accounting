@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppAccountClassMapper">			
+	
+	<select id="readAppAccountClass">
+		select * from app_account_class where account_class_id = #{accountClassId};
+	</select>
+
+	<select id="appAccountSubClass_D7FIR">         
+		select * from app_account_sub_class where account_class_id = #{accountClassId};
+	</select>
+  
+	<select id="appRptBalanceSheet_N29RF">         
+		select * from app_rpt_balance_sheet where account_class_id = #{accountClassId};
+	</select>
+  
+</mapper>

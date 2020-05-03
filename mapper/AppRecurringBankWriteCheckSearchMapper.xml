@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppRecurringBankWriteCheckMapper">			
+	
+	<select id="countAppRecurringBankWriteCheckSearch">
+		select count(*) from app_recurring_bank_write_check
+		<trim prefix="where" prefixOverrides="and">
+			<if test="recurringBankWriteCheckId!=null">
+				and recurring_bank_write_check_id like #{recurringBankWriteCheckId}
+			</if>
+			<if test="transactionName!=null">
+				and transaction_name like #{transactionName}
+			</if>
+			<if test="frequency!=null">
+				and frequency like #{frequency}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+			<if test="isPostDatedCheck!=null">
+				and is_post_dated_check like #{isPostDatedCheck}
+			</if>
+			<if test="receivedBy!=null">
+				and received_by like #{receivedBy}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="checkNo!=null">
+				and check_no like #{checkNo}
+			</if>
+			<if test="amount!=null">
+				and amount like #{amount}
+			</if>
+			<if test="memo!=null">
+				and memo like #{memo}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppRecurringBankWriteCheck">
+		select * from app_recurring_bank_write_check  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="recurringBankWriteCheckId!=null">
+				recurring_bank_write_check_id like #{recurringBankWriteCheckId}
+			</if>
+			<if test="transactionName!=null">
+				transaction_name like #{transactionName}
+			</if>
+			<if test="frequency!=null">
+				frequency like #{frequency}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+			<if test="isPostDatedCheck!=null">
+				is_post_dated_check like #{isPostDatedCheck}
+			</if>
+			<if test="receivedBy!=null">
+				received_by like #{receivedBy}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="checkNo!=null">
+				check_no like #{checkNo}
+			</if>
+			<if test="amount!=null">
+				amount like #{amount}
+			</if>
+			<if test="memo!=null">
+				memo like #{memo}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

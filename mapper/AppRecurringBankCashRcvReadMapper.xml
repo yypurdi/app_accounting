@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppRecurringBankCashRcvMapper">			
+	
+	<select id="readAppRecurringBankCashRcv">
+		select * from app_recurring_bank_cash_rcv where recurring_bank_cash_receive_id = #{recurringBankCashReceiveId};
+	</select>
+
+	<select id="appRecurringBankCrFa_Z8RGZ">         
+		select * from app_recurring_bank_cr_fa where recurring_bank_cash_receive_id = #{recurringBankCashReceiveId};
+	</select>
+  
+</mapper>

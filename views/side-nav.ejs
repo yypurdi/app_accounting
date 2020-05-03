@@ -1,0 +1,81 @@
+<div id="menu_sidenav" class="sidenav">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <table>
+                <tr>
+                    <td><img src="images/logo.jpg" alt="" class="logo"></td>
+                    <td>
+						<% if(session.user_acl=='ROLE_ADMIN') { %>
+                        <p style="font-weight: bold">Accounting</p>
+						<% } else { %>
+						<p style="font-weight: bold">Accounting</p>
+						<% } %>
+                        <p style="font-size: 11px"><%=session.name%></p>
+                        <p style="font-size: 11px">Online</p>
+                    </td>
+                </tr>
+            </table>              
+        </div>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/"><span class="glyphicon glyphicon-dashboard" style="font-size: 18px;top:5px"></span>Dashboard</a>
+            </li>
+            <li>
+                <a href="/searchAppChartOfAccount"><span class="glyphicon glyphicon-flag" style="font-size: 18px;top:5px"></span>Chart of Account</a>
+            </li>
+            <li>
+                <a href="/searchAppCustomer"><span class="glyphicon glyphicon-user" style="font-size: 18px;top:5px"></span>Customer</a>
+            </li>
+            <li>
+                <a href="/searchAppVendor"><span class="glyphicon glyphicon-globe" style="font-size: 18px;top:5px"></span>Supplier</a>
+            </li>
+            <li>
+                <a href="/searchAppProduct"><span class="glyphicon glyphicon-tags" style="font-size: 18px;top:5px"></span>Product</a>
+            </li>			
+            <li>
+                <a href="#bankSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <span class="glyphicon glyphicon-credit-card" style="font-size: 18px;top:5px"></span>Bank
+                </a>
+                <ul class="collapse list-unstyled" id="bankSubmenu">                    
+                    <li><a href="/searchAppBankReconciliation"><span class="glyphicon glyphicon-credit-card"></span>Reconciliation</a></li>
+					<li><a href="/searchAppBankCashReceive"><span class="glyphicon glyphicon-credit-card"></span>Cash Receive</a></li>
+					<li><a href="/searchAppBankWriteCheck"><span class="glyphicon glyphicon-credit-card"></span>Write Check</a></li>
+					<li><a href="/searchAppRecurringBankCashRcv"><span class="glyphicon glyphicon-credit-card"></span>Recurring Cash Receive</a></li>
+					<li><a href="/searchAppRecurringBankWriteCheck"><span class="glyphicon glyphicon-credit-card"></span>Recurring Write Check</a></li>					
+                </ul>
+            </li>			
+            <li>
+                <a href="#refSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <span class="glyphicon glyphicon-tasks" style="font-size: 18px;top:5px"></span>References
+                </a>
+                <ul class="collapse list-unstyled" id="refSubmenu">
+                    <li><a href="/searchAppAccountClass"><span class="glyphicon glyphicon-tasks"></span>Account Class</a></li>
+                    <li><a href="/searchAppAccountSubClass"><span class="glyphicon glyphicon-tasks"></span>Account Sub Class</a></li>
+					<li><a href="/searchAppCurrency"><span class="glyphicon glyphicon-tasks"></span>Currency</a></li>
+					<li><a href="/searchAppTermOfSales"><span class="glyphicon glyphicon-tasks"></span>Term of Sales</a></li>
+					<li><a href="/searchAppTermOfPayment"><span class="glyphicon glyphicon-tasks"></span>Term of Payment</a></li>
+					<li><a href="/searchAppTax"><span class="glyphicon glyphicon-tasks"></span>Tax</a></li>
+					<li><a href="/searchAppDepartment"><span class="glyphicon glyphicon-stats"></span>Department</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#repSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <span class="glyphicon glyphicon-stats" style="font-size: 18px;top:5px"></span>Reports
+                </a>
+                <ul class="collapse list-unstyled" id="repSubmenu">
+					<li><a href="/searchAppRptBalanceSheet"><span class="glyphicon glyphicon-stats"></span>Balance Sheet</a></li>
+					<li><a href="/searchAppRptCashFlow"><span class="glyphicon glyphicon-stats"></span>Cash Flow</a></li>
+					<li><a href="/searchAppRptProfitAndLoss"><span class="glyphicon glyphicon-stats"></span>Profit and Loss</a></li>
+					<li><a href="/searchAppRptTrialBalance"><span class="glyphicon glyphicon-stats"></span>Trial Balance</a></li>                    
+					<li><a href="/searchAppRefCity"><span class="glyphicon glyphicon-stats"></span>By City</a></li>
+					<li><a href="/searchAppRefProvince"><span class="glyphicon glyphicon-stats"></span>By Province</a></li>
+					<li><a href="/searchAppRefCountry"><span class="glyphicon glyphicon-stats"></span>By Country</a></li>
+                </ul>
+            </li>			
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+        </ul>
+    </nav>    
+</div>

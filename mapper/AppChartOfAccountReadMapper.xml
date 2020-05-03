@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppChartOfAccountMapper">			
+	
+	<select id="readAppChartOfAccount">
+		select * from app_chart_of_account where chart_of_account_id = #{chartOfAccountId};
+	</select>
+
+	<select id="appControlAccount_VVRXR">         
+		select * from app_control_account where chart_of_account_id = #{chartOfAccountId};
+	</select>
+  
+	<select id="appGeneralJournalItems_BOEAO">         
+		select * from app_general_journal_items where chart_of_account_id = #{chartOfAccountId};
+	</select>
+  
+	<select id="appGeneralLedgerDetail_F1K4G">         
+		select * from app_general_ledger_detail where chart_of_account_id = #{chartOfAccountId};
+	</select>
+  
+	<select id="appOpeningBalance_L64QE">         
+		select * from app_opening_balance where chart_of_account_id = #{chartOfAccountId};
+	</select>
+  
+	<select id="appRecurringJournalItems_QGDJ0">         
+		select * from app_recurring_journal_items where chart_of_account_id = #{chartOfAccountId};
+	</select>
+  
+	<select id="appRptBalanceSheet_IC849">         
+		select * from app_rpt_balance_sheet where chart_of_account_id = #{chartOfAccountId};
+	</select>
+  
+	<select id="appRptCashFlow_LL8VL">         
+		select * from app_rpt_cash_flow where chart_of_account_id = #{chartOfAccountId};
+	</select>
+  
+	<select id="appSummaryGl_HVC8G">         
+		select * from app_summary_gl where chart_of_account_id = #{chartOfAccountId};
+	</select>
+  
+</mapper>

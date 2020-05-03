@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppEmploymentStatusMapper">			
+	
+	<update id="writeAppEmploymentStatus">
+		update app_employment_status set employment_status_id = #{employmentStatusId},
+		employment_status = #{employmentStatus},
+		employment_desc = #{employmentDesc} where employment_status_id = #{employmentStatusId};
+	</update>
+
+</mapper>

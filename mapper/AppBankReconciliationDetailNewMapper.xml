@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppBankReconciliationDetailMapper">			
+	
+	<insert id="newAppBankReconciliationDetail">
+		insert into app_bank_reconciliation_detail(bank_reconciliation_detail_id,bank_reconciliation_id,date,reference_no,note,debit_amount,credit_amount,is_selected) 
+		values (#{bankReconciliationDetailId},#{bankReconciliationId},#{date},#{referenceNo},#{note},#{debitAmount},#{creditAmount},#{isSelected});
+	</insert>
+
+</mapper>

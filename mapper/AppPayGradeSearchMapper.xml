@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppPayGradeMapper">			
+	
+	<select id="countAppPayGradeSearch">
+		select count(*) from app_pay_grade
+		<trim prefix="where" prefixOverrides="and">
+			<if test="payGradeId!=null">
+				and pay_grade_id like #{payGradeId}
+			</if>
+			<if test="payGradeName!=null">
+				and pay_grade_name like #{payGradeName}
+			</if>
+			<if test="minSalary!=null">
+				and min_salary like #{minSalary}
+			</if>
+			<if test="maxSalary!=null">
+				and max_salary like #{maxSalary}
+			</if>
+			<if test="currency!=null">
+				and currency like #{currency}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppPayGrade">
+		select * from app_pay_grade  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="payGradeId!=null">
+				pay_grade_id like #{payGradeId}
+			</if>
+			<if test="payGradeName!=null">
+				pay_grade_name like #{payGradeName}
+			</if>
+			<if test="minSalary!=null">
+				min_salary like #{minSalary}
+			</if>
+			<if test="maxSalary!=null">
+				max_salary like #{maxSalary}
+			</if>
+			<if test="currency!=null">
+				currency like #{currency}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

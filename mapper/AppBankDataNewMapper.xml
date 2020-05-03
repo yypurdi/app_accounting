@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppBankDataMapper">			
+	
+	<insert id="newAppBankData">
+		insert into app_bank_data(bank_data_id,bank_account,bank_address1,bank_address2,city_id,zip_code) 
+		values (#{bankDataId},#{bankAccount},#{bankAddress1},#{bankAddress2},#{cityId},#{zipCode});
+	</insert>
+
+</mapper>

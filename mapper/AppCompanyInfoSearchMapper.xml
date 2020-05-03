@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppCompanyInfoMapper">			
+	
+	<select id="countAppCompanyInfoSearch">
+		select count(*) from app_company_info
+		<trim prefix="where" prefixOverrides="and">
+			<if test="companyInfoId!=null">
+				and company_info_id like #{companyInfoId}
+			</if>
+			<if test="companyName!=null">
+				and company_name like #{companyName}
+			</if>
+			<if test="addressLine1!=null">
+				and address_line1 like #{addressLine1}
+			</if>
+			<if test="addressLine2!=null">
+				and address_line2 like #{addressLine2}
+			</if>
+			<if test="cityId!=null">
+				and city_id like #{cityId}
+			</if>
+			<if test="provinceId!=null">
+				and province_id like #{provinceId}
+			</if>
+			<if test="countryId!=null">
+				and country_id like #{countryId}
+			</if>
+			<if test="postalCode!=null">
+				and postal_code like #{postalCode}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppCompanyInfo">
+		select * from app_company_info  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="companyInfoId!=null">
+				company_info_id like #{companyInfoId}
+			</if>
+			<if test="companyName!=null">
+				company_name like #{companyName}
+			</if>
+			<if test="addressLine1!=null">
+				address_line1 like #{addressLine1}
+			</if>
+			<if test="addressLine2!=null">
+				address_line2 like #{addressLine2}
+			</if>
+			<if test="cityId!=null">
+				city_id like #{cityId}
+			</if>
+			<if test="provinceId!=null">
+				province_id like #{provinceId}
+			</if>
+			<if test="countryId!=null">
+				country_id like #{countryId}
+			</if>
+			<if test="postalCode!=null">
+				postal_code like #{postalCode}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

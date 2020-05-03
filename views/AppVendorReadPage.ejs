@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appApAging-tab" data-toggle="tab" href="#appApAging" role="tab" aria-controls="appApAging" aria-selected="true"><h4><%=resource.AppApAging.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appApOpeningBalance-tab" data-toggle="tab" href="#appApOpeningBalance" role="tab" aria-controls="appApOpeningBalance" aria-selected="true"><h4><%=resource.AppApOpeningBalance.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appApVendorDetail-tab" data-toggle="tab" href="#appApVendorDetail" role="tab" aria-controls="appApVendorDetail" aria-selected="true"><h4><%=resource.AppApVendorDetail.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appProductStockInfo-tab" data-toggle="tab" href="#appProductStockInfo" role="tab" aria-controls="appProductStockInfo" aria-selected="true"><h4><%=resource.AppProductStockInfo.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appSummaryApAging-tab" data-toggle="tab" href="#appSummaryApAging" role="tab" aria-controls="appSummaryApAging" aria-selected="true"><h4><%=resource.AppSummaryApAging.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appSummaryApVendor-tab" data-toggle="tab" href="#appSummaryApVendor" role="tab" aria-controls="appSummaryApVendor" aria-selected="true"><h4><%=resource.AppSummaryApVendor.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.VendorId.label%></td>
+                        <td><%=record.vendor_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorNo.label%></td>
+                        <td><%=record.vendor_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorName.label%></td>
+                        <td><%=record.vendor_name%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorType.label%></td>
+                        <td><%=record.vendor_type%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorClassification.label%></td>
+                        <td><%=record.vendor_classification%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorCategory.label%></td>
+                        <td><%=record.vendor_category%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPerson.label%></td>
+                        <td><%=record.contact_person%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPosition.label%></td>
+                        <td><%=record.contact_position%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPersonMobilePhone.label%></td>
+                        <td><%=record.contact_person_mobile_phone%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPersonEmail.label%></td>
+                        <td><%=record.contact_person_email%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorTaxId.label%></td>
+                        <td><%=record.vendor_tax_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorCreditLimit.label%></td>
+                        <td><%=record.vendor_credit_limit%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorPhone1.label%></td>
+                        <td><%=record.vendor_phone1%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorPhone2.label%></td>
+                        <td><%=record.vendor_phone2%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorFax.label%></td>
+                        <td><%=record.vendor_fax%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorEmailCompany.label%></td>
+                        <td><%=record.vendor_email_company%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorWebsite.label%></td>
+                        <td><%=record.vendor_website%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorCurrency.label%></td>
+                        <td><%=record.vendor_currency%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorAddress1.label%></td>
+                        <td><%=record.vendor_address1%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorAddress2.label%></td>
+                        <td><%=record.vendor_address2%></td>						
+                    </tr><tr>
+                        <td><%=resource.VendorPostalCode.label%></td>
+                        <td><%=record.vendor_postal_code%></td>						
+                    </tr><tr>
+                        <td><%=resource.CityId.label%></td>
+                        <td><%=record.city_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProvinceId.label%></td>
+                        <td><%=record.province_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.CountryId.label%></td>
+                        <td><%=record.country_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.DeliveryAddress1.label%></td>
+                        <td><%=record.delivery_address1%></td>						
+                    </tr><tr>
+                        <td><%=resource.DeliveryAddress2.label%></td>
+                        <td><%=record.delivery_address2%></td>						
+                    </tr><tr>
+                        <td><%=resource.DeliveryAddressPostalCode.label%></td>
+                        <td><%=record.delivery_address_postal_code%></td>						
+                    </tr><tr>
+                        <td><%=resource.DeliveryAddressCity.label%></td>
+                        <td><%=record.delivery_address_city%></td>						
+                    </tr><tr>
+                        <td><%=resource.DeliveryAddressProvince.label%></td>
+                        <td><%=record.delivery_address_province%></td>						
+                    </tr><tr>
+                        <td><%=resource.DeliveryAddressCountry.label%></td>
+                        <td><%=record.delivery_address_country%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPerson2nd.label%></td>
+                        <td><%=record.contact_person_2nd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPosition2nd.label%></td>
+                        <td><%=record.contact_position_2nd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPersonMobilePhone2nd.label%></td>
+                        <td><%=record.contact_person_mobile_phone_2nd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPersonEmail2nd.label%></td>
+                        <td><%=record.contact_person_email_2nd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPerson3rd.label%></td>
+                        <td><%=record.contact_person_3rd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPosition3rd.label%></td>
+                        <td><%=record.contact_position_3rd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPersonMobilePhone3rd.label%></td>
+                        <td><%=record.contact_person_mobile_phone_3rd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ContactPersonEmail3rd.label%></td>
+                        <td><%=record.contact_person_email_3rd%></td>						
+                    </tr><tr>
+                        <td><%=resource.Image.label%></td>
+                        <td><%=record.image%></td>						
+                    </tr><tr>
+                        <td><%=resource.NotesDetails.label%></td>
+                        <td><%=record.notes_details%></td>						
+                    </tr><tr>
+                        <td><%=resource.Status.label%></td>
+                        <td><%=record.status%></td>						
+                    </tr><tr>
+                        <td><%=resource.FirstContactDate.label%></td>
+                        <td><%=dateFormat(record.first_contact_date,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppVendor?vendorId=<%=record.vendor_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppVendor?vendorId=<%=record.vendor_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appApAging" role="tabpanel" aria-labelledby="appApAging-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppApAging.ApAgingId.header%></th>
+                    <th><%=resource.AppApAging.VendorId.header%></th>
+                    <th><%=resource.AppApAging.ReferenceNo.header%></th>
+                    <th><%=resource.AppApAging.Debit.header%></th>
+                    <th><%=resource.AppApAging.Credit.header%></th>
+                    <th><%=resource.AppApAging.ApDueDate.header%></th>
+                    <th><%=resource.AppApAging.CurrentDate.header%></th>
+                    <th><%=resource.AppApAging.Age.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appApAging){ let rec = record.appApAging[i] %>
+                <tr>
+                    <td><a><%=rec.ap_aging_id%></a></td>
+                    <td><a><%=rec.vendor_id%></a></td>
+                    <td><a><%=rec.reference_no%></a></td>
+                    <td><a><%=rec.debit%></a></td>
+                    <td><a><%=rec.credit%></a></td>
+                    <td><a><%=dateFormat(rec.ap_due_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=dateFormat(rec.current_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.age%></a></td>
+                    
+                    <td><a href="/readAppApAging?apAgingId=<%=rec.ap_aging_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppApAging?apAgingId=<%=rec.ap_aging_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppApAging?apAgingId=<%=rec.ap_aging_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppApAging">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appApOpeningBalance" role="tabpanel" aria-labelledby="appApOpeningBalance-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppApOpeningBalance.ApOpeningBalanceId.header%></th>
+                    <th><%=resource.AppApOpeningBalance.VendorId.header%></th>
+                    <th><%=resource.AppApOpeningBalance.Date.header%></th>
+                    <th><%=resource.AppApOpeningBalance.InvoiceNo.header%></th>
+                    <th><%=resource.AppApOpeningBalance.PurchaseOrderNo.header%></th>
+                    <th><%=resource.AppApOpeningBalance.CurrencyId.header%></th>
+                    <th><%=resource.AppApOpeningBalance.PayableValue.header%></th>
+                    <th><%=resource.AppApOpeningBalance.TermOfPaymentId.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appApOpeningBalance){ let rec = record.appApOpeningBalance[i] %>
+                <tr>
+                    <td><a><%=rec.ap_opening_balance_id%></a></td>
+                    <td><a><%=rec.vendor_id%></a></td>
+                    <td><a><%=dateFormat(rec.date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.invoice_no%></a></td>
+                    <td><a><%=rec.purchase_order_no%></a></td>
+                    <td><a><%=rec.currency_id%></a></td>
+                    <td><a><%=rec.payable_value%></a></td>
+                    <td><a><%=rec.term_of_payment_id%></a></td>
+                    
+                    <td><a href="/readAppApOpeningBalance?apOpeningBalanceId=<%=rec.ap_opening_balance_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppApOpeningBalance?apOpeningBalanceId=<%=rec.ap_opening_balance_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppApOpeningBalance?apOpeningBalanceId=<%=rec.ap_opening_balance_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppApOpeningBalance">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appApVendorDetail" role="tabpanel" aria-labelledby="appApVendorDetail-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppApVendorDetail.ApVendorDetailId.header%></th>
+                    <th><%=resource.AppApVendorDetail.VendorId.header%></th>
+                    <th><%=resource.AppApVendorDetail.Date.header%></th>
+                    <th><%=resource.AppApVendorDetail.Note.header%></th>
+                    <th><%=resource.AppApVendorDetail.Debit.header%></th>
+                    <th><%=resource.AppApVendorDetail.Credit.header%></th>
+                    <th><%=resource.AppApVendorDetail.DebitBalance.header%></th>
+                    <th><%=resource.AppApVendorDetail.CreditBalance.header%></th>
+                    <th><%=resource.AppApVendorDetail.Balance.header%></th>
+                    <th><%=resource.AppApVendorDetail.ReferenceNo.header%></th>
+                    <th><%=resource.AppApVendorDetail.ArDueDate.header%></th>
+                    <th><%=resource.AppApVendorDetail.Status.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appApVendorDetail){ let rec = record.appApVendorDetail[i] %>
+                <tr>
+                    <td><a><%=rec.ap_vendor_detail_id%></a></td>
+                    <td><a><%=rec.vendor_id%></a></td>
+                    <td><a><%=dateFormat(rec.date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.note%></a></td>
+                    <td><a><%=rec.debit%></a></td>
+                    <td><a><%=rec.credit%></a></td>
+                    <td><a><%=rec.debit_balance%></a></td>
+                    <td><a><%=rec.credit_balance%></a></td>
+                    <td><a><%=rec.balance%></a></td>
+                    <td><a><%=rec.reference_no%></a></td>
+                    <td><a><%=dateFormat(rec.ar_due_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.status%></a></td>
+                    
+                    <td><a href="/readAppApVendorDetail?apVendorDetailId=<%=rec.ap_vendor_detail_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppApVendorDetail?apVendorDetailId=<%=rec.ap_vendor_detail_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppApVendorDetail?apVendorDetailId=<%=rec.ap_vendor_detail_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppApVendorDetail">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appProductStockInfo" role="tabpanel" aria-labelledby="appProductStockInfo-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppProductStockInfo.ProductStockInfoId.header%></th>
+                    <th><%=resource.AppProductStockInfo.QtyInStock.header%></th>
+                    <th><%=resource.AppProductStockInfo.OrderedToVendor.header%></th>
+                    <th><%=resource.AppProductStockInfo.OrderedByCustomer.header%></th>
+                    <th><%=resource.AppProductStockInfo.MinimumInventory.header%></th>
+                    <th><%=resource.AppProductStockInfo.MinimumOrder.header%></th>
+                    <th><%=resource.AppProductStockInfo.SalesForecast.header%></th>
+                    <th><%=resource.AppProductStockInfo.BuyingPrice.header%></th>
+                    <th><%=resource.AppProductStockInfo.ProductId.header%></th>
+                    <th><%=resource.AppProductStockInfo.BuyingPriceTax.header%></th>
+                    <th><%=resource.AppProductStockInfo.SellingUnitPriceTax.header%></th>
+                    <th><%=resource.AppProductStockInfo.UnitCostOrCogs.header%></th>
+                    <th><%=resource.AppProductStockInfo.CogsDepartment.header%></th>
+                    <th><%=resource.AppProductStockInfo.LocationMaster.header%></th>
+                    <th><%=resource.AppProductStockInfo.DeliveryTimeIndays.header%></th>
+                    <th><%=resource.AppProductStockInfo.CurrentSellingPrice.header%></th>
+                    <th><%=resource.AppProductStockInfo.MainVendor.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appProductStockInfo){ let rec = record.appProductStockInfo[i] %>
+                <tr>
+                    <td><a><%=rec.product_stock_info_id%></a></td>
+                    <td><a><%=rec.qty_in_stock%></a></td>
+                    <td><a><%=rec.ordered_to_vendor%></a></td>
+                    <td><a><%=rec.ordered_by_customer%></a></td>
+                    <td><a><%=rec.minimum_inventory%></a></td>
+                    <td><a><%=rec.minimum_order%></a></td>
+                    <td><a><%=rec.sales_forecast%></a></td>
+                    <td><a><%=rec.buying_price%></a></td>
+                    <td><a><%=rec.product_id%></a></td>
+                    <td><a><%=rec.buying_price_tax%></a></td>
+                    <td><a><%=rec.selling_unit_price_tax%></a></td>
+                    <td><a><%=rec.unit_cost_or_cogs%></a></td>
+                    <td><a><%=rec.cogs_department%></a></td>
+                    <td><a><%=rec.location_master%></a></td>
+                    <td><a><%=rec.delivery_time_indays%></a></td>
+                    <td><a><%=rec.current_selling_price%></a></td>
+                    <td><a><%=rec.main_vendor%></a></td>
+                    
+                    <td><a href="/readAppProductStockInfo?productStockInfoId=<%=rec.product_stock_info_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppProductStockInfo?productStockInfoId=<%=rec.product_stock_info_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppProductStockInfo?productStockInfoId=<%=rec.product_stock_info_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppProductStockInfo">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appSummaryApAging" role="tabpanel" aria-labelledby="appSummaryApAging-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppSummaryApAging.ApAgingId.header%></th>
+                    <th><%=resource.AppSummaryApAging.VendorId.header%></th>
+                    <th><%=resource.AppSummaryApAging.CurrentDate.header%></th>
+                    <th><%=resource.AppSummaryApAging.Day030.header%></th>
+                    <th><%=resource.AppSummaryApAging.Day3060.header%></th>
+                    <th><%=resource.AppSummaryApAging.Day6090.header%></th>
+                    <th><%=resource.AppSummaryApAging.DayMoreThan90.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appSummaryApAging){ let rec = record.appSummaryApAging[i] %>
+                <tr>
+                    <td><a><%=rec.ap_aging_id%></a></td>
+                    <td><a><%=rec.vendor_id%></a></td>
+                    <td><a><%=dateFormat(rec.current_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.day_0_30%></a></td>
+                    <td><a><%=rec.day_30_60%></a></td>
+                    <td><a><%=rec.day_60_90%></a></td>
+                    <td><a><%=rec.day_more_than_90%></a></td>
+                    
+                    <td><a href="/readAppSummaryApAging?apAgingId=<%=rec.ap_aging_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppSummaryApAging?apAgingId=<%=rec.ap_aging_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppSummaryApAging?apAgingId=<%=rec.ap_aging_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppSummaryApAging">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appSummaryApVendor" role="tabpanel" aria-labelledby="appSummaryApVendor-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppSummaryApVendor.SummaryApVendorId.header%></th>
+                    <th><%=resource.AppSummaryApVendor.VendorId.header%></th>
+                    <th><%=resource.AppSummaryApVendor.Date.header%></th>
+                    <th><%=resource.AppSummaryApVendor.BeginningBalanceDebit.header%></th>
+                    <th><%=resource.AppSummaryApVendor.BeginningBalanceCredit.header%></th>
+                    <th><%=resource.AppSummaryApVendor.DebitMutation.header%></th>
+                    <th><%=resource.AppSummaryApVendor.CreditMutation.header%></th>
+                    <th><%=resource.AppSummaryApVendor.EndingBalanceDebit.header%></th>
+                    <th><%=resource.AppSummaryApVendor.EndingBalanceCredit.header%></th>
+                    <th><%=resource.AppSummaryApVendor.BeginningBalance.header%></th>
+                    <th><%=resource.AppSummaryApVendor.DeltaFromBegToEnd.header%></th>
+                    <th><%=resource.AppSummaryApVendor.EndingBalance.header%></th>
+                    <th><%=resource.AppSummaryApVendor.Paid.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appSummaryApVendor){ let rec = record.appSummaryApVendor[i] %>
+                <tr>
+                    <td><a><%=rec.summary_ap_vendor_id%></a></td>
+                    <td><a><%=rec.vendor_id%></a></td>
+                    <td><a><%=dateFormat(rec.date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.beginning_balance_debit%></a></td>
+                    <td><a><%=rec.beginning_balance_credit%></a></td>
+                    <td><a><%=rec.debit_mutation%></a></td>
+                    <td><a><%=rec.credit_mutation%></a></td>
+                    <td><a><%=rec.ending_balance_debit%></a></td>
+                    <td><a><%=rec.ending_balance_credit%></a></td>
+                    <td><a><%=rec.beginning_balance%></a></td>
+                    <td><a><%=rec.delta_from_beg_to_end%></a></td>
+                    <td><a><%=rec.ending_balance%></a></td>
+                    <td><a><%=rec.paid%></a></td>
+                    
+                    <td><a href="/readAppSummaryApVendor?summaryApVendorId=<%=rec.summary_ap_vendor_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppSummaryApVendor?summaryApVendorId=<%=rec.summary_ap_vendor_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppSummaryApVendor?summaryApVendorId=<%=rec.summary_ap_vendor_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppSummaryApVendor">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppArOpeningBalanceMapper">			
+	
+	<select id="readAppArOpeningBalance">
+		select * from app_ar_opening_balance where ar_opening_balance_id = #{arOpeningBalanceId};
+	</select>
+
+</mapper>

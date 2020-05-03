@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppSummaryApAgingMapper">			
+	
+	<insert id="newAppSummaryApAging">
+		insert into app_summary_ap_aging(ap_aging_id,vendor_id,current_date,day_0_30,day_30_60,day_60_90,day_more_than_90) 
+		values (#{apAgingId},#{vendorId},#{currentDate},#{day030},#{day3060},#{day6090},#{dayMoreThan90});
+	</insert>
+
+</mapper>

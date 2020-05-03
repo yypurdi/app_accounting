@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppRptCashFlowMapper">			
+	
+	<insert id="newAppRptCashFlow">
+		insert into app_rpt_cash_flow(rpt_cash_flow_id,rpt_cash_flow_name,date_from,date_until,account_no,ending_balance_debit,ending_balance_credit,date_created,created_by) 
+		values (#{rptCashFlowId},#{rptCashFlowName},#{dateFrom},#{dateUntil},#{accountNo},#{endingBalanceDebit},#{endingBalanceCredit},#{dateCreated},#{createdBy});
+	</insert>
+
+</mapper>

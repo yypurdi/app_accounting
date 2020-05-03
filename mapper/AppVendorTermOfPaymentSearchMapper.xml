@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppVendorTermOfPaymentMapper">			
+	
+	<select id="countAppVendorTermOfPaymentSearch">
+		select count(*) from app_vendor_term_of_payment
+		<trim prefix="where" prefixOverrides="and">
+			<if test="vendorId!=null">
+				and vendor_id like #{vendorId}
+			</if>
+			<if test="termOfPaymentId!=null">
+				and term_of_payment_id like #{termOfPaymentId}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppVendorTermOfPayment">
+		select * from app_vendor_term_of_payment  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="vendorId!=null">
+				vendor_id like #{vendorId}
+			</if>
+			<if test="termOfPaymentId!=null">
+				term_of_payment_id like #{termOfPaymentId}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

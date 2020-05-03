@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appInventoryOpenBalance-tab" data-toggle="tab" href="#appInventoryOpenBalance" role="tab" aria-controls="appInventoryOpenBalance" aria-selected="true"><h4><%=resource.AppInventoryOpenBalance.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appProductAcctCode-tab" data-toggle="tab" href="#appProductAcctCode" role="tab" aria-controls="appProductAcctCode" aria-selected="true"><h4><%=resource.AppProductAcctCode.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appProductImage-tab" data-toggle="tab" href="#appProductImage" role="tab" aria-controls="appProductImage" aria-selected="true"><h4><%=resource.AppProductImage.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appProductSellingPrice-tab" data-toggle="tab" href="#appProductSellingPrice" role="tab" aria-controls="appProductSellingPrice" aria-selected="true"><h4><%=resource.AppProductSellingPrice.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appProductStockInfo-tab" data-toggle="tab" href="#appProductStockInfo" role="tab" aria-controls="appProductStockInfo" aria-selected="true"><h4><%=resource.AppProductStockInfo.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appStockCard-tab" data-toggle="tab" href="#appStockCard" role="tab" aria-controls="appStockCard" aria-selected="true"><h4><%=resource.AppStockCard.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.ProductId.label%></td>
+                        <td><%=record.product_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProductCode.label%></td>
+                        <td><%=record.product_code%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProductDesc.label%></td>
+                        <td><%=record.product_desc%></td>						
+                    </tr><tr>
+                        <td><%=resource.BaseUnit.label%></td>
+                        <td><%=record.base_unit%></td>						
+                    </tr><tr>
+                        <td><%=resource.ReportUnit.label%></td>
+                        <td><%=record.report_unit%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProductGroup1st.label%></td>
+                        <td><%=record.product_group_1st%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProductGroup2nd.label%></td>
+                        <td><%=record.product_group_2nd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProductGroup3rd.label%></td>
+                        <td><%=record.product_group_3rd%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProductGroup4th.label%></td>
+                        <td><%=record.product_group_4th%></td>						
+                    </tr><tr>
+                        <td><%=resource.AliasCode.label%></td>
+                        <td><%=record.alias_code%></td>						
+                    </tr><tr>
+                        <td><%=resource.IsUseSerialNumber.label%></td>
+                        <td><%=record.is_use_serial_number%></td>						
+                    </tr><tr>
+                        <td><%=resource.IsUseLot.label%></td>
+                        <td><%=record.is_use_lot%></td>						
+                    </tr><tr>
+                        <td><%=resource.IsConsignment.label%></td>
+                        <td><%=record.is_consignment%></td>						
+                    </tr><tr>
+                        <td><%=resource.IsNotActive.label%></td>
+                        <td><%=record.is_not_active%></td>						
+                    </tr><tr>
+                        <td><%=resource.IsSeasonalProduct.label%></td>
+                        <td><%=record.is_seasonal_product%></td>						
+                    </tr><tr>
+                        <td><%=resource.ProductCategoryId.label%></td>
+                        <td><%=record.product_category_id%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppProduct?productId=<%=record.product_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppProduct?productId=<%=record.product_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appInventoryOpenBalance" role="tabpanel" aria-labelledby="appInventoryOpenBalance-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppInventoryOpenBalance.InventoryOpeningBalanceId.header%></th>
+                    <th><%=resource.AppInventoryOpenBalance.LocationMaster.header%></th>
+                    <th><%=resource.AppInventoryOpenBalance.ProductId.header%></th>
+                    <th><%=resource.AppInventoryOpenBalance.BeginningBalance.header%></th>
+                    <th><%=resource.AppInventoryOpenBalance.UnitCost.header%></th>
+                    <th><%=resource.AppInventoryOpenBalance.IsSerialNumber.header%></th>
+                    <th><%=resource.AppInventoryOpenBalance.IsLotNumber.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appInventoryOpenBalance){ let rec = record.appInventoryOpenBalance[i] %>
+                <tr>
+                    <td><a><%=rec.inventory_opening_balance_id%></a></td>
+                    <td><a><%=rec.location_master%></a></td>
+                    <td><a><%=rec.product_id%></a></td>
+                    <td><a><%=rec.beginning_balance%></a></td>
+                    <td><a><%=rec.unit_cost%></a></td>
+                    <td><a><%=rec.is_serial_number%></a></td>
+                    <td><a><%=rec.is_lot_number%></a></td>
+                    
+                    <td><a href="/readAppInventoryOpenBalance?inventoryOpeningBalanceId=<%=rec.inventory_opening_balance_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppInventoryOpenBalance?inventoryOpeningBalanceId=<%=rec.inventory_opening_balance_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppInventoryOpenBalance?inventoryOpeningBalanceId=<%=rec.inventory_opening_balance_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppInventoryOpenBalance">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appProductAcctCode" role="tabpanel" aria-labelledby="appProductAcctCode-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppProductAcctCode.ProductAcctCodeAndCogsId.header%></th>
+                    <th><%=resource.AppProductAcctCode.IsInventory.header%></th>
+                    <th><%=resource.AppProductAcctCode.IsPurchased.header%></th>
+                    <th><%=resource.AppProductAcctCode.IsSold.header%></th>
+                    <th><%=resource.AppProductAcctCode.AcctCodeCogs.header%></th>
+                    <th><%=resource.AppProductAcctCode.AcctCodeSales.header%></th>
+                    <th><%=resource.AppProductAcctCode.AcctCodeSalesReturn.header%></th>
+                    <th><%=resource.AppProductAcctCode.AcctCodeInventory.header%></th>
+                    <th><%=resource.AppProductAcctCode.AcctCodeConsignment.header%></th>
+                    <th><%=resource.AppProductAcctCode.ProductId.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appProductAcctCode){ let rec = record.appProductAcctCode[i] %>
+                <tr>
+                    <td><a><%=rec.product_acct_code_and_cogs_id%></a></td>
+                    <td><a><%=rec.is_inventory%></a></td>
+                    <td><a><%=rec.is_purchased%></a></td>
+                    <td><a><%=rec.is_sold%></a></td>
+                    <td><a><%=rec.acct_code_cogs%></a></td>
+                    <td><a><%=rec.acct_code_sales%></a></td>
+                    <td><a><%=rec.acct_code_sales_return%></a></td>
+                    <td><a><%=rec.acct_code_inventory%></a></td>
+                    <td><a><%=rec.acct_code_consignment%></a></td>
+                    <td><a><%=rec.product_id%></a></td>
+                    
+                    <td><a href="/readAppProductAcctCode?productAcctCodeAndCogsId=<%=rec.product_acct_code_and_cogs_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppProductAcctCode?productAcctCodeAndCogsId=<%=rec.product_acct_code_and_cogs_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppProductAcctCode?productAcctCodeAndCogsId=<%=rec.product_acct_code_and_cogs_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppProductAcctCode">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appProductImage" role="tabpanel" aria-labelledby="appProductImage-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppProductImage.ProductImageId.header%></th>
+                    <th><%=resource.AppProductImage.Image.header%></th>
+                    <th><%=resource.AppProductImage.ProductId.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appProductImage){ let rec = record.appProductImage[i] %>
+                <tr>
+                    <td><a><%=rec.product_image_id%></a></td>
+                    <td><a><%=rec.image%></a></td>
+                    <td><a><%=rec.product_id%></a></td>
+                    
+                    <td><a href="/readAppProductImage?productImageId=<%=rec.product_image_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppProductImage?productImageId=<%=rec.product_image_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppProductImage?productImageId=<%=rec.product_image_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppProductImage">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appProductSellingPrice" role="tabpanel" aria-labelledby="appProductSellingPrice-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppProductSellingPrice.ProductPriceId.header%></th>
+                    <th><%=resource.AppProductSellingPrice.ChangedDate.header%></th>
+                    <th><%=resource.AppProductSellingPrice.ChangedBy.header%></th>
+                    <th><%=resource.AppProductSellingPrice.NormalPriceEffectiveDate.header%></th>
+                    <th><%=resource.AppProductSellingPrice.CalculationMethod.header%></th>
+                    <th><%=resource.AppProductSellingPrice.AmountOfCalculationMethod.header%></th>
+                    <th><%=resource.AppProductSellingPrice.RoundUp.header%></th>
+                    <th><%=resource.AppProductSellingPrice.SmallestUnit.header%></th>
+                    <th><%=resource.AppProductSellingPrice.PricingBase.header%></th>
+                    <th><%=resource.AppProductSellingPrice.IsIncludeTaxToSellingPrice.header%></th>
+                    <th><%=resource.AppProductSellingPrice.IsSelectedItem.header%></th>
+                    <th><%=resource.AppProductSellingPrice.CurrentSellingPrice.header%></th>
+                    <th><%=resource.AppProductSellingPrice.NewSellingPrice.header%></th>
+                    <th><%=resource.AppProductSellingPrice.EffectiveDateOfNewSellingPrice.header%></th>
+                    <th><%=resource.AppProductSellingPrice.ProductId.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appProductSellingPrice){ let rec = record.appProductSellingPrice[i] %>
+                <tr>
+                    <td><a><%=rec.product_price_id%></a></td>
+                    <td><a><%=dateFormat(rec.changed_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.Changed_by%></a></td>
+                    <td><a><%=dateFormat(rec.normal_price_effective_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.calculation_method%></a></td>
+                    <td><a><%=rec.amount_of_calculation_method%></a></td>
+                    <td><a><%=rec.round_up%></a></td>
+                    <td><a><%=rec.smallest_unit%></a></td>
+                    <td><a><%=rec.pricing_base%></a></td>
+                    <td><a><%=rec.is_include_tax_to_selling_price%></a></td>
+                    <td><a><%=rec.is_selected_item%></a></td>
+                    <td><a><%=rec.current_selling_price%></a></td>
+                    <td><a><%=rec.new_selling_price%></a></td>
+                    <td><a><%=dateFormat(rec.effective_date_of_new_selling_price,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.product_id%></a></td>
+                    
+                    <td><a href="/readAppProductSellingPrice?productPriceId=<%=rec.product_price_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppProductSellingPrice?productPriceId=<%=rec.product_price_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppProductSellingPrice?productPriceId=<%=rec.product_price_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppProductSellingPrice">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appProductStockInfo" role="tabpanel" aria-labelledby="appProductStockInfo-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppProductStockInfo.ProductStockInfoId.header%></th>
+                    <th><%=resource.AppProductStockInfo.QtyInStock.header%></th>
+                    <th><%=resource.AppProductStockInfo.OrderedToVendor.header%></th>
+                    <th><%=resource.AppProductStockInfo.OrderedByCustomer.header%></th>
+                    <th><%=resource.AppProductStockInfo.MinimumInventory.header%></th>
+                    <th><%=resource.AppProductStockInfo.MinimumOrder.header%></th>
+                    <th><%=resource.AppProductStockInfo.SalesForecast.header%></th>
+                    <th><%=resource.AppProductStockInfo.BuyingPrice.header%></th>
+                    <th><%=resource.AppProductStockInfo.ProductId.header%></th>
+                    <th><%=resource.AppProductStockInfo.BuyingPriceTax.header%></th>
+                    <th><%=resource.AppProductStockInfo.SellingUnitPriceTax.header%></th>
+                    <th><%=resource.AppProductStockInfo.UnitCostOrCogs.header%></th>
+                    <th><%=resource.AppProductStockInfo.CogsDepartment.header%></th>
+                    <th><%=resource.AppProductStockInfo.LocationMaster.header%></th>
+                    <th><%=resource.AppProductStockInfo.DeliveryTimeIndays.header%></th>
+                    <th><%=resource.AppProductStockInfo.CurrentSellingPrice.header%></th>
+                    <th><%=resource.AppProductStockInfo.MainVendor.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appProductStockInfo){ let rec = record.appProductStockInfo[i] %>
+                <tr>
+                    <td><a><%=rec.product_stock_info_id%></a></td>
+                    <td><a><%=rec.qty_in_stock%></a></td>
+                    <td><a><%=rec.ordered_to_vendor%></a></td>
+                    <td><a><%=rec.ordered_by_customer%></a></td>
+                    <td><a><%=rec.minimum_inventory%></a></td>
+                    <td><a><%=rec.minimum_order%></a></td>
+                    <td><a><%=rec.sales_forecast%></a></td>
+                    <td><a><%=rec.buying_price%></a></td>
+                    <td><a><%=rec.product_id%></a></td>
+                    <td><a><%=rec.buying_price_tax%></a></td>
+                    <td><a><%=rec.selling_unit_price_tax%></a></td>
+                    <td><a><%=rec.unit_cost_or_cogs%></a></td>
+                    <td><a><%=rec.cogs_department%></a></td>
+                    <td><a><%=rec.location_master%></a></td>
+                    <td><a><%=rec.delivery_time_indays%></a></td>
+                    <td><a><%=rec.current_selling_price%></a></td>
+                    <td><a><%=rec.main_vendor%></a></td>
+                    
+                    <td><a href="/readAppProductStockInfo?productStockInfoId=<%=rec.product_stock_info_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppProductStockInfo?productStockInfoId=<%=rec.product_stock_info_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppProductStockInfo?productStockInfoId=<%=rec.product_stock_info_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppProductStockInfo">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appStockCard" role="tabpanel" aria-labelledby="appStockCard-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppStockCard.StockCardId.header%></th>
+                    <th><%=resource.AppStockCard.ProductId.header%></th>
+                    <th><%=resource.AppStockCard.TransactionDate.header%></th>
+                    <th><%=resource.AppStockCard.RefNo.header%></th>
+                    <th><%=resource.AppStockCard.DocType.header%></th>
+                    <th><%=resource.AppStockCard.TransactionType.header%></th>
+                    <th><%=resource.AppStockCard.TransactionQty.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appStockCard){ let rec = record.appStockCard[i] %>
+                <tr>
+                    <td><a><%=rec.stock_card_id%></a></td>
+                    <td><a><%=rec.product_id%></a></td>
+                    <td><a><%=dateFormat(rec.transaction_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.ref_no%></a></td>
+                    <td><a><%=rec.doc_type%></a></td>
+                    <td><a><%=rec.transaction_type%></a></td>
+                    <td><a><%=rec.transaction_qty%></a></td>
+                    
+                    <td><a href="/readAppStockCard?stockCardId=<%=rec.stock_card_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppStockCard?stockCardId=<%=rec.stock_card_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppStockCard?stockCardId=<%=rec.stock_card_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppStockCard">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

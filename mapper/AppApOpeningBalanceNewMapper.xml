@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppApOpeningBalanceMapper">			
+	
+	<insert id="newAppApOpeningBalance">
+		insert into app_ap_opening_balance(ap_opening_balance_id,vendor_id,date,invoice_no,purchase_order_no,currency_id,payable_value,term_of_payment_id) 
+		values (#{apOpeningBalanceId},#{vendorId},#{date},#{invoiceNo},#{purchaseOrderNo},#{currencyId},#{payableValue},#{termOfPaymentId});
+	</insert>
+
+</mapper>

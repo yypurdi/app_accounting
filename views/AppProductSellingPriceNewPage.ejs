@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppProductSellingPrice" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.ProductPriceId.label%></td>
+                <td><input type="text" class="form-control" name="productPriceId" value="<%=record.productPriceId%>"/></td>
+            </tr><tr>
+                <td><%=resource.ChangedDate.label%></td>
+                <td><input type="text" class="form-control" name="changedDate" value="<%=record.changedDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.ChangedBy.label%></td>
+                <td><input type="text" class="form-control" name="changedBy" value="<%=record.changedBy%>"/></td>
+            </tr><tr>
+                <td><%=resource.NormalPriceEffectiveDate.label%></td>
+                <td><input type="text" class="form-control" name="normalPriceEffectiveDate" value="<%=record.normalPriceEffectiveDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.CalculationMethod.label%></td>
+                <td><input type="text" class="form-control" name="calculationMethod" value="<%=record.calculationMethod%>"/></td>
+            </tr><tr>
+                <td><%=resource.AmountOfCalculationMethod.label%></td>
+                <td><input type="text" class="form-control" name="amountOfCalculationMethod" value="<%=record.amountOfCalculationMethod%>"/></td>
+            </tr><tr>
+                <td><%=resource.RoundUp.label%></td>
+                <td><input type="text" class="form-control" name="roundUp" value="<%=record.roundUp%>"/></td>
+            </tr><tr>
+                <td><%=resource.SmallestUnit.label%></td>
+                <td><input type="text" class="form-control" name="smallestUnit" value="<%=record.smallestUnit%>"/></td>
+            </tr><tr>
+                <td><%=resource.PricingBase.label%></td>
+                <td><input type="text" class="form-control" name="pricingBase" value="<%=record.pricingBase%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsIncludeTaxToSellingPrice.label%></td>
+                <td><input type="text" class="form-control" name="isIncludeTaxToSellingPrice" value="<%=record.isIncludeTaxToSellingPrice%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsSelectedItem.label%></td>
+                <td><input type="text" class="form-control" name="isSelectedItem" value="<%=record.isSelectedItem%>"/></td>
+            </tr><tr>
+                <td><%=resource.CurrentSellingPrice.label%></td>
+                <td><input type="text" class="form-control" name="currentSellingPrice" value="<%=record.currentSellingPrice%>"/></td>
+            </tr><tr>
+                <td><%=resource.NewSellingPrice.label%></td>
+                <td><input type="text" class="form-control" name="newSellingPrice" value="<%=record.newSellingPrice%>"/></td>
+            </tr><tr>
+                <td><%=resource.EffectiveDateOfNewSellingPrice.label%></td>
+                <td><input type="text" class="form-control" name="effectiveDateOfNewSellingPrice" value="<%=record.effectiveDateOfNewSellingPrice%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductId.label%></td>
+                <td><input type="text" class="form-control" name="productId" value="<%=record.productId%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

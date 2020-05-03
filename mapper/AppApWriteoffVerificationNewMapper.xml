@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppApWriteoffVerificationMapper">			
+	
+	<insert id="newAppApWriteoffVerification">
+		insert into app_ap_writeoff_verification(write_off_verification_id,ref,date,amount,note,acccount_no,allowance_account_no,reference_no_tobe_writeoff) 
+		values (#{writeOffVerificationId},#{ref},#{date},#{amount},#{note},#{acccountNo},#{allowanceAccountNo},#{referenceNoTobeWriteoff});
+	</insert>
+
+</mapper>

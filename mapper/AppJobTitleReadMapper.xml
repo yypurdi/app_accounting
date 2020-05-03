@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppJobTitleMapper">			
+	
+	<select id="readAppJobTitle">
+		select * from app_job_title where job_title_id = #{jobTitleId};
+	</select>
+
+	<select id="appEmployee_RK4P9">         
+		select * from app_employee where job_title_id = #{jobTitleId};
+	</select>
+  
+</mapper>

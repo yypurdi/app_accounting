@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appEmployee-tab" data-toggle="tab" href="#appEmployee" role="tab" aria-controls="appEmployee" aria-selected="true"><h4><%=resource.AppEmployee.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.JobTitleId.label%></td>
+                        <td><%=record.job_title_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.JobTitleCode.label%></td>
+                        <td><%=record.job_title_code%></td>						
+                    </tr><tr>
+                        <td><%=resource.JobDescription.label%></td>
+                        <td><%=record.job_description%></td>						
+                    </tr><tr>
+                        <td><%=resource.JobSpecification.label%></td>
+                        <td><%=record.job_specification%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppJobTitle?jobTitleId=<%=record.job_title_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppJobTitle?jobTitleId=<%=record.job_title_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appEmployee" role="tabpanel" aria-labelledby="appEmployee-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppEmployee.EmployeeId.header%></th>
+                    <th><%=resource.AppEmployee.EmployeeNumber.header%></th>
+                    <th><%=resource.AppEmployee.Firstname.header%></th>
+                    <th><%=resource.AppEmployee.Middlename.header%></th>
+                    <th><%=resource.AppEmployee.Lastname.header%></th>
+                    <th><%=resource.AppEmployee.Nationality.header%></th>
+                    <th><%=resource.AppEmployee.Dob.header%></th>
+                    <th><%=resource.AppEmployee.Gender.header%></th>
+                    <th><%=resource.AppEmployee.MaritalStatus.header%></th>
+                    <th><%=resource.AppEmployee.Ethnicity.header%></th>
+                    <th><%=resource.AppEmployee.KtpNumber.header%></th>
+                    <th><%=resource.AppEmployee.PassportNumber.header%></th>
+                    <th><%=resource.AppEmployee.DrivingLicenceNo.header%></th>
+                    <th><%=resource.AppEmployee.AddressLine1.header%></th>
+                    <th><%=resource.AppEmployee.AddressLine2.header%></th>
+                    <th><%=resource.AppEmployee.CityId.header%></th>
+                    <th><%=resource.AppEmployee.CountryId.header%></th>
+                    <th><%=resource.AppEmployee.ProvinceId.header%></th>
+                    <th><%=resource.AppEmployee.PostalCode.header%></th>
+                    <th><%=resource.AppEmployee.HomePhone.header%></th>
+                    <th><%=resource.AppEmployee.MobilePhone.header%></th>
+                    <th><%=resource.AppEmployee.WorkEmail.header%></th>
+                    <th><%=resource.AppEmployee.PrivateEmail.header%></th>
+                    <th><%=resource.AppEmployee.JoinedDate.header%></th>
+                    <th><%=resource.AppEmployee.ConfirmationDate.header%></th>
+                    <th><%=resource.AppEmployee.TerminationDate.header%></th>
+                    <th><%=resource.AppEmployee.SupervisorName.header%></th>
+                    <th><%=resource.AppEmployee.IndirectSupervisorName.header%></th>
+                    <th><%=resource.AppEmployee.FirstLevelApprover.header%></th>
+                    <th><%=resource.AppEmployee.SecondLevelApprover.header%></th>
+                    <th><%=resource.AppEmployee.ThirdLevelApprover.header%></th>
+                    <th><%=resource.AppEmployee.Notes.header%></th>
+                    <th><%=resource.AppEmployee.DepartmentId.header%></th>
+                    <th><%=resource.AppEmployee.WorkStationId.header%></th>
+                    <th><%=resource.AppEmployee.JobTitleId.header%></th>
+                    <th><%=resource.AppEmployee.PayGradeId.header%></th>
+                    <th><%=resource.AppEmployee.EmploymentStatusId.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appEmployee){ let rec = record.appEmployee[i] %>
+                <tr>
+                    <td><a><%=rec.employee_id%></a></td>
+                    <td><a><%=rec.employee_number%></a></td>
+                    <td><a><%=rec.firstname%></a></td>
+                    <td><a><%=rec.middlename%></a></td>
+                    <td><a><%=rec.lastname%></a></td>
+                    <td><a><%=rec.nationality%></a></td>
+                    <td><a><%=dateFormat(rec.dob,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.gender%></a></td>
+                    <td><a><%=rec.marital_status%></a></td>
+                    <td><a><%=rec.ethnicity%></a></td>
+                    <td><a><%=rec.ktp_number%></a></td>
+                    <td><a><%=rec.passport_number%></a></td>
+                    <td><a><%=rec.driving_licence_no%></a></td>
+                    <td><a><%=rec.address_line1%></a></td>
+                    <td><a><%=rec.address_line2%></a></td>
+                    <td><a><%=rec.city_id%></a></td>
+                    <td><a><%=rec.country_id%></a></td>
+                    <td><a><%=rec.province_id%></a></td>
+                    <td><a><%=rec.postal_code%></a></td>
+                    <td><a><%=rec.home_phone%></a></td>
+                    <td><a><%=rec.mobile_phone%></a></td>
+                    <td><a><%=rec.work_email%></a></td>
+                    <td><a><%=rec.private_email%></a></td>
+                    <td><a><%=dateFormat(rec.joined_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=dateFormat(rec.confirmation_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=dateFormat(rec.termination_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.supervisor_name%></a></td>
+                    <td><a><%=rec.indirect_supervisor_name%></a></td>
+                    <td><a><%=rec.first_level_approver%></a></td>
+                    <td><a><%=rec.second_level_approver%></a></td>
+                    <td><a><%=rec.third_level_approver%></a></td>
+                    <td><a><%=rec.notes%></a></td>
+                    <td><a><%=rec.department_id%></a></td>
+                    <td><a><%=rec.work_station_id%></a></td>
+                    <td><a><%=rec.job_title_id%></a></td>
+                    <td><a><%=rec.pay_grade_id%></a></td>
+                    <td><a><%=rec.employment_status_id%></a></td>
+                    
+                    <td><a href="/readAppEmployee?employeeId=<%=rec.employee_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppEmployee?employeeId=<%=rec.employee_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppEmployee?employeeId=<%=rec.employee_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppEmployee">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

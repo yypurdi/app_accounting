@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="deleteAppRecurringJournalItemsMapper">			
+	
+	<delete id="deleteAppRecurringJournalItems">
+		delete from app_recurring_journal_items where recurring_journal_id = #{recurringJournalId};
+	</delete>
+
+</mapper>

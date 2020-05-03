@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppApWriteoffVerificationMapper">			
+	
+	<select id="countAppApWriteoffVerificationSearch">
+		select count(*) from app_ap_writeoff_verification
+		<trim prefix="where" prefixOverrides="and">
+			<if test="writeOffVerificationId!=null">
+				and write_off_verification_id like #{writeOffVerificationId}
+			</if>
+			<if test="ref!=null">
+				and ref like #{ref}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="amount!=null">
+				and amount like #{amount}
+			</if>
+			<if test="note!=null">
+				and note like #{note}
+			</if>
+			<if test="acccountNo!=null">
+				and acccount_no like #{acccountNo}
+			</if>
+			<if test="allowanceAccountNo!=null">
+				and allowance_account_no like #{allowanceAccountNo}
+			</if>
+			<if test="referenceNoTobeWriteoff!=null">
+				and reference_no_tobe_writeoff like #{referenceNoTobeWriteoff}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppApWriteoffVerification">
+		select * from app_ap_writeoff_verification  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="writeOffVerificationId!=null">
+				write_off_verification_id like #{writeOffVerificationId}
+			</if>
+			<if test="ref!=null">
+				ref like #{ref}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="amount!=null">
+				amount like #{amount}
+			</if>
+			<if test="note!=null">
+				note like #{note}
+			</if>
+			<if test="acccountNo!=null">
+				acccount_no like #{acccountNo}
+			</if>
+			<if test="allowanceAccountNo!=null">
+				allowance_account_no like #{allowanceAccountNo}
+			</if>
+			<if test="referenceNoTobeWriteoff!=null">
+				reference_no_tobe_writeoff like #{referenceNoTobeWriteoff}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

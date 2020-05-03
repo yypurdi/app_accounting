@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppRoom" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.MeetingRoom.label%></td>
+                <td><input type="text" class="form-control" name="meetingRoom" value="<%=record.meetingRoom%>"/></td>
+            </tr><tr>
+                <td><%=resource.Subject.label%></td>
+                <td><input type="text" class="form-control" name="subject" value="<%=record.subject%>"/></td>
+            </tr><tr>
+                <td><%=resource.Participant.label%></td>
+                <td><input type="text" class="form-control" name="participant" value="<%=record.participant%>"/></td>
+            </tr><tr>
+                <td><%=resource.StartDate.label%></td>
+                <td><input type="text" class="form-control" name="startDate" value="<%=record.startDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.EndDate.label%></td>
+                <td><input type="text" class="form-control" name="endDate" value="<%=record.endDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.Status.label%></td>
+                <td><input type="text" class="form-control" name="status" value="<%=record.status%>"/></td>
+            </tr><tr>
+                <td><%=resource.RefValue.label%></td>
+                <td><input type="text" class="form-control" name="refValue" value="<%=record.refValue%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

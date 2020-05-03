@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppStockCardMapper">			
+	
+	<update id="writeAppStockCard">
+		update app_stock_card set stock_card_id = #{stockCardId},
+		product_id = #{productId},
+		transaction_date = #{transactionDate},
+		ref_no = #{refNo},
+		doc_type = #{docType},
+		transaction_type = #{transactionType},
+		transaction_qty = #{transactionQty} where stock_card_id = #{stockCardId};
+	</update>
+
+</mapper>

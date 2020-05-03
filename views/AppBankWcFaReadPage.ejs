@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.BankWcFaId.label%></td>
+                        <td><%=record.bank_wc_fa_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.BankWriteCheckId.label%></td>
+                        <td><%=record.bank_write_check_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.AccountNo.label%></td>
+                        <td><%=record.account_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.DepartmentId.label%></td>
+                        <td><%=record.department_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.Amount.label%></td>
+                        <td><%=record.amount%></td>						
+                    </tr><tr>
+                        <td><%=resource.JobOrderNo.label%></td>
+                        <td><%=record.job_order_no%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppBankWcFa?bankWcFaId=<%=record.bank_wc_fa_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppBankWcFa?bankWcFaId=<%=record.bank_wc_fa_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

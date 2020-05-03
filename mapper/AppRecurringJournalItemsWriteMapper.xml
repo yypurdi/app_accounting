@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppRecurringJournalItemsMapper">			
+	
+	<update id="writeAppRecurringJournalItems">
+		update app_recurring_journal_items set recurring_journal_id = #{recurringJournalId},
+		account_no = #{accountNo},
+		debit_amount = #{debitAmount},
+		credit_amount = #{creditAmount},
+		job_order_no = #{jobOrderNo} where recurring_journal_id = #{recurringJournalId};
+	</update>
+
+</mapper>

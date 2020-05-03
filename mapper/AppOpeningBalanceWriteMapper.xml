@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppOpeningBalanceMapper">			
+	
+	<update id="writeAppOpeningBalance">
+		update app_opening_balance set opening_balance_id = #{openingBalanceId},
+		account_no = #{accountNo},
+		beginning_balance = #{beginningBalance} where opening_balance_id = #{openingBalanceId};
+	</update>
+
+</mapper>

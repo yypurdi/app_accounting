@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppApOpeningBalanceMapper">			
+	
+	<update id="writeAppApOpeningBalance">
+		update app_ap_opening_balance set ap_opening_balance_id = #{apOpeningBalanceId},
+		vendor_id = #{vendorId},
+		date = #{date},
+		invoice_no = #{invoiceNo},
+		purchase_order_no = #{purchaseOrderNo},
+		currency_id = #{currencyId},
+		payable_value = #{payableValue},
+		term_of_payment_id = #{termOfPaymentId} where ap_opening_balance_id = #{apOpeningBalanceId};
+	</update>
+
+</mapper>

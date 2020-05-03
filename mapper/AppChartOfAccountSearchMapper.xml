@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppChartOfAccountMapper">			
+	
+	<select id="countAppChartOfAccountSearch">
+		select count(*) from app_chart_of_account
+		<trim prefix="where" prefixOverrides="and">
+			<if test="chartOfAccountId!=null">
+				and chart_of_account_id like #{chartOfAccountId}
+			</if>
+			<if test="accountSubClassId!=null">
+				and account_sub_class_id like #{accountSubClassId}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+			<if test="accountName!=null">
+				and account_name like #{accountName}
+			</if>
+			<if test="isCashOrBank!=null">
+				and is_cash_or_bank like #{isCashOrBank}
+			</if>
+			<if test="isNotActive!=null">
+				and is_not_active like #{isNotActive}
+			</if>
+			<if test="currencyId!=null">
+				and currency_id like #{currencyId}
+			</if>
+			<if test="departmentId!=null">
+				and department_id like #{departmentId}
+			</if>
+			<if test="normalBalance!=null">
+				and normal_balance like #{normalBalance}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppChartOfAccount">
+		select * from app_chart_of_account  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="chartOfAccountId!=null">
+				chart_of_account_id like #{chartOfAccountId}
+			</if>
+			<if test="accountSubClassId!=null">
+				account_sub_class_id like #{accountSubClassId}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+			<if test="accountName!=null">
+				account_name like #{accountName}
+			</if>
+			<if test="isCashOrBank!=null">
+				is_cash_or_bank like #{isCashOrBank}
+			</if>
+			<if test="isNotActive!=null">
+				is_not_active like #{isNotActive}
+			</if>
+			<if test="currencyId!=null">
+				currency_id like #{currencyId}
+			</if>
+			<if test="departmentId!=null">
+				department_id like #{departmentId}
+			</if>
+			<if test="normalBalance!=null">
+				normal_balance like #{normalBalance}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

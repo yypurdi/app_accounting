@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppPersistentLoginsMapper">			
+	
+	<select id="countAppPersistentLoginsSearch">
+		select count(*) from app_persistent_logins
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				and username like #{username}
+			</if>
+			<if test="series!=null">
+				and series like #{series}
+			</if>
+			<if test="token!=null">
+				and token like #{token}
+			</if>
+			<if test="lastUsed!=null">
+				and last_used like #{lastUsed}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppPersistentLogins">
+		select * from app_persistent_logins  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				username like #{username}
+			</if>
+			<if test="series!=null">
+				series like #{series}
+			</if>
+			<if test="token!=null">
+				token like #{token}
+			</if>
+			<if test="lastUsed!=null">
+				last_used like #{lastUsed}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppEmploymentStatusMapper">			
+	
+	<select id="readAppEmploymentStatus">
+		select * from app_employment_status where employment_status_id = #{employmentStatusId};
+	</select>
+
+	<select id="appEmployee_IP6G4">         
+		select * from app_employee where employment_status_id = #{employmentStatusId};
+	</select>
+  
+</mapper>

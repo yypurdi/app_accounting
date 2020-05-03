@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppBankWcFaMapper">			
+	
+	<update id="writeAppBankWcFa">
+		update app_bank_wc_fa set bank_wc_fa_id = #{bankWcFaId},
+		bank_write_check_id = #{bankWriteCheckId},
+		account_no = #{accountNo},
+		department_id = #{departmentId},
+		amount = #{amount},
+		job_order_no = #{jobOrderNo} where bank_wc_fa_id = #{bankWcFaId};
+	</update>
+
+</mapper>

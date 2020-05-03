@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppVendor" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.VendorId.label%></td>
+                <td><input type="text" class="form-control" name="vendorId" value="<%=record.vendorId%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorNo.label%></td>
+                <td><input type="text" class="form-control" name="vendorNo" value="<%=record.vendorNo%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorName.label%></td>
+                <td><input type="text" class="form-control" name="vendorName" value="<%=record.vendorName%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorType.label%></td>
+                <td><input type="text" class="form-control" name="vendorType" value="<%=record.vendorType%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorClassification.label%></td>
+                <td><input type="text" class="form-control" name="vendorClassification" value="<%=record.vendorClassification%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorCategory.label%></td>
+                <td><input type="text" class="form-control" name="vendorCategory" value="<%=record.vendorCategory%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPerson.label%></td>
+                <td><input type="text" class="form-control" name="contactPerson" value="<%=record.contactPerson%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPosition.label%></td>
+                <td><input type="text" class="form-control" name="contactPosition" value="<%=record.contactPosition%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonMobilePhone.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonMobilePhone" value="<%=record.contactPersonMobilePhone%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonEmail.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonEmail" value="<%=record.contactPersonEmail%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorTaxId.label%></td>
+                <td><input type="text" class="form-control" name="vendorTaxId" value="<%=record.vendorTaxId%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorCreditLimit.label%></td>
+                <td><input type="text" class="form-control" name="vendorCreditLimit" value="<%=record.vendorCreditLimit%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorPhone1.label%></td>
+                <td><input type="text" class="form-control" name="vendorPhone1" value="<%=record.vendorPhone1%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorPhone2.label%></td>
+                <td><input type="text" class="form-control" name="vendorPhone2" value="<%=record.vendorPhone2%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorFax.label%></td>
+                <td><input type="text" class="form-control" name="vendorFax" value="<%=record.vendorFax%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorEmailCompany.label%></td>
+                <td><input type="text" class="form-control" name="vendorEmailCompany" value="<%=record.vendorEmailCompany%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorWebsite.label%></td>
+                <td><input type="text" class="form-control" name="vendorWebsite" value="<%=record.vendorWebsite%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorCurrency.label%></td>
+                <td><input type="text" class="form-control" name="vendorCurrency" value="<%=record.vendorCurrency%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorAddress1.label%></td>
+                <td><input type="text" class="form-control" name="vendorAddress1" value="<%=record.vendorAddress1%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorAddress2.label%></td>
+                <td><input type="text" class="form-control" name="vendorAddress2" value="<%=record.vendorAddress2%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorPostalCode.label%></td>
+                <td><input type="text" class="form-control" name="vendorPostalCode" value="<%=record.vendorPostalCode%>"/></td>
+            </tr><tr>
+                <td><%=resource.CityId.label%></td>
+                <td><input type="text" class="form-control" name="cityId" value="<%=record.cityId%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProvinceId.label%></td>
+                <td><input type="text" class="form-control" name="provinceId" value="<%=record.provinceId%>"/></td>
+            </tr><tr>
+                <td><%=resource.CountryId.label%></td>
+                <td><input type="text" class="form-control" name="countryId" value="<%=record.countryId%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddress1.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddress1" value="<%=record.deliveryAddress1%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddress2.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddress2" value="<%=record.deliveryAddress2%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddressPostalCode.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddressPostalCode" value="<%=record.deliveryAddressPostalCode%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddressCity.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddressCity" value="<%=record.deliveryAddressCity%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddressProvince.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddressProvince" value="<%=record.deliveryAddressProvince%>"/></td>
+            </tr><tr>
+                <td><%=resource.DeliveryAddressCountry.label%></td>
+                <td><input type="text" class="form-control" name="deliveryAddressCountry" value="<%=record.deliveryAddressCountry%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPerson2nd.label%></td>
+                <td><input type="text" class="form-control" name="contactPerson2nd" value="<%=record.contactPerson2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPosition2nd.label%></td>
+                <td><input type="text" class="form-control" name="contactPosition2nd" value="<%=record.contactPosition2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonMobilePhone2nd.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonMobilePhone2nd" value="<%=record.contactPersonMobilePhone2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonEmail2nd.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonEmail2nd" value="<%=record.contactPersonEmail2nd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPerson3rd.label%></td>
+                <td><input type="text" class="form-control" name="contactPerson3rd" value="<%=record.contactPerson3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPosition3rd.label%></td>
+                <td><input type="text" class="form-control" name="contactPosition3rd" value="<%=record.contactPosition3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonMobilePhone3rd.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonMobilePhone3rd" value="<%=record.contactPersonMobilePhone3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.ContactPersonEmail3rd.label%></td>
+                <td><input type="text" class="form-control" name="contactPersonEmail3rd" value="<%=record.contactPersonEmail3rd%>"/></td>
+            </tr><tr>
+                <td><%=resource.Image.label%></td>
+                <td><input type="text" class="form-control" name="image" value="<%=record.image%>"/></td>
+            </tr><tr>
+                <td><%=resource.NotesDetails.label%></td>
+                <td><input type="text" class="form-control" name="notesDetails" value="<%=record.notesDetails%>"/></td>
+            </tr><tr>
+                <td><%=resource.Status.label%></td>
+                <td><input type="text" class="form-control" name="status" value="<%=record.status%>"/></td>
+            </tr><tr>
+                <td><%=resource.FirstContactDate.label%></td>
+                <td><input type="text" class="form-control" name="firstContactDate" value="<%=record.firstContactDate%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

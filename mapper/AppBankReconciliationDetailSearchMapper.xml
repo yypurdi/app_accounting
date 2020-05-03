@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppBankReconciliationDetailMapper">			
+	
+	<select id="countAppBankReconciliationDetailSearch">
+		select count(*) from app_bank_reconciliation_detail
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankReconciliationDetailId!=null">
+				and bank_reconciliation_detail_id like #{bankReconciliationDetailId}
+			</if>
+			<if test="bankReconciliationId!=null">
+				and bank_reconciliation_id like #{bankReconciliationId}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="referenceNo!=null">
+				and reference_no like #{referenceNo}
+			</if>
+			<if test="note!=null">
+				and note like #{note}
+			</if>
+			<if test="debitAmount!=null">
+				and debit_amount like #{debitAmount}
+			</if>
+			<if test="creditAmount!=null">
+				and credit_amount like #{creditAmount}
+			</if>
+			<if test="isSelected!=null">
+				and is_selected like #{isSelected}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppBankReconciliationDetail">
+		select * from app_bank_reconciliation_detail  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankReconciliationDetailId!=null">
+				bank_reconciliation_detail_id like #{bankReconciliationDetailId}
+			</if>
+			<if test="bankReconciliationId!=null">
+				bank_reconciliation_id like #{bankReconciliationId}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="referenceNo!=null">
+				reference_no like #{referenceNo}
+			</if>
+			<if test="note!=null">
+				note like #{note}
+			</if>
+			<if test="debitAmount!=null">
+				debit_amount like #{debitAmount}
+			</if>
+			<if test="creditAmount!=null">
+				credit_amount like #{creditAmount}
+			</if>
+			<if test="isSelected!=null">
+				is_selected like #{isSelected}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

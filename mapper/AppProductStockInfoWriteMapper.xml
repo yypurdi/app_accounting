@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppProductStockInfoMapper">			
+	
+	<update id="writeAppProductStockInfo">
+		update app_product_stock_info set product_stock_info_id = #{productStockInfoId},
+		qty_in_stock = #{qtyInStock},
+		ordered_to_vendor = #{orderedToVendor},
+		ordered_by_customer = #{orderedByCustomer},
+		minimum_inventory = #{minimumInventory},
+		minimum_order = #{minimumOrder},
+		sales_forecast = #{salesForecast},
+		buying_price = #{buyingPrice},
+		product_id = #{productId},
+		buying_price_tax = #{buyingPriceTax},
+		selling_unit_price_tax = #{sellingUnitPriceTax},
+		unit_cost_or_cogs = #{unitCostOrCogs},
+		cogs_department = #{cogsDepartment},
+		location_master = #{locationMaster},
+		delivery_time_indays = #{deliveryTimeIndays},
+		current_selling_price = #{currentSellingPrice},
+		main_vendor = #{mainVendor} where product_stock_info_id = #{productStockInfoId};
+	</update>
+
+</mapper>

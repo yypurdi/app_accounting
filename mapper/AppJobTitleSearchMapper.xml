@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppJobTitleMapper">			
+	
+	<select id="countAppJobTitleSearch">
+		select count(*) from app_job_title
+		<trim prefix="where" prefixOverrides="and">
+			<if test="jobTitleId!=null">
+				and job_title_id like #{jobTitleId}
+			</if>
+			<if test="jobTitleCode!=null">
+				and job_title_code like #{jobTitleCode}
+			</if>
+			<if test="jobDescription!=null">
+				and job_description like #{jobDescription}
+			</if>
+			<if test="jobSpecification!=null">
+				and job_specification like #{jobSpecification}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppJobTitle">
+		select * from app_job_title  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="jobTitleId!=null">
+				job_title_id like #{jobTitleId}
+			</if>
+			<if test="jobTitleCode!=null">
+				job_title_code like #{jobTitleCode}
+			</if>
+			<if test="jobDescription!=null">
+				job_description like #{jobDescription}
+			</if>
+			<if test="jobSpecification!=null">
+				job_specification like #{jobSpecification}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

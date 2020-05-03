@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppProductAcctCode" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.ProductAcctCodeAndCogsId.label%></td>
+                <td><input type="text" class="form-control" name="productAcctCodeAndCogsId" value="<%=record.productAcctCodeAndCogsId%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsInventory.label%></td>
+                <td><input type="text" class="form-control" name="isInventory" value="<%=record.isInventory%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsPurchased.label%></td>
+                <td><input type="text" class="form-control" name="isPurchased" value="<%=record.isPurchased%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsSold.label%></td>
+                <td><input type="text" class="form-control" name="isSold" value="<%=record.isSold%>"/></td>
+            </tr><tr>
+                <td><%=resource.AcctCodeCogs.label%></td>
+                <td><input type="text" class="form-control" name="acctCodeCogs" value="<%=record.acctCodeCogs%>"/></td>
+            </tr><tr>
+                <td><%=resource.AcctCodeSales.label%></td>
+                <td><input type="text" class="form-control" name="acctCodeSales" value="<%=record.acctCodeSales%>"/></td>
+            </tr><tr>
+                <td><%=resource.AcctCodeSalesReturn.label%></td>
+                <td><input type="text" class="form-control" name="acctCodeSalesReturn" value="<%=record.acctCodeSalesReturn%>"/></td>
+            </tr><tr>
+                <td><%=resource.AcctCodeInventory.label%></td>
+                <td><input type="text" class="form-control" name="acctCodeInventory" value="<%=record.acctCodeInventory%>"/></td>
+            </tr><tr>
+                <td><%=resource.AcctCodeConsignment.label%></td>
+                <td><input type="text" class="form-control" name="acctCodeConsignment" value="<%=record.acctCodeConsignment%>"/></td>
+            </tr><tr>
+                <td><%=resource.ProductId.label%></td>
+                <td><input type="text" class="form-control" name="productId" value="<%=record.productId%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

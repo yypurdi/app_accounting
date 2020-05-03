@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppProductSellingPriceMapper">			
+	
+	<insert id="newAppProductSellingPrice">
+		insert into app_product_selling_price(product_price_id,changed_date,Changed_by,normal_price_effective_date,calculation_method,amount_of_calculation_method,round_up,smallest_unit,pricing_base,is_include_tax_to_selling_price,is_selected_item,current_selling_price,new_selling_price,effective_date_of_new_selling_price,product_id) 
+		values (#{productPriceId},#{changedDate},#{changedBy},#{normalPriceEffectiveDate},#{calculationMethod},#{amountOfCalculationMethod},#{roundUp},#{smallestUnit},#{pricingBase},#{isIncludeTaxToSellingPrice},#{isSelectedItem},#{currentSellingPrice},#{newSellingPrice},#{effectiveDateOfNewSellingPrice},#{productId});
+	</insert>
+
+</mapper>

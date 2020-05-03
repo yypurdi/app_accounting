@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppCustomerTermOfSalesMapper">			
+	
+	<insert id="newAppCustomerTermOfSales">
+		insert into app_customer_term_of_sales(customer_id,term_of_sales_id) 
+		values (#{customerId},#{termOfSalesId});
+	</insert>
+
+</mapper>

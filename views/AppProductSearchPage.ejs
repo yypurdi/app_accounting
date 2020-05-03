@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchAppProduct" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.ProductId.label%></td>    
+                <td><input type="text" class="form-control" name="product_id"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newAppProduct">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.AppProduct.ProductId.header%></th>
+                <th><%=resource.AppProduct.ProductCode.header%></th>
+                <th><%=resource.AppProduct.ProductDesc.header%></th>
+                <th><%=resource.AppProduct.BaseUnit.header%></th>
+                <th><%=resource.AppProduct.ReportUnit.header%></th>
+                <th><%=resource.AppProduct.ProductGroup1st.header%></th>
+                <th><%=resource.AppProduct.ProductGroup2nd.header%></th>
+                <th><%=resource.AppProduct.ProductGroup3rd.header%></th>
+                <th><%=resource.AppProduct.ProductGroup4th.header%></th>
+                <th><%=resource.AppProduct.AliasCode.header%></th>
+                <th><%=resource.AppProduct.IsUseSerialNumber.header%></th>
+                <th><%=resource.AppProduct.IsUseLot.header%></th>
+                <th><%=resource.AppProduct.IsConsignment.header%></th>
+                <th><%=resource.AppProduct.IsNotActive.header%></th>
+                <th><%=resource.AppProduct.IsSeasonalProduct.header%></th>
+                <th><%=resource.AppProduct.ProductCategoryId.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.product_id%></a></td>
+                <td><a><%=row.product_code%></a></td>
+                <td><a><%=row.product_desc%></a></td>
+                <td><a><%=row.base_unit%></a></td>
+                <td><a><%=row.report_unit%></a></td>
+                <td><a><%=row.product_group_1st%></a></td>
+                <td><a><%=row.product_group_2nd%></a></td>
+                <td><a><%=row.product_group_3rd%></a></td>
+                <td><a><%=row.product_group_4th%></a></td>
+                <td><a><%=row.alias_code%></a></td>
+                <td><a><%=row.is_use_serial_number%></a></td>
+                <td><a><%=row.is_use_lot%></a></td>
+                <td><a><%=row.is_consignment%></a></td>
+                <td><a><%=row.is_not_active%></a></td>
+                <td><a><%=row.is_seasonal_product%></a></td>
+                <td><a><%=row.product_category_id%></a></td>
+                
+                <td><a href="/readAppProduct?productId=<%=row.product_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeAppProduct?productId=<%=row.product_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteAppProduct?productId=<%=row.product_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppRefProvinceMapper">			
+	
+	<select id="readAppRefProvince">
+		select * from app_ref_province where province_id = #{provinceId};
+	</select>
+
+	<select id="appCompanyInfo_B7WFO">         
+		select * from app_company_info where province_id = #{provinceId};
+	</select>
+  
+	<select id="appCustomer_P6F0G">         
+		select * from app_customer where province_id = #{provinceId};
+	</select>
+  
+	<select id="appEmployee_A0MM7">         
+		select * from app_employee where province_id = #{provinceId};
+	</select>
+  
+	<select id="appRefCity_X30FU">         
+		select * from app_ref_city where province_id = #{provinceId};
+	</select>
+  
+	<select id="appVendor_K31I6">         
+		select * from app_vendor where province_id = #{provinceId};
+	</select>
+  
+</mapper>

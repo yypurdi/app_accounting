@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppAccountClassMapper">			
+	
+	<select id="countAppAccountClassSearch">
+		select count(*) from app_account_class
+		<trim prefix="where" prefixOverrides="and">
+			<if test="accountClassId!=null">
+				and account_class_id like #{accountClassId}
+			</if>
+			<if test="classificationName!=null">
+				and classification_name like #{classificationName}
+			</if>
+			<if test="desc!=null">
+				and desc like #{desc}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppAccountClass">
+		select * from app_account_class  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="accountClassId!=null">
+				account_class_id like #{accountClassId}
+			</if>
+			<if test="classificationName!=null">
+				classification_name like #{classificationName}
+			</if>
+			<if test="desc!=null">
+				desc like #{desc}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

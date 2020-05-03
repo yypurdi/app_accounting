@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppControlAccountMapper">			
+	
+	<select id="countAppControlAccountSearch">
+		select count(*) from app_control_account
+		<trim prefix="where" prefixOverrides="and">
+			<if test="controlAccountId!=null">
+				and control_account_id like #{controlAccountId}
+			</if>
+			<if test="controlAccountName!=null">
+				and control_account_name like #{controlAccountName}
+			</if>
+			<if test="controlAccountDesc!=null">
+				and control_account_desc like #{controlAccountDesc}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppControlAccount">
+		select * from app_control_account  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="controlAccountId!=null">
+				control_account_id like #{controlAccountId}
+			</if>
+			<if test="controlAccountName!=null">
+				control_account_name like #{controlAccountName}
+			</if>
+			<if test="controlAccountDesc!=null">
+				control_account_desc like #{controlAccountDesc}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

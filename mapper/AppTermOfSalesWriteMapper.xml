@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppTermOfSalesMapper">			
+	
+	<update id="writeAppTermOfSales">
+		update app_term_of_sales set term_of_sales_id = #{termOfSalesId},
+		tos_code = #{tosCode},
+		tos_desc = #{tosDesc},
+		discount_days_indays = #{discountDaysIndays},
+		due_date_indays = #{dueDateIndays},
+		early_discount_inpercentage = #{earlyDiscountInpercentage},
+		late_charges_inpercentage = #{lateChargesInpercentage} where term_of_sales_id = #{termOfSalesId};
+	</update>
+
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppTaxMapper">			
+	
+	<select id="countAppTaxSearch">
+		select count(*) from app_tax
+		<trim prefix="where" prefixOverrides="and">
+			<if test="taxId!=null">
+				and tax_id like #{taxId}
+			</if>
+			<if test="taxCode!=null">
+				and tax_code like #{taxCode}
+			</if>
+			<if test="tax!=null">
+				and tax like #{tax}
+			</if>
+			<if test="percentage!=null">
+				and percentage like #{percentage}
+			</if>
+			<if test="isCogsDeductible!=null">
+				and is_cogs_deductible like #{isCogsDeductible}
+			</if>
+			<if test="acctCodePurchaseTax!=null">
+				and acct_code_purchase_tax like #{acctCodePurchaseTax}
+			</if>
+			<if test="acctCodeSales!=null">
+				and acct_code_sales like #{acctCodeSales}
+			</if>
+			<if test="details!=null">
+				and details like #{details}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppTax">
+		select * from app_tax  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="taxId!=null">
+				tax_id like #{taxId}
+			</if>
+			<if test="taxCode!=null">
+				tax_code like #{taxCode}
+			</if>
+			<if test="tax!=null">
+				tax like #{tax}
+			</if>
+			<if test="percentage!=null">
+				percentage like #{percentage}
+			</if>
+			<if test="isCogsDeductible!=null">
+				is_cogs_deductible like #{isCogsDeductible}
+			</if>
+			<if test="acctCodePurchaseTax!=null">
+				acct_code_purchase_tax like #{acctCodePurchaseTax}
+			</if>
+			<if test="acctCodeSales!=null">
+				acct_code_sales like #{acctCodeSales}
+			</if>
+			<if test="details!=null">
+				details like #{details}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

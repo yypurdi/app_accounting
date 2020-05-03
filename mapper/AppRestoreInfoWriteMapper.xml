@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppRestoreInfoMapper">			
+	
+	<update id="writeAppRestoreInfo">
+		update app_restore_info set restore_info_id = #{restoreInfoId},
+		archive_file_name = #{archiveFileName},
+		new_location_folder = #{newLocationFolder},
+		new_archive_file_name = #{newArchiveFileName},
+		server_name = #{serverName} where restore_info_id = #{restoreInfoId};
+	</update>
+
+</mapper>

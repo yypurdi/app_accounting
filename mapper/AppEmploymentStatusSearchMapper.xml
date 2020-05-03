@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppEmploymentStatusMapper">			
+	
+	<select id="countAppEmploymentStatusSearch">
+		select count(*) from app_employment_status
+		<trim prefix="where" prefixOverrides="and">
+			<if test="employmentStatusId!=null">
+				and employment_status_id like #{employmentStatusId}
+			</if>
+			<if test="employmentStatus!=null">
+				and employment_status like #{employmentStatus}
+			</if>
+			<if test="employmentDesc!=null">
+				and employment_desc like #{employmentDesc}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppEmploymentStatus">
+		select * from app_employment_status  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="employmentStatusId!=null">
+				employment_status_id like #{employmentStatusId}
+			</if>
+			<if test="employmentStatus!=null">
+				employment_status like #{employmentStatus}
+			</if>
+			<if test="employmentDesc!=null">
+				employment_desc like #{employmentDesc}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

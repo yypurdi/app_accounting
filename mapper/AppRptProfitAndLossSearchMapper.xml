@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppRptProfitAndLossMapper">			
+	
+	<select id="countAppRptProfitAndLossSearch">
+		select count(*) from app_rpt_profit_and_loss
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rptProfitAndLossId!=null">
+				and rpt_profit_and_loss_id like #{rptProfitAndLossId}
+			</if>
+			<if test="rptProfitAndLossName!=null">
+				and rpt_profit_and_loss_name like #{rptProfitAndLossName}
+			</if>
+			<if test="departmentFrom!=null">
+				and department_from like #{departmentFrom}
+			</if>
+			<if test="departmentTo!=null">
+				and department_to like #{departmentTo}
+			</if>
+			<if test="currencyId!=null">
+				and currency_id like #{currencyId}
+			</if>
+			<if test="revenue!=null">
+				and revenue like #{revenue}
+			</if>
+			<if test="revenueExpenditure!=null">
+				and revenue_expenditure like #{revenueExpenditure}
+			</if>
+			<if test="grossMargin!=null">
+				and gross_margin like #{grossMargin}
+			</if>
+			<if test="operationalExpenditure!=null">
+				and operational_expenditure like #{operationalExpenditure}
+			</if>
+			<if test="operatingProfit!=null">
+				and operating_profit like #{operatingProfit}
+			</if>
+			<if test="otherRevenue!=null">
+				and other_revenue like #{otherRevenue}
+			</if>
+			<if test="otherExpenditure!=null">
+				and other_expenditure like #{otherExpenditure}
+			</if>
+			<if test="netProfit!=null">
+				and net_profit like #{netProfit}
+			</if>
+			<if test="comparativeRevenue!=null">
+				and comparative_revenue like #{comparativeRevenue}
+			</if>
+			<if test="comparativeRevenueExpenditure!=null">
+				and comparative_revenue_expenditure like #{comparativeRevenueExpenditure}
+			</if>
+			<if test="comparativeGrossMargin!=null">
+				and comparative_gross_margin like #{comparativeGrossMargin}
+			</if>
+			<if test="comparativeOperationalExpenditure!=null">
+				and comparative_operational_expenditure like #{comparativeOperationalExpenditure}
+			</if>
+			<if test="comparativeOperatingProfit!=null">
+				and comparative_operating_profit like #{comparativeOperatingProfit}
+			</if>
+			<if test="comparativeOtherRevenue!=null">
+				and comparative_other_revenue like #{comparativeOtherRevenue}
+			</if>
+			<if test="comparativeOtherExpenditure!=null">
+				and comparative_other_expenditure like #{comparativeOtherExpenditure}
+			</if>
+			<if test="comparativeNetProfit!=null">
+				and comparative_net_profit like #{comparativeNetProfit}
+			</if>
+			<if test="dateCreated!=null">
+				and date_created like #{dateCreated}
+			</if>
+			<if test="createdBy!=null">
+				and created_by like #{createdBy}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppRptProfitAndLoss">
+		select * from app_rpt_profit_and_loss  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rptProfitAndLossId!=null">
+				rpt_profit_and_loss_id like #{rptProfitAndLossId}
+			</if>
+			<if test="rptProfitAndLossName!=null">
+				rpt_profit_and_loss_name like #{rptProfitAndLossName}
+			</if>
+			<if test="departmentFrom!=null">
+				department_from like #{departmentFrom}
+			</if>
+			<if test="departmentTo!=null">
+				department_to like #{departmentTo}
+			</if>
+			<if test="currencyId!=null">
+				currency_id like #{currencyId}
+			</if>
+			<if test="revenue!=null">
+				revenue like #{revenue}
+			</if>
+			<if test="revenueExpenditure!=null">
+				revenue_expenditure like #{revenueExpenditure}
+			</if>
+			<if test="grossMargin!=null">
+				gross_margin like #{grossMargin}
+			</if>
+			<if test="operationalExpenditure!=null">
+				operational_expenditure like #{operationalExpenditure}
+			</if>
+			<if test="operatingProfit!=null">
+				operating_profit like #{operatingProfit}
+			</if>
+			<if test="otherRevenue!=null">
+				other_revenue like #{otherRevenue}
+			</if>
+			<if test="otherExpenditure!=null">
+				other_expenditure like #{otherExpenditure}
+			</if>
+			<if test="netProfit!=null">
+				net_profit like #{netProfit}
+			</if>
+			<if test="comparativeRevenue!=null">
+				comparative_revenue like #{comparativeRevenue}
+			</if>
+			<if test="comparativeRevenueExpenditure!=null">
+				comparative_revenue_expenditure like #{comparativeRevenueExpenditure}
+			</if>
+			<if test="comparativeGrossMargin!=null">
+				comparative_gross_margin like #{comparativeGrossMargin}
+			</if>
+			<if test="comparativeOperationalExpenditure!=null">
+				comparative_operational_expenditure like #{comparativeOperationalExpenditure}
+			</if>
+			<if test="comparativeOperatingProfit!=null">
+				comparative_operating_profit like #{comparativeOperatingProfit}
+			</if>
+			<if test="comparativeOtherRevenue!=null">
+				comparative_other_revenue like #{comparativeOtherRevenue}
+			</if>
+			<if test="comparativeOtherExpenditure!=null">
+				comparative_other_expenditure like #{comparativeOtherExpenditure}
+			</if>
+			<if test="comparativeNetProfit!=null">
+				comparative_net_profit like #{comparativeNetProfit}
+			</if>
+			<if test="dateCreated!=null">
+				date_created like #{dateCreated}
+			</if>
+			<if test="createdBy!=null">
+				created_by like #{createdBy}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppApAgingMapper">			
+	
+	<select id="countAppApAgingSearch">
+		select count(*) from app_ap_aging
+		<trim prefix="where" prefixOverrides="and">
+			<if test="apAgingId!=null">
+				and ap_aging_id like #{apAgingId}
+			</if>
+			<if test="vendorId!=null">
+				and vendor_id like #{vendorId}
+			</if>
+			<if test="referenceNo!=null">
+				and reference_no like #{referenceNo}
+			</if>
+			<if test="debit!=null">
+				and debit like #{debit}
+			</if>
+			<if test="credit!=null">
+				and credit like #{credit}
+			</if>
+			<if test="apDueDate!=null">
+				and ap_due_date like #{apDueDate}
+			</if>
+			<if test="currentDate!=null">
+				and current_date like #{currentDate}
+			</if>
+			<if test="age!=null">
+				and age like #{age}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppApAging">
+		select * from app_ap_aging  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="apAgingId!=null">
+				ap_aging_id like #{apAgingId}
+			</if>
+			<if test="vendorId!=null">
+				vendor_id like #{vendorId}
+			</if>
+			<if test="referenceNo!=null">
+				reference_no like #{referenceNo}
+			</if>
+			<if test="debit!=null">
+				debit like #{debit}
+			</if>
+			<if test="credit!=null">
+				credit like #{credit}
+			</if>
+			<if test="apDueDate!=null">
+				ap_due_date like #{apDueDate}
+			</if>
+			<if test="currentDate!=null">
+				current_date like #{currentDate}
+			</if>
+			<if test="age!=null">
+				age like #{age}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

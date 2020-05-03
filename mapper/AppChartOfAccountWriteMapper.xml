@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppChartOfAccountMapper">			
+	
+	<update id="writeAppChartOfAccount">
+		update app_chart_of_account set chart_of_account_id = #{chartOfAccountId},
+		account_sub_class_id = #{accountSubClassId},
+		account_no = #{accountNo},
+		account_name = #{accountName},
+		is_cash_or_bank = #{isCashOrBank},
+		is_not_active = #{isNotActive},
+		currency_id = #{currencyId},
+		department_id = #{departmentId},
+		normal_balance = #{normalBalance} where chart_of_account_id = #{chartOfAccountId};
+	</update>
+
+</mapper>

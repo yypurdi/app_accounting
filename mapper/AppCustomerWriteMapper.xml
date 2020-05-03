@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppCustomerMapper">			
+	
+	<update id="writeAppCustomer">
+		update app_customer set customer_id = #{customerId},
+		cust_no = #{custNo},
+		cust_name = #{custName},
+		cust_type = #{custType},
+		cust_classification = #{custClassification},
+		cust_category = #{custCategory},
+		contact_person = #{contactPerson},
+		contact_position = #{contactPosition},
+		contact_person_mobile_phone = #{contactPersonMobilePhone},
+		contact_person_email = #{contactPersonEmail},
+		cust_tax_id = #{custTaxId},
+		cust_credit_limit = #{custCreditLimit},
+		cust_phone1 = #{custPhone1},
+		cust_phone2 = #{custPhone2},
+		cust_fax = #{custFax},
+		cust_email_company = #{custEmailCompany},
+		cust_website = #{custWebsite},
+		cust_currency = #{custCurrency},
+		cust_address1 = #{custAddress1},
+		cust_address2 = #{custAddress2},
+		cust_postal_code = #{custPostalCode},
+		city_id = #{cityId},
+		province_id = #{provinceId},
+		country_id = #{countryId},
+		delivery_address1 = #{deliveryAddress1},
+		delivery_address2 = #{deliveryAddress2},
+		delivery_address_postal_code = #{deliveryAddressPostalCode},
+		delivery_address_city = #{deliveryAddressCity},
+		delivery_address_province = #{deliveryAddressProvince},
+		delivery_address_country = #{deliveryAddressCountry},
+		contact_person_2nd = #{contactPerson2nd},
+		contact_position_2nd = #{contactPosition2nd},
+		contact_person_mobile_phone_2nd = #{contactPersonMobilePhone2nd},
+		contact_person_email_2nd = #{contactPersonEmail2nd},
+		contact_person_3rd = #{contactPerson3rd},
+		contact_position_3rd = #{contactPosition3rd},
+		contact_person_mobile_phone_3rd = #{contactPersonMobilePhone3rd},
+		contact_person_email_3rd = #{contactPersonEmail3rd},
+		image = #{image},
+		notes_details = #{notesDetails},
+		status = #{status},
+		first_contact_date = #{firstContactDate} where customer_id = #{customerId};
+	</update>
+
+</mapper>

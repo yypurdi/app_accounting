@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppChartOfAccountMapper">			
+	
+	<insert id="newAppChartOfAccount">
+		insert into app_chart_of_account(chart_of_account_id,account_sub_class_id,account_no,account_name,is_cash_or_bank,is_not_active,currency_id,department_id,normal_balance) 
+		values (#{chartOfAccountId},#{accountSubClassId},#{accountNo},#{accountName},#{isCashOrBank},#{isNotActive},#{currencyId},#{departmentId},#{normalBalance});
+	</insert>
+
+</mapper>

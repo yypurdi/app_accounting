@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppApOpeningBalanceMapper">			
+	
+	<select id="countAppApOpeningBalanceSearch">
+		select count(*) from app_ap_opening_balance
+		<trim prefix="where" prefixOverrides="and">
+			<if test="apOpeningBalanceId!=null">
+				and ap_opening_balance_id like #{apOpeningBalanceId}
+			</if>
+			<if test="vendorId!=null">
+				and vendor_id like #{vendorId}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="invoiceNo!=null">
+				and invoice_no like #{invoiceNo}
+			</if>
+			<if test="purchaseOrderNo!=null">
+				and purchase_order_no like #{purchaseOrderNo}
+			</if>
+			<if test="currencyId!=null">
+				and currency_id like #{currencyId}
+			</if>
+			<if test="payableValue!=null">
+				and payable_value like #{payableValue}
+			</if>
+			<if test="termOfPaymentId!=null">
+				and term_of_payment_id like #{termOfPaymentId}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppApOpeningBalance">
+		select * from app_ap_opening_balance  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="apOpeningBalanceId!=null">
+				ap_opening_balance_id like #{apOpeningBalanceId}
+			</if>
+			<if test="vendorId!=null">
+				vendor_id like #{vendorId}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="invoiceNo!=null">
+				invoice_no like #{invoiceNo}
+			</if>
+			<if test="purchaseOrderNo!=null">
+				purchase_order_no like #{purchaseOrderNo}
+			</if>
+			<if test="currencyId!=null">
+				currency_id like #{currencyId}
+			</if>
+			<if test="payableValue!=null">
+				payable_value like #{payableValue}
+			</if>
+			<if test="termOfPaymentId!=null">
+				term_of_payment_id like #{termOfPaymentId}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

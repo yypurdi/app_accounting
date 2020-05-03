@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppGeneralJournalItemsMapper">			
+	
+	<insert id="newAppGeneralJournalItems">
+		insert into app_general_journal_items(general_journal_id,account_no,debit_amount,credit_amount,job_order_no) 
+		values (#{generalJournalId},#{accountNo},#{debitAmount},#{creditAmount},#{jobOrderNo});
+	</insert>
+
+</mapper>

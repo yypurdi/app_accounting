@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppContact" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.Username.label%></td>
+                <td><input type="text" class="form-control" name="username" value="<%=record.username%>"/></td>
+            </tr><tr>
+                <td><%=resource.Subscription.label%></td>
+                <td><input type="text" class="form-control" name="subscription" value="<%=record.subscription%>"/></td>
+            </tr><tr>
+                <td><%=resource.Jid.label%></td>
+                <td><input type="text" class="form-control" name="jid" value="<%=record.jid%>"/></td>
+            </tr><tr>
+                <td><%=resource.Nickname.label%></td>
+                <td><input type="text" class="form-control" name="nickname" value="<%=record.nickname%>"/></td>
+            </tr><tr>
+                <td><%=resource.Joindate.label%></td>
+                <td><input type="text" class="form-control" name="joindate" value="<%=record.joindate%>"/></td>
+            </tr><tr>
+                <td><%=resource.Show.label%></td>
+                <td><input type="text" class="form-control" name="show" value="<%=record.show%>"/></td>
+            </tr><tr>
+                <td><%=resource.Status.label%></td>
+                <td><input type="text" class="form-control" name="status" value="<%=record.status%>"/></td>
+            </tr><tr>
+                <td><%=resource.Lastseen.label%></td>
+                <td><input type="text" class="form-control" name="lastseen" value="<%=record.lastseen%>"/></td>
+            </tr><tr>
+                <td><%=resource.Unread.label%></td>
+                <td><input type="text" class="form-control" name="unread" value="<%=record.unread%>"/></td>
+            </tr><tr>
+                <td><%=resource.Key.label%></td>
+                <td><input type="text" class="form-control" name="key" value="<%=record.key%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

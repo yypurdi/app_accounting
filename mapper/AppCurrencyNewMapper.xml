@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppCurrencyMapper">			
+	
+	<insert id="newAppCurrency">
+		insert into app_currency(currency_id,currency_code,currency_name,currency_symbol,exchange_rate,by_date,control_account_ar,control_account_ap,control_account_bank_payment,control_account_cash_payment,is_currency_base,is_foreign_currency) 
+		values (#{currencyId},#{currencyCode},#{currencyName},#{currencySymbol},#{exchangeRate},#{byDate},#{controlAccountAr},#{controlAccountAp},#{controlAccountBankPayment},#{controlAccountCashPayment},#{isCurrencyBase},#{isForeignCurrency});
+	</insert>
+
+</mapper>

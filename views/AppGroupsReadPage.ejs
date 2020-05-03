@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appGroupAuthorities-tab" data-toggle="tab" href="#appGroupAuthorities" role="tab" aria-controls="appGroupAuthorities" aria-selected="true"><h4><%=resource.AppGroupAuthorities.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appGroupMembers-tab" data-toggle="tab" href="#appGroupMembers" role="tab" aria-controls="appGroupMembers" aria-selected="true"><h4><%=resource.AppGroupMembers.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.GroupId.label%></td>
+                        <td><%=record.group_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.GroupName.label%></td>
+                        <td><%=record.group_name%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppGroups?groupId=<%=record.group_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppGroups?groupId=<%=record.group_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appGroupAuthorities" role="tabpanel" aria-labelledby="appGroupAuthorities-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppGroupAuthorities.GroupId.header%></th>
+                    <th><%=resource.AppGroupAuthorities.Authority.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appGroupAuthorities){ let rec = record.appGroupAuthorities[i] %>
+                <tr>
+                    <td><a><%=rec.group_id%></a></td>
+                    <td><a><%=rec.authority%></a></td>
+                    
+                    <td><a href="/readAppGroupAuthorities?groupId=<%=rec.group_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppGroupAuthorities?groupId=<%=rec.group_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppGroupAuthorities?groupId=<%=rec.group_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppGroupAuthorities">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appGroupMembers" role="tabpanel" aria-labelledby="appGroupMembers-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppGroupMembers.GroupId.header%></th>
+                    <th><%=resource.AppGroupMembers.GroupMemberId.header%></th>
+                    <th><%=resource.AppGroupMembers.Username.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appGroupMembers){ let rec = record.appGroupMembers[i] %>
+                <tr>
+                    <td><a><%=rec.group_id%></a></td>
+                    <td><a><%=rec.group_member_id%></a></td>
+                    <td><a><%=rec.username%></a></td>
+                    
+                    <td><a href="/readAppGroupMembers?groupId=<%=rec.group_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppGroupMembers?groupId=<%=rec.group_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppGroupMembers?groupId=<%=rec.group_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppGroupMembers">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

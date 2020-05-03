@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppRptTrialBalanceMapper">			
+	
+	<insert id="newAppRptTrialBalance">
+		insert into app_rpt_trial_balance(rpt_trial_balance_id,rpt_trial_balance_name,department_from,department_to,currency_id,account_no,ending_balance_debit,ending_balance_credit,date_created,created_by) 
+		values (#{rptTrialBalanceId},#{rptTrialBalanceName},#{departmentFrom},#{departmentTo},#{currencyId},#{accountNo},#{endingBalanceDebit},#{endingBalanceCredit},#{dateCreated},#{createdBy});
+	</insert>
+
+</mapper>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+<form class="form-horizontal" action="/searchAppSummaryApVendor" method="get">    
+    <div style="width:50%">
+    <h3><%=resource.Title%></h3>
+        <input type="hidden" class="form-control" name="rowid" value="0"/>    
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><%=resource.SummaryApVendorId.label%></td>    
+                <td><input type="text" class="form-control" name="summary_ap_vendor_id"/></td>
+                <td>
+                    <button type="submit" name="action" value="first" class="btn btn-default">Find</button>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <button type="submit" class="btn btn-default"><a href="/newAppSummaryApVendor">Add</a></button>
+                    <% } %>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div style="width:75%">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.AppSummaryApVendor.SummaryApVendorId.header%></th>
+                <th><%=resource.AppSummaryApVendor.VendorId.header%></th>
+                <th><%=resource.AppSummaryApVendor.Date.header%></th>
+                <th><%=resource.AppSummaryApVendor.BeginningBalanceDebit.header%></th>
+                <th><%=resource.AppSummaryApVendor.BeginningBalanceCredit.header%></th>
+                <th><%=resource.AppSummaryApVendor.DebitMutation.header%></th>
+                <th><%=resource.AppSummaryApVendor.CreditMutation.header%></th>
+                <th><%=resource.AppSummaryApVendor.EndingBalanceDebit.header%></th>
+                <th><%=resource.AppSummaryApVendor.EndingBalanceCredit.header%></th>
+                <th><%=resource.AppSummaryApVendor.BeginningBalance.header%></th>
+                <th><%=resource.AppSummaryApVendor.DeltaFromBegToEnd.header%></th>
+                <th><%=resource.AppSummaryApVendor.EndingBalance.header%></th>
+                <th><%=resource.AppSummaryApVendor.Paid.header%></th>
+                
+            	<th>View</th>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <th>Edit</th>
+                <th>Delete</th>
+                <% } %>
+            </tr>
+            <% for(var i in records){let row = records[i]; %>			            
+            <tr>
+                <td><a><%=row.summary_ap_vendor_id%></a></td>
+                <td><a><%=row.vendor_id%></a></td>
+                <td><a><%=dateFormat(row.date,'mmm-dd-yyyy')%></a></td>
+                <td><a><%=row.beginning_balance_debit%></a></td>
+                <td><a><%=row.beginning_balance_credit%></a></td>
+                <td><a><%=row.debit_mutation%></a></td>
+                <td><a><%=row.credit_mutation%></a></td>
+                <td><a><%=row.ending_balance_debit%></a></td>
+                <td><a><%=row.ending_balance_credit%></a></td>
+                <td><a><%=row.beginning_balance%></a></td>
+                <td><a><%=row.delta_from_beg_to_end%></a></td>
+                <td><a><%=row.ending_balance%></a></td>
+                <td><a><%=row.paid%></a></td>
+                
+                <td><a href="/readAppSummaryApVendor?summaryApVendorId=<%=row.summary_ap_vendor_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <td><a href="/writeAppSummaryApVendor?summaryApVendorId=<%=row.summary_ap_vendor_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a href="/deleteAppSummaryApVendor?summaryApVendorId=<%=row.summary_ap_vendor_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <% } %>
+            </tr>
+            <% } %>            
+        </table>
+        
+        <div class="table-pagination">
+           <ul class="pagination">
+                 <li><button type="submit" name="action" value="first" class="btn btn-default">First</button></li>
+                 <li><button type="submit" name="action" value="previous" class="btn btn-default">Previous</button></li>
+                 <li><button type="submit" name="action" value="next" class="btn btn-default">Next</button></li>
+                 <li><button type="submit" name="action" value="last" class="btn btn-default">Last</button></li>
+           </ul>	        
+        </div>
+    </div>
+</form>                
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

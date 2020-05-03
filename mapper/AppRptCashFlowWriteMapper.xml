@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppRptCashFlowMapper">			
+	
+	<update id="writeAppRptCashFlow">
+		update app_rpt_cash_flow set rpt_cash_flow_id = #{rptCashFlowId},
+		rpt_cash_flow_name = #{rptCashFlowName},
+		date_from = #{dateFrom},
+		date_until = #{dateUntil},
+		account_no = #{accountNo},
+		ending_balance_debit = #{endingBalanceDebit},
+		ending_balance_credit = #{endingBalanceCredit},
+		date_created = #{dateCreated},
+		created_by = #{createdBy} where rpt_cash_flow_id = #{rptCashFlowId};
+	</update>
+
+</mapper>

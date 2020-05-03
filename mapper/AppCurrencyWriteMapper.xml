@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppCurrencyMapper">			
+	
+	<update id="writeAppCurrency">
+		update app_currency set currency_id = #{currencyId},
+		currency_code = #{currencyCode},
+		currency_name = #{currencyName},
+		currency_symbol = #{currencySymbol},
+		exchange_rate = #{exchangeRate},
+		by_date = #{byDate},
+		control_account_ar = #{controlAccountAr},
+		control_account_ap = #{controlAccountAp},
+		control_account_bank_payment = #{controlAccountBankPayment},
+		control_account_cash_payment = #{controlAccountCashPayment},
+		is_currency_base = #{isCurrencyBase},
+		is_foreign_currency = #{isForeignCurrency} where currency_id = #{currencyId};
+	</update>
+
+</mapper>

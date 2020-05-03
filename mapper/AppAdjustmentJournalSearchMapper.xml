@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppAdjustmentJournalMapper">			
+	
+	<select id="countAppAdjustmentJournalSearch">
+		select count(*) from app_adjustment_journal
+		<trim prefix="where" prefixOverrides="and">
+			<if test="adjustmentJournalId!=null">
+				and adjustment_journal_id like #{adjustmentJournalId}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="referenceNo!=null">
+				and reference_no like #{referenceNo}
+			</if>
+			<if test="inOrDebit!=null">
+				and in_or_debit like #{inOrDebit}
+			</if>
+			<if test="outOrCredit!=null">
+				and out_or_credit like #{outOrCredit}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppAdjustmentJournal">
+		select * from app_adjustment_journal  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="adjustmentJournalId!=null">
+				adjustment_journal_id like #{adjustmentJournalId}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="referenceNo!=null">
+				reference_no like #{referenceNo}
+			</if>
+			<if test="inOrDebit!=null">
+				in_or_debit like #{inOrDebit}
+			</if>
+			<if test="outOrCredit!=null">
+				out_or_credit like #{outOrCredit}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

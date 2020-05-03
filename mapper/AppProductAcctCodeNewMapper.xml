@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppProductAcctCodeMapper">			
+	
+	<insert id="newAppProductAcctCode">
+		insert into app_product_acct_code(product_acct_code_and_cogs_id,is_inventory,is_purchased,is_sold,acct_code_cogs,acct_code_sales,acct_code_sales_return,acct_code_inventory,acct_code_consignment,product_id) 
+		values (#{productAcctCodeAndCogsId},#{isInventory},#{isPurchased},#{isSold},#{acctCodeCogs},#{acctCodeSales},#{acctCodeSalesReturn},#{acctCodeInventory},#{acctCodeConsignment},#{productId});
+	</insert>
+
+</mapper>

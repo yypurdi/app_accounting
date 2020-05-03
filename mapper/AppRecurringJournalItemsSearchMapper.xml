@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppRecurringJournalItemsMapper">			
+	
+	<select id="countAppRecurringJournalItemsSearch">
+		select count(*) from app_recurring_journal_items
+		<trim prefix="where" prefixOverrides="and">
+			<if test="recurringJournalId!=null">
+				and recurring_journal_id like #{recurringJournalId}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+			<if test="debitAmount!=null">
+				and debit_amount like #{debitAmount}
+			</if>
+			<if test="creditAmount!=null">
+				and credit_amount like #{creditAmount}
+			</if>
+			<if test="jobOrderNo!=null">
+				and job_order_no like #{jobOrderNo}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppRecurringJournalItems">
+		select * from app_recurring_journal_items  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="recurringJournalId!=null">
+				recurring_journal_id like #{recurringJournalId}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+			<if test="debitAmount!=null">
+				debit_amount like #{debitAmount}
+			</if>
+			<if test="creditAmount!=null">
+				credit_amount like #{creditAmount}
+			</if>
+			<if test="jobOrderNo!=null">
+				job_order_no like #{jobOrderNo}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

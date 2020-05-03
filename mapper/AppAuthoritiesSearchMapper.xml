@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppAuthoritiesMapper">			
+	
+	<select id="countAppAuthoritiesSearch">
+		select count(*) from app_authorities
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				and username like #{username}
+			</if>
+			<if test="authority!=null">
+				and authority like #{authority}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppAuthorities">
+		select * from app_authorities  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				username like #{username}
+			</if>
+			<if test="authority!=null">
+				authority like #{authority}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

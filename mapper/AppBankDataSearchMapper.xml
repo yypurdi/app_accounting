@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppBankDataMapper">			
+	
+	<select id="countAppBankDataSearch">
+		select count(*) from app_bank_data
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankDataId!=null">
+				and bank_data_id like #{bankDataId}
+			</if>
+			<if test="bankAccount!=null">
+				and bank_account like #{bankAccount}
+			</if>
+			<if test="bankAddress1!=null">
+				and bank_address1 like #{bankAddress1}
+			</if>
+			<if test="bankAddress2!=null">
+				and bank_address2 like #{bankAddress2}
+			</if>
+			<if test="cityId!=null">
+				and city_id like #{cityId}
+			</if>
+			<if test="zipCode!=null">
+				and zip_code like #{zipCode}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppBankData">
+		select * from app_bank_data  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="bankDataId!=null">
+				bank_data_id like #{bankDataId}
+			</if>
+			<if test="bankAccount!=null">
+				bank_account like #{bankAccount}
+			</if>
+			<if test="bankAddress1!=null">
+				bank_address1 like #{bankAddress1}
+			</if>
+			<if test="bankAddress2!=null">
+				bank_address2 like #{bankAddress2}
+			</if>
+			<if test="cityId!=null">
+				city_id like #{cityId}
+			</if>
+			<if test="zipCode!=null">
+				zip_code like #{zipCode}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

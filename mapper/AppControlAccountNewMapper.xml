@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppControlAccountMapper">			
+	
+	<insert id="newAppControlAccount">
+		insert into app_control_account(control_account_id,control_account_name,control_account_desc,account_no) 
+		values (#{controlAccountId},#{controlAccountName},#{controlAccountDesc},#{accountNo});
+	</insert>
+
+</mapper>

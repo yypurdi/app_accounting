@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppProductStockInfoMapper">			
+	
+	<select id="countAppProductStockInfoSearch">
+		select count(*) from app_product_stock_info
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productStockInfoId!=null">
+				and product_stock_info_id like #{productStockInfoId}
+			</if>
+			<if test="qtyInStock!=null">
+				and qty_in_stock like #{qtyInStock}
+			</if>
+			<if test="orderedToVendor!=null">
+				and ordered_to_vendor like #{orderedToVendor}
+			</if>
+			<if test="orderedByCustomer!=null">
+				and ordered_by_customer like #{orderedByCustomer}
+			</if>
+			<if test="minimumInventory!=null">
+				and minimum_inventory like #{minimumInventory}
+			</if>
+			<if test="minimumOrder!=null">
+				and minimum_order like #{minimumOrder}
+			</if>
+			<if test="salesForecast!=null">
+				and sales_forecast like #{salesForecast}
+			</if>
+			<if test="buyingPrice!=null">
+				and buying_price like #{buyingPrice}
+			</if>
+			<if test="productId!=null">
+				and product_id like #{productId}
+			</if>
+			<if test="buyingPriceTax!=null">
+				and buying_price_tax like #{buyingPriceTax}
+			</if>
+			<if test="sellingUnitPriceTax!=null">
+				and selling_unit_price_tax like #{sellingUnitPriceTax}
+			</if>
+			<if test="unitCostOrCogs!=null">
+				and unit_cost_or_cogs like #{unitCostOrCogs}
+			</if>
+			<if test="cogsDepartment!=null">
+				and cogs_department like #{cogsDepartment}
+			</if>
+			<if test="locationMaster!=null">
+				and location_master like #{locationMaster}
+			</if>
+			<if test="deliveryTimeIndays!=null">
+				and delivery_time_indays like #{deliveryTimeIndays}
+			</if>
+			<if test="currentSellingPrice!=null">
+				and current_selling_price like #{currentSellingPrice}
+			</if>
+			<if test="mainVendor!=null">
+				and main_vendor like #{mainVendor}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppProductStockInfo">
+		select * from app_product_stock_info  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productStockInfoId!=null">
+				product_stock_info_id like #{productStockInfoId}
+			</if>
+			<if test="qtyInStock!=null">
+				qty_in_stock like #{qtyInStock}
+			</if>
+			<if test="orderedToVendor!=null">
+				ordered_to_vendor like #{orderedToVendor}
+			</if>
+			<if test="orderedByCustomer!=null">
+				ordered_by_customer like #{orderedByCustomer}
+			</if>
+			<if test="minimumInventory!=null">
+				minimum_inventory like #{minimumInventory}
+			</if>
+			<if test="minimumOrder!=null">
+				minimum_order like #{minimumOrder}
+			</if>
+			<if test="salesForecast!=null">
+				sales_forecast like #{salesForecast}
+			</if>
+			<if test="buyingPrice!=null">
+				buying_price like #{buyingPrice}
+			</if>
+			<if test="productId!=null">
+				product_id like #{productId}
+			</if>
+			<if test="buyingPriceTax!=null">
+				buying_price_tax like #{buyingPriceTax}
+			</if>
+			<if test="sellingUnitPriceTax!=null">
+				selling_unit_price_tax like #{sellingUnitPriceTax}
+			</if>
+			<if test="unitCostOrCogs!=null">
+				unit_cost_or_cogs like #{unitCostOrCogs}
+			</if>
+			<if test="cogsDepartment!=null">
+				cogs_department like #{cogsDepartment}
+			</if>
+			<if test="locationMaster!=null">
+				location_master like #{locationMaster}
+			</if>
+			<if test="deliveryTimeIndays!=null">
+				delivery_time_indays like #{deliveryTimeIndays}
+			</if>
+			<if test="currentSellingPrice!=null">
+				current_selling_price like #{currentSellingPrice}
+			</if>
+			<if test="mainVendor!=null">
+				main_vendor like #{mainVendor}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

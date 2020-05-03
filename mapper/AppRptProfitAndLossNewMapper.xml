@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppRptProfitAndLossMapper">			
+	
+	<insert id="newAppRptProfitAndLoss">
+		insert into app_rpt_profit_and_loss(rpt_profit_and_loss_id,rpt_profit_and_loss_name,department_from,department_to,currency_id,revenue,revenue_expenditure,gross_margin,operational_expenditure,operating_profit,other_revenue,other_expenditure,net_profit,comparative_revenue,comparative_revenue_expenditure,comparative_gross_margin,comparative_operational_expenditure,comparative_operating_profit,comparative_other_revenue,comparative_other_expenditure,comparative_net_profit,date_created,created_by) 
+		values (#{rptProfitAndLossId},#{rptProfitAndLossName},#{departmentFrom},#{departmentTo},#{currencyId},#{revenue},#{revenueExpenditure},#{grossMargin},#{operationalExpenditure},#{operatingProfit},#{otherRevenue},#{otherExpenditure},#{netProfit},#{comparativeRevenue},#{comparativeRevenueExpenditure},#{comparativeGrossMargin},#{comparativeOperationalExpenditure},#{comparativeOperatingProfit},#{comparativeOtherRevenue},#{comparativeOtherExpenditure},#{comparativeNetProfit},#{dateCreated},#{createdBy});
+	</insert>
+
+</mapper>

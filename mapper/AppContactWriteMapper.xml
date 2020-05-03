@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppContactMapper">			
+	
+	<update id="writeAppContact">
+		update app_contact set username = #{username},
+		subscription = #{subscription},
+		jid = #{jid},
+		nickname = #{nickname},
+		joindate = #{joindate},
+		show = #{show},
+		status = #{status},
+		lastseen = #{lastseen},
+		unread = #{unread},
+		key = #{key} where username = #{username};
+	</update>
+
+</mapper>

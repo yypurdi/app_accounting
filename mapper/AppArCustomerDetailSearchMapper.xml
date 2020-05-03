@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppArCustomerDetailMapper">			
+	
+	<select id="countAppArCustomerDetailSearch">
+		select count(*) from app_ar_customer_detail
+		<trim prefix="where" prefixOverrides="and">
+			<if test="arCustomerDetailId!=null">
+				and ar_customer_detail_id like #{arCustomerDetailId}
+			</if>
+			<if test="customerId!=null">
+				and customer_id like #{customerId}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="note!=null">
+				and note like #{note}
+			</if>
+			<if test="debit!=null">
+				and debit like #{debit}
+			</if>
+			<if test="credit!=null">
+				and credit like #{credit}
+			</if>
+			<if test="debitBalance!=null">
+				and debit_balance like #{debitBalance}
+			</if>
+			<if test="creditBalance!=null">
+				and credit_balance like #{creditBalance}
+			</if>
+			<if test="balance!=null">
+				and balance like #{balance}
+			</if>
+			<if test="referenceNo!=null">
+				and reference_no like #{referenceNo}
+			</if>
+			<if test="arDueDate!=null">
+				and ar_due_date like #{arDueDate}
+			</if>
+			<if test="status!=null">
+				and status like #{status}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppArCustomerDetail">
+		select * from app_ar_customer_detail  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="arCustomerDetailId!=null">
+				ar_customer_detail_id like #{arCustomerDetailId}
+			</if>
+			<if test="customerId!=null">
+				customer_id like #{customerId}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="note!=null">
+				note like #{note}
+			</if>
+			<if test="debit!=null">
+				debit like #{debit}
+			</if>
+			<if test="credit!=null">
+				credit like #{credit}
+			</if>
+			<if test="debitBalance!=null">
+				debit_balance like #{debitBalance}
+			</if>
+			<if test="creditBalance!=null">
+				credit_balance like #{creditBalance}
+			</if>
+			<if test="balance!=null">
+				balance like #{balance}
+			</if>
+			<if test="referenceNo!=null">
+				reference_no like #{referenceNo}
+			</if>
+			<if test="arDueDate!=null">
+				ar_due_date like #{arDueDate}
+			</if>
+			<if test="status!=null">
+				status like #{status}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

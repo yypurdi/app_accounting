@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppProductMapper">			
+	
+	<select id="countAppProductSearch">
+		select count(*) from app_product
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productId!=null">
+				and product_id like #{productId}
+			</if>
+			<if test="productCode!=null">
+				and product_code like #{productCode}
+			</if>
+			<if test="productDesc!=null">
+				and product_desc like #{productDesc}
+			</if>
+			<if test="baseUnit!=null">
+				and base_unit like #{baseUnit}
+			</if>
+			<if test="reportUnit!=null">
+				and report_unit like #{reportUnit}
+			</if>
+			<if test="productGroup1st!=null">
+				and product_group_1st like #{productGroup1st}
+			</if>
+			<if test="productGroup2nd!=null">
+				and product_group_2nd like #{productGroup2nd}
+			</if>
+			<if test="productGroup3rd!=null">
+				and product_group_3rd like #{productGroup3rd}
+			</if>
+			<if test="productGroup4th!=null">
+				and product_group_4th like #{productGroup4th}
+			</if>
+			<if test="aliasCode!=null">
+				and alias_code like #{aliasCode}
+			</if>
+			<if test="isUseSerialNumber!=null">
+				and is_use_serial_number like #{isUseSerialNumber}
+			</if>
+			<if test="isUseLot!=null">
+				and is_use_lot like #{isUseLot}
+			</if>
+			<if test="isConsignment!=null">
+				and is_consignment like #{isConsignment}
+			</if>
+			<if test="isNotActive!=null">
+				and is_not_active like #{isNotActive}
+			</if>
+			<if test="isSeasonalProduct!=null">
+				and is_seasonal_product like #{isSeasonalProduct}
+			</if>
+			<if test="productCategoryId!=null">
+				and product_category_id like #{productCategoryId}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppProduct">
+		select * from app_product  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="productId!=null">
+				product_id like #{productId}
+			</if>
+			<if test="productCode!=null">
+				product_code like #{productCode}
+			</if>
+			<if test="productDesc!=null">
+				product_desc like #{productDesc}
+			</if>
+			<if test="baseUnit!=null">
+				base_unit like #{baseUnit}
+			</if>
+			<if test="reportUnit!=null">
+				report_unit like #{reportUnit}
+			</if>
+			<if test="productGroup1st!=null">
+				product_group_1st like #{productGroup1st}
+			</if>
+			<if test="productGroup2nd!=null">
+				product_group_2nd like #{productGroup2nd}
+			</if>
+			<if test="productGroup3rd!=null">
+				product_group_3rd like #{productGroup3rd}
+			</if>
+			<if test="productGroup4th!=null">
+				product_group_4th like #{productGroup4th}
+			</if>
+			<if test="aliasCode!=null">
+				alias_code like #{aliasCode}
+			</if>
+			<if test="isUseSerialNumber!=null">
+				is_use_serial_number like #{isUseSerialNumber}
+			</if>
+			<if test="isUseLot!=null">
+				is_use_lot like #{isUseLot}
+			</if>
+			<if test="isConsignment!=null">
+				is_consignment like #{isConsignment}
+			</if>
+			<if test="isNotActive!=null">
+				is_not_active like #{isNotActive}
+			</if>
+			<if test="isSeasonalProduct!=null">
+				is_seasonal_product like #{isSeasonalProduct}
+			</if>
+			<if test="productCategoryId!=null">
+				product_category_id like #{productCategoryId}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

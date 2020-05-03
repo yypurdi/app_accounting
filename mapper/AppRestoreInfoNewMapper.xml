@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppRestoreInfoMapper">			
+	
+	<insert id="newAppRestoreInfo">
+		insert into app_restore_info(restore_info_id,archive_file_name,new_location_folder,new_archive_file_name,server_name) 
+		values (#{restoreInfoId},#{archiveFileName},#{newLocationFolder},#{newArchiveFileName},#{serverName});
+	</insert>
+
+</mapper>

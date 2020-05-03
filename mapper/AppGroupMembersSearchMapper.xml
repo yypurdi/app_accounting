@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppGroupMembersMapper">			
+	
+	<select id="countAppGroupMembersSearch">
+		select count(*) from app_group_members
+		<trim prefix="where" prefixOverrides="and">
+			<if test="groupId!=null">
+				and group_id like #{groupId}
+			</if>
+			<if test="groupMemberId!=null">
+				and group_member_id like #{groupMemberId}
+			</if>
+			<if test="username!=null">
+				and username like #{username}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppGroupMembers">
+		select * from app_group_members  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="groupId!=null">
+				group_id like #{groupId}
+			</if>
+			<if test="groupMemberId!=null">
+				group_member_id like #{groupMemberId}
+			</if>
+			<if test="username!=null">
+				username like #{username}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppRecurringBankWriteCheckMapper">			
+	
+	<insert id="newAppRecurringBankWriteCheck">
+		insert into app_recurring_bank_write_check(recurring_bank_write_check_id,transaction_name,frequency,account_no,is_post_dated_check,received_by,date,check_no,amount,memo) 
+		values (#{recurringBankWriteCheckId},#{transactionName},#{frequency},#{accountNo},#{isPostDatedCheck},#{receivedBy},#{date},#{checkNo},#{amount},#{memo});
+	</insert>
+
+</mapper>

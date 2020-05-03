@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppBankReconciliationDetailMapper">			
+	
+	<update id="writeAppBankReconciliationDetail">
+		update app_bank_reconciliation_detail set bank_reconciliation_detail_id = #{bankReconciliationDetailId},
+		bank_reconciliation_id = #{bankReconciliationId},
+		date = #{date},
+		reference_no = #{referenceNo},
+		note = #{note},
+		debit_amount = #{debitAmount},
+		credit_amount = #{creditAmount},
+		is_selected = #{isSelected} where bank_reconciliation_detail_id = #{bankReconciliationDetailId};
+	</update>
+
+</mapper>

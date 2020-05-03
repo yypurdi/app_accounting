@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppRecurringJournalMapper">			
+	
+	<select id="countAppRecurringJournalSearch">
+		select count(*) from app_recurring_journal
+		<trim prefix="where" prefixOverrides="and">
+			<if test="recurringJournalId!=null">
+				and recurring_journal_id like #{recurringJournalId}
+			</if>
+			<if test="transactionName!=null">
+				and transaction_name like #{transactionName}
+			</if>
+			<if test="frequency!=null">
+				and frequency like #{frequency}
+			</if>
+			<if test="reference!=null">
+				and reference like #{reference}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="note!=null">
+				and note like #{note}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppRecurringJournal">
+		select * from app_recurring_journal  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="recurringJournalId!=null">
+				recurring_journal_id like #{recurringJournalId}
+			</if>
+			<if test="transactionName!=null">
+				transaction_name like #{transactionName}
+			</if>
+			<if test="frequency!=null">
+				frequency like #{frequency}
+			</if>
+			<if test="reference!=null">
+				reference like #{reference}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="note!=null">
+				note like #{note}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

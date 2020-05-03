@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appBankReconciliationDetail-tab" data-toggle="tab" href="#appBankReconciliationDetail" role="tab" aria-controls="appBankReconciliationDetail" aria-selected="true"><h4><%=resource.AppBankReconciliationDetail.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.BankReconciliationId.label%></td>
+                        <td><%=record.bank_reconciliation_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.AccountNo.label%></td>
+                        <td><%=record.account_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.CurrentAccountDate.label%></td>
+                        <td><%=dateFormat(record.current_account_date,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.CurrentAccountBalance.label%></td>
+                        <td><%=record.current_account_balance%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppBankReconciliation?bankReconciliationId=<%=record.bank_reconciliation_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppBankReconciliation?bankReconciliationId=<%=record.bank_reconciliation_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appBankReconciliationDetail" role="tabpanel" aria-labelledby="appBankReconciliationDetail-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppBankReconciliationDetail.BankReconciliationDetailId.header%></th>
+                    <th><%=resource.AppBankReconciliationDetail.BankReconciliationId.header%></th>
+                    <th><%=resource.AppBankReconciliationDetail.Date.header%></th>
+                    <th><%=resource.AppBankReconciliationDetail.ReferenceNo.header%></th>
+                    <th><%=resource.AppBankReconciliationDetail.Note.header%></th>
+                    <th><%=resource.AppBankReconciliationDetail.DebitAmount.header%></th>
+                    <th><%=resource.AppBankReconciliationDetail.CreditAmount.header%></th>
+                    <th><%=resource.AppBankReconciliationDetail.IsSelected.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appBankReconciliationDetail){ let rec = record.appBankReconciliationDetail[i] %>
+                <tr>
+                    <td><a><%=rec.bank_reconciliation_detail_id%></a></td>
+                    <td><a><%=rec.bank_reconciliation_id%></a></td>
+                    <td><a><%=dateFormat(rec.date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.reference_no%></a></td>
+                    <td><a><%=rec.note%></a></td>
+                    <td><a><%=rec.debit_amount%></a></td>
+                    <td><a><%=rec.credit_amount%></a></td>
+                    <td><a><%=rec.is_selected%></a></td>
+                    
+                    <td><a href="/readAppBankReconciliationDetail?bankReconciliationDetailId=<%=rec.bank_reconciliation_detail_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppBankReconciliationDetail?bankReconciliationDetailId=<%=rec.bank_reconciliation_detail_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppBankReconciliationDetail?bankReconciliationDetailId=<%=rec.bank_reconciliation_detail_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppBankReconciliationDetail">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

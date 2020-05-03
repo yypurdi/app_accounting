@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppCurrencyRevaluationMapper">			
+	
+	<select id="countAppCurrencyRevaluationSearch">
+		select count(*) from app_currency_revaluation
+		<trim prefix="where" prefixOverrides="and">
+			<if test="currencyRevaluationId!=null">
+				and currency_revaluation_id like #{currencyRevaluationId}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="currencyId!=null">
+				and currency_id like #{currencyId}
+			</if>
+			<if test="exchangeRate!=null">
+				and exchange_rate like #{exchangeRate}
+			</if>
+			<if test="isActivateAccountFilterType!=null">
+				and is_activate_account_filter_type like #{isActivateAccountFilterType}
+			</if>
+			<if test="isActivateAccountCodeFilter!=null">
+				and is_activate_account_code_filter like #{isActivateAccountCodeFilter}
+			</if>
+			<if test="isRecalculateAccountEndBalance!=null">
+				and is_recalculate_account_end_balance like #{isRecalculateAccountEndBalance}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppCurrencyRevaluation">
+		select * from app_currency_revaluation  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="currencyRevaluationId!=null">
+				currency_revaluation_id like #{currencyRevaluationId}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="currencyId!=null">
+				currency_id like #{currencyId}
+			</if>
+			<if test="exchangeRate!=null">
+				exchange_rate like #{exchangeRate}
+			</if>
+			<if test="isActivateAccountFilterType!=null">
+				is_activate_account_filter_type like #{isActivateAccountFilterType}
+			</if>
+			<if test="isActivateAccountCodeFilter!=null">
+				is_activate_account_code_filter like #{isActivateAccountCodeFilter}
+			</if>
+			<if test="isRecalculateAccountEndBalance!=null">
+				is_recalculate_account_end_balance like #{isRecalculateAccountEndBalance}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

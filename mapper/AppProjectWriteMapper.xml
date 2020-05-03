@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppProjectMapper">			
+	
+	<update id="writeAppProject">
+		update app_project set project_id = #{projectId},
+		name = #{name},
+		project_manager = #{projectManager},
+		details = #{details},
+		status = #{status},
+		customer_id = #{customerId},
+		is_job_order = #{isJobOrder},
+		is_active = #{isActive},
+		job_order_no = #{jobOrderNo},
+		is_use_phase = #{isUsePhase},
+		order_date = #{orderDate},
+		delivery_date = #{deliveryDate},
+		contact_person = #{contactPerson},
+		percentage_finish = #{percentageFinish},
+		estimation_cost_budget = #{estimationCostBudget},
+		estimation_income_budget = #{estimationIncomeBudget} where project_id = #{projectId};
+	</update>
+
+</mapper>

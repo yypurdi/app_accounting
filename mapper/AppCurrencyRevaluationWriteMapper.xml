@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppCurrencyRevaluationMapper">			
+	
+	<update id="writeAppCurrencyRevaluation">
+		update app_currency_revaluation set currency_revaluation_id = #{currencyRevaluationId},
+		date = #{date},
+		currency_id = #{currencyId},
+		exchange_rate = #{exchangeRate},
+		is_activate_account_filter_type = #{isActivateAccountFilterType},
+		is_activate_account_code_filter = #{isActivateAccountCodeFilter},
+		is_recalculate_account_end_balance = #{isRecalculateAccountEndBalance} where currency_revaluation_id = #{currencyRevaluationId};
+	</update>
+
+</mapper>

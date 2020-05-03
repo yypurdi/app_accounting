@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appControlAccount-tab" data-toggle="tab" href="#appControlAccount" role="tab" aria-controls="appControlAccount" aria-selected="true"><h4><%=resource.AppControlAccount.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appGeneralJournalItems-tab" data-toggle="tab" href="#appGeneralJournalItems" role="tab" aria-controls="appGeneralJournalItems" aria-selected="true"><h4><%=resource.AppGeneralJournalItems.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appGeneralLedgerDetail-tab" data-toggle="tab" href="#appGeneralLedgerDetail" role="tab" aria-controls="appGeneralLedgerDetail" aria-selected="true"><h4><%=resource.AppGeneralLedgerDetail.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appOpeningBalance-tab" data-toggle="tab" href="#appOpeningBalance" role="tab" aria-controls="appOpeningBalance" aria-selected="true"><h4><%=resource.AppOpeningBalance.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appRecurringJournalItems-tab" data-toggle="tab" href="#appRecurringJournalItems" role="tab" aria-controls="appRecurringJournalItems" aria-selected="true"><h4><%=resource.AppRecurringJournalItems.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appRptBalanceSheet-tab" data-toggle="tab" href="#appRptBalanceSheet" role="tab" aria-controls="appRptBalanceSheet" aria-selected="true"><h4><%=resource.AppRptBalanceSheet.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appRptCashFlow-tab" data-toggle="tab" href="#appRptCashFlow" role="tab" aria-controls="appRptCashFlow" aria-selected="true"><h4><%=resource.AppRptCashFlow.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appSummaryGl-tab" data-toggle="tab" href="#appSummaryGl" role="tab" aria-controls="appSummaryGl" aria-selected="true"><h4><%=resource.AppSummaryGl.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.ChartOfAccountId.label%></td>
+                        <td><%=record.chart_of_account_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.AccountSubClassId.label%></td>
+                        <td><%=record.account_sub_class_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.AccountNo.label%></td>
+                        <td><%=record.account_no%></td>						
+                    </tr><tr>
+                        <td><%=resource.AccountName.label%></td>
+                        <td><%=record.account_name%></td>						
+                    </tr><tr>
+                        <td><%=resource.IsCashOrBank.label%></td>
+                        <td><%=record.is_cash_or_bank%></td>						
+                    </tr><tr>
+                        <td><%=resource.IsNotActive.label%></td>
+                        <td><%=record.is_not_active%></td>						
+                    </tr><tr>
+                        <td><%=resource.CurrencyId.label%></td>
+                        <td><%=record.currency_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.DepartmentId.label%></td>
+                        <td><%=record.department_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.NormalBalance.label%></td>
+                        <td><%=record.normal_balance%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppChartOfAccount?chartOfAccountId=<%=record.chart_of_account_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppChartOfAccount?chartOfAccountId=<%=record.chart_of_account_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appControlAccount" role="tabpanel" aria-labelledby="appControlAccount-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppControlAccount.ControlAccountId.header%></th>
+                    <th><%=resource.AppControlAccount.ControlAccountName.header%></th>
+                    <th><%=resource.AppControlAccount.ControlAccountDesc.header%></th>
+                    <th><%=resource.AppControlAccount.AccountNo.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appControlAccount){ let rec = record.appControlAccount[i] %>
+                <tr>
+                    <td><a><%=rec.control_account_id%></a></td>
+                    <td><a><%=rec.control_account_name%></a></td>
+                    <td><a><%=rec.control_account_desc%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    
+                    <td><a href="/readAppControlAccount?controlAccountId=<%=rec.control_account_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppControlAccount?controlAccountId=<%=rec.control_account_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppControlAccount?controlAccountId=<%=rec.control_account_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppControlAccount">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appGeneralJournalItems" role="tabpanel" aria-labelledby="appGeneralJournalItems-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppGeneralJournalItems.GeneralJournalId.header%></th>
+                    <th><%=resource.AppGeneralJournalItems.AccountNo.header%></th>
+                    <th><%=resource.AppGeneralJournalItems.DebitAmount.header%></th>
+                    <th><%=resource.AppGeneralJournalItems.CreditAmount.header%></th>
+                    <th><%=resource.AppGeneralJournalItems.JobOrderNo.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appGeneralJournalItems){ let rec = record.appGeneralJournalItems[i] %>
+                <tr>
+                    <td><a><%=rec.general_journal_id%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    <td><a><%=rec.debit_amount%></a></td>
+                    <td><a><%=rec.credit_amount%></a></td>
+                    <td><a><%=rec.job_order_no%></a></td>
+                    
+                    <td><a href="/readAppGeneralJournalItems?generalJournalId=<%=rec.general_journal_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppGeneralJournalItems?generalJournalId=<%=rec.general_journal_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppGeneralJournalItems?generalJournalId=<%=rec.general_journal_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppGeneralJournalItems">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appGeneralLedgerDetail" role="tabpanel" aria-labelledby="appGeneralLedgerDetail-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppGeneralLedgerDetail.GeneralLedgerDetailId.header%></th>
+                    <th><%=resource.AppGeneralLedgerDetail.AccountNo.header%></th>
+                    <th><%=resource.AppGeneralLedgerDetail.Date.header%></th>
+                    <th><%=resource.AppGeneralLedgerDetail.Note.header%></th>
+                    <th><%=resource.AppGeneralLedgerDetail.Debit.header%></th>
+                    <th><%=resource.AppGeneralLedgerDetail.Credit.header%></th>
+                    <th><%=resource.AppGeneralLedgerDetail.Balance.header%></th>
+                    <th><%=resource.AppGeneralLedgerDetail.ReferenceNo.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appGeneralLedgerDetail){ let rec = record.appGeneralLedgerDetail[i] %>
+                <tr>
+                    <td><a><%=rec.general_ledger_detail_id%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    <td><a><%=dateFormat(rec.date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.note%></a></td>
+                    <td><a><%=rec.debit%></a></td>
+                    <td><a><%=rec.credit%></a></td>
+                    <td><a><%=rec.balance%></a></td>
+                    <td><a><%=rec.reference_no%></a></td>
+                    
+                    <td><a href="/readAppGeneralLedgerDetail?generalLedgerDetailId=<%=rec.general_ledger_detail_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppGeneralLedgerDetail?generalLedgerDetailId=<%=rec.general_ledger_detail_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppGeneralLedgerDetail?generalLedgerDetailId=<%=rec.general_ledger_detail_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppGeneralLedgerDetail">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appOpeningBalance" role="tabpanel" aria-labelledby="appOpeningBalance-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppOpeningBalance.OpeningBalanceId.header%></th>
+                    <th><%=resource.AppOpeningBalance.AccountNo.header%></th>
+                    <th><%=resource.AppOpeningBalance.BeginningBalance.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appOpeningBalance){ let rec = record.appOpeningBalance[i] %>
+                <tr>
+                    <td><a><%=rec.opening_balance_id%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    <td><a><%=rec.beginning_balance%></a></td>
+                    
+                    <td><a href="/readAppOpeningBalance?openingBalanceId=<%=rec.opening_balance_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppOpeningBalance?openingBalanceId=<%=rec.opening_balance_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppOpeningBalance?openingBalanceId=<%=rec.opening_balance_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppOpeningBalance">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appRecurringJournalItems" role="tabpanel" aria-labelledby="appRecurringJournalItems-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppRecurringJournalItems.RecurringJournalId.header%></th>
+                    <th><%=resource.AppRecurringJournalItems.AccountNo.header%></th>
+                    <th><%=resource.AppRecurringJournalItems.DebitAmount.header%></th>
+                    <th><%=resource.AppRecurringJournalItems.CreditAmount.header%></th>
+                    <th><%=resource.AppRecurringJournalItems.JobOrderNo.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appRecurringJournalItems){ let rec = record.appRecurringJournalItems[i] %>
+                <tr>
+                    <td><a><%=rec.recurring_journal_id%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    <td><a><%=rec.debit_amount%></a></td>
+                    <td><a><%=rec.credit_amount%></a></td>
+                    <td><a><%=rec.job_order_no%></a></td>
+                    
+                    <td><a href="/readAppRecurringJournalItems?recurringJournalId=<%=rec.recurring_journal_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppRecurringJournalItems?recurringJournalId=<%=rec.recurring_journal_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppRecurringJournalItems?recurringJournalId=<%=rec.recurring_journal_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppRecurringJournalItems">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appRptBalanceSheet" role="tabpanel" aria-labelledby="appRptBalanceSheet-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppRptBalanceSheet.RptBalanceSheetId.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.RptBalanceSheetName.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.DepartmentFrom.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.DepartmentTo.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.CurrencyId.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.AccountClassId.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.AccountSubClassId.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.AccountNo.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.EndingBalanceDebit.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.EndingBalanceCredit.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.ComparativeEndingBalanceDebit.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.ComparativeEndingBalanceCredit.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.DateCreated.header%></th>
+                    <th><%=resource.AppRptBalanceSheet.CreatedBy.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appRptBalanceSheet){ let rec = record.appRptBalanceSheet[i] %>
+                <tr>
+                    <td><a><%=rec.rpt_balance_sheet_id%></a></td>
+                    <td><a><%=rec.rpt_balance_sheet_name%></a></td>
+                    <td><a><%=rec.department_from%></a></td>
+                    <td><a><%=rec.department_to%></a></td>
+                    <td><a><%=rec.currency_id%></a></td>
+                    <td><a><%=rec.account_class_id%></a></td>
+                    <td><a><%=rec.account_sub_class_id%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    <td><a><%=rec.ending_balance_debit%></a></td>
+                    <td><a><%=rec.ending_balance_credit%></a></td>
+                    <td><a><%=rec.comparative_ending_balance_debit%></a></td>
+                    <td><a><%=rec.comparative_ending_balance_credit%></a></td>
+                    <td><a><%=dateFormat(rec.date_created,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.created_by%></a></td>
+                    
+                    <td><a href="/readAppRptBalanceSheet?rptBalanceSheetId=<%=rec.rpt_balance_sheet_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppRptBalanceSheet?rptBalanceSheetId=<%=rec.rpt_balance_sheet_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppRptBalanceSheet?rptBalanceSheetId=<%=rec.rpt_balance_sheet_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppRptBalanceSheet">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appRptCashFlow" role="tabpanel" aria-labelledby="appRptCashFlow-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppRptCashFlow.RptCashFlowId.header%></th>
+                    <th><%=resource.AppRptCashFlow.RptCashFlowName.header%></th>
+                    <th><%=resource.AppRptCashFlow.DateFrom.header%></th>
+                    <th><%=resource.AppRptCashFlow.DateUntil.header%></th>
+                    <th><%=resource.AppRptCashFlow.AccountNo.header%></th>
+                    <th><%=resource.AppRptCashFlow.EndingBalanceDebit.header%></th>
+                    <th><%=resource.AppRptCashFlow.EndingBalanceCredit.header%></th>
+                    <th><%=resource.AppRptCashFlow.DateCreated.header%></th>
+                    <th><%=resource.AppRptCashFlow.CreatedBy.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appRptCashFlow){ let rec = record.appRptCashFlow[i] %>
+                <tr>
+                    <td><a><%=rec.rpt_cash_flow_id%></a></td>
+                    <td><a><%=rec.rpt_cash_flow_name%></a></td>
+                    <td><a><%=dateFormat(rec.date_from,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=dateFormat(rec.date_until,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    <td><a><%=rec.ending_balance_debit%></a></td>
+                    <td><a><%=rec.ending_balance_credit%></a></td>
+                    <td><a><%=dateFormat(rec.date_created,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.created_by%></a></td>
+                    
+                    <td><a href="/readAppRptCashFlow?rptCashFlowId=<%=rec.rpt_cash_flow_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppRptCashFlow?rptCashFlowId=<%=rec.rpt_cash_flow_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppRptCashFlow?rptCashFlowId=<%=rec.rpt_cash_flow_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppRptCashFlow">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appSummaryGl" role="tabpanel" aria-labelledby="appSummaryGl-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppSummaryGl.GeneralLedgerId.header%></th>
+                    <th><%=resource.AppSummaryGl.AccountNo.header%></th>
+                    <th><%=resource.AppSummaryGl.Date.header%></th>
+                    <th><%=resource.AppSummaryGl.BeginningBalanceDebit.header%></th>
+                    <th><%=resource.AppSummaryGl.BeginningBalanceCredit.header%></th>
+                    <th><%=resource.AppSummaryGl.DebitMutation.header%></th>
+                    <th><%=resource.AppSummaryGl.CreditMutation.header%></th>
+                    <th><%=resource.AppSummaryGl.EndingBalanceDebit.header%></th>
+                    <th><%=resource.AppSummaryGl.EndingBalanceCredit.header%></th>
+                    <th><%=resource.AppSummaryGl.BeginningBalance.header%></th>
+                    <th><%=resource.AppSummaryGl.DeltaFromBegToEnd.header%></th>
+                    <th><%=resource.AppSummaryGl.EndingBalance.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appSummaryGl){ let rec = record.appSummaryGl[i] %>
+                <tr>
+                    <td><a><%=rec.general_ledger_id%></a></td>
+                    <td><a><%=rec.account_no%></a></td>
+                    <td><a><%=dateFormat(rec.date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.beginning_balance_debit%></a></td>
+                    <td><a><%=rec.beginning_balance_credit%></a></td>
+                    <td><a><%=rec.debit_mutation%></a></td>
+                    <td><a><%=rec.credit_mutation%></a></td>
+                    <td><a><%=rec.ending_balance_debit%></a></td>
+                    <td><a><%=rec.ending_balance_credit%></a></td>
+                    <td><a><%=rec.beginning_balance%></a></td>
+                    <td><a><%=rec.delta_from_beg_to_end%></a></td>
+                    <td><a><%=rec.ending_balance%></a></td>
+                    
+                    <td><a href="/readAppSummaryGl?generalLedgerId=<%=rec.general_ledger_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppSummaryGl?generalLedgerId=<%=rec.general_ledger_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppSummaryGl?generalLedgerId=<%=rec.general_ledger_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppSummaryGl">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

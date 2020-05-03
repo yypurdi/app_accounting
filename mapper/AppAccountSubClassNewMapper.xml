@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppAccountSubClassMapper">			
+	
+	<insert id="newAppAccountSubClass">
+		insert into app_account_sub_class(account_sub_class_id,account_sub_class_name,note,account_class_id) 
+		values (#{accountSubClassId},#{accountSubClassName},#{note},#{accountClassId});
+	</insert>
+
+</mapper>

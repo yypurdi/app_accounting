@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppMonthEndPeriodMapper">			
+	
+	<select id="countAppMonthEndPeriodSearch">
+		select count(*) from app_month_end_period
+		<trim prefix="where" prefixOverrides="and">
+			<if test="monthEndPeriodId!=null">
+				and month_end_period_id like #{monthEndPeriodId}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="isCalculateAndCreateDeprJournal!=null">
+				and is_calculate_and_create_depr_journal like #{isCalculateAndCreateDeprJournal}
+			</if>
+			<if test="isRecalculateAccountBalance!=null">
+				and is_recalculate_account_balance like #{isRecalculateAccountBalance}
+			</if>
+			<if test="isRecalculateInventoryAccountBalance!=null">
+				and is_recalculate_inventory_account_balance like #{isRecalculateInventoryAccountBalance}
+			</if>
+			<if test="isRevaluationForeignCurrency!=null">
+				and is_revaluation_foreign_currency like #{isRevaluationForeignCurrency}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppMonthEndPeriod">
+		select * from app_month_end_period  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="monthEndPeriodId!=null">
+				month_end_period_id like #{monthEndPeriodId}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="isCalculateAndCreateDeprJournal!=null">
+				is_calculate_and_create_depr_journal like #{isCalculateAndCreateDeprJournal}
+			</if>
+			<if test="isRecalculateAccountBalance!=null">
+				is_recalculate_account_balance like #{isRecalculateAccountBalance}
+			</if>
+			<if test="isRecalculateInventoryAccountBalance!=null">
+				is_recalculate_inventory_account_balance like #{isRecalculateInventoryAccountBalance}
+			</if>
+			<if test="isRevaluationForeignCurrency!=null">
+				is_revaluation_foreign_currency like #{isRevaluationForeignCurrency}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

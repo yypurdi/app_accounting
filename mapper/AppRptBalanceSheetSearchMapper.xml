@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppRptBalanceSheetMapper">			
+	
+	<select id="countAppRptBalanceSheetSearch">
+		select count(*) from app_rpt_balance_sheet
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rptBalanceSheetId!=null">
+				and rpt_balance_sheet_id like #{rptBalanceSheetId}
+			</if>
+			<if test="rptBalanceSheetName!=null">
+				and rpt_balance_sheet_name like #{rptBalanceSheetName}
+			</if>
+			<if test="departmentFrom!=null">
+				and department_from like #{departmentFrom}
+			</if>
+			<if test="departmentTo!=null">
+				and department_to like #{departmentTo}
+			</if>
+			<if test="currencyId!=null">
+				and currency_id like #{currencyId}
+			</if>
+			<if test="accountClassId!=null">
+				and account_class_id like #{accountClassId}
+			</if>
+			<if test="accountSubClassId!=null">
+				and account_sub_class_id like #{accountSubClassId}
+			</if>
+			<if test="accountNo!=null">
+				and account_no like #{accountNo}
+			</if>
+			<if test="endingBalanceDebit!=null">
+				and ending_balance_debit like #{endingBalanceDebit}
+			</if>
+			<if test="endingBalanceCredit!=null">
+				and ending_balance_credit like #{endingBalanceCredit}
+			</if>
+			<if test="comparativeEndingBalanceDebit!=null">
+				and comparative_ending_balance_debit like #{comparativeEndingBalanceDebit}
+			</if>
+			<if test="comparativeEndingBalanceCredit!=null">
+				and comparative_ending_balance_credit like #{comparativeEndingBalanceCredit}
+			</if>
+			<if test="dateCreated!=null">
+				and date_created like #{dateCreated}
+			</if>
+			<if test="createdBy!=null">
+				and created_by like #{createdBy}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppRptBalanceSheet">
+		select * from app_rpt_balance_sheet  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="rptBalanceSheetId!=null">
+				rpt_balance_sheet_id like #{rptBalanceSheetId}
+			</if>
+			<if test="rptBalanceSheetName!=null">
+				rpt_balance_sheet_name like #{rptBalanceSheetName}
+			</if>
+			<if test="departmentFrom!=null">
+				department_from like #{departmentFrom}
+			</if>
+			<if test="departmentTo!=null">
+				department_to like #{departmentTo}
+			</if>
+			<if test="currencyId!=null">
+				currency_id like #{currencyId}
+			</if>
+			<if test="accountClassId!=null">
+				account_class_id like #{accountClassId}
+			</if>
+			<if test="accountSubClassId!=null">
+				account_sub_class_id like #{accountSubClassId}
+			</if>
+			<if test="accountNo!=null">
+				account_no like #{accountNo}
+			</if>
+			<if test="endingBalanceDebit!=null">
+				ending_balance_debit like #{endingBalanceDebit}
+			</if>
+			<if test="endingBalanceCredit!=null">
+				ending_balance_credit like #{endingBalanceCredit}
+			</if>
+			<if test="comparativeEndingBalanceDebit!=null">
+				comparative_ending_balance_debit like #{comparativeEndingBalanceDebit}
+			</if>
+			<if test="comparativeEndingBalanceCredit!=null">
+				comparative_ending_balance_credit like #{comparativeEndingBalanceCredit}
+			</if>
+			<if test="dateCreated!=null">
+				date_created like #{dateCreated}
+			</if>
+			<if test="createdBy!=null">
+				created_by like #{createdBy}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

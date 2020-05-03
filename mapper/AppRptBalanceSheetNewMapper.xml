@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppRptBalanceSheetMapper">			
+	
+	<insert id="newAppRptBalanceSheet">
+		insert into app_rpt_balance_sheet(rpt_balance_sheet_id,rpt_balance_sheet_name,department_from,department_to,currency_id,account_class_id,account_sub_class_id,account_no,ending_balance_debit,ending_balance_credit,comparative_ending_balance_debit,comparative_ending_balance_credit,date_created,created_by) 
+		values (#{rptBalanceSheetId},#{rptBalanceSheetName},#{departmentFrom},#{departmentTo},#{currencyId},#{accountClassId},#{accountSubClassId},#{accountNo},#{endingBalanceDebit},#{endingBalanceCredit},#{comparativeEndingBalanceDebit},#{comparativeEndingBalanceCredit},#{dateCreated},#{createdBy});
+	</insert>
+
+</mapper>

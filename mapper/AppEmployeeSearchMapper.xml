@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppEmployeeMapper">			
+	
+	<select id="countAppEmployeeSearch">
+		select count(*) from app_employee
+		<trim prefix="where" prefixOverrides="and">
+			<if test="employeeId!=null">
+				and employee_id like #{employeeId}
+			</if>
+			<if test="employeeNumber!=null">
+				and employee_number like #{employeeNumber}
+			</if>
+			<if test="firstname!=null">
+				and firstname like #{firstname}
+			</if>
+			<if test="middlename!=null">
+				and middlename like #{middlename}
+			</if>
+			<if test="lastname!=null">
+				and lastname like #{lastname}
+			</if>
+			<if test="nationality!=null">
+				and nationality like #{nationality}
+			</if>
+			<if test="dob!=null">
+				and dob like #{dob}
+			</if>
+			<if test="gender!=null">
+				and gender like #{gender}
+			</if>
+			<if test="maritalStatus!=null">
+				and marital_status like #{maritalStatus}
+			</if>
+			<if test="ethnicity!=null">
+				and ethnicity like #{ethnicity}
+			</if>
+			<if test="ktpNumber!=null">
+				and ktp_number like #{ktpNumber}
+			</if>
+			<if test="passportNumber!=null">
+				and passport_number like #{passportNumber}
+			</if>
+			<if test="drivingLicenceNo!=null">
+				and driving_licence_no like #{drivingLicenceNo}
+			</if>
+			<if test="addressLine1!=null">
+				and address_line1 like #{addressLine1}
+			</if>
+			<if test="addressLine2!=null">
+				and address_line2 like #{addressLine2}
+			</if>
+			<if test="cityId!=null">
+				and city_id like #{cityId}
+			</if>
+			<if test="countryId!=null">
+				and country_id like #{countryId}
+			</if>
+			<if test="provinceId!=null">
+				and province_id like #{provinceId}
+			</if>
+			<if test="postalCode!=null">
+				and postal_code like #{postalCode}
+			</if>
+			<if test="homePhone!=null">
+				and home_phone like #{homePhone}
+			</if>
+			<if test="mobilePhone!=null">
+				and mobile_phone like #{mobilePhone}
+			</if>
+			<if test="workEmail!=null">
+				and work_email like #{workEmail}
+			</if>
+			<if test="privateEmail!=null">
+				and private_email like #{privateEmail}
+			</if>
+			<if test="joinedDate!=null">
+				and joined_date like #{joinedDate}
+			</if>
+			<if test="confirmationDate!=null">
+				and confirmation_date like #{confirmationDate}
+			</if>
+			<if test="terminationDate!=null">
+				and termination_date like #{terminationDate}
+			</if>
+			<if test="supervisorName!=null">
+				and supervisor_name like #{supervisorName}
+			</if>
+			<if test="indirectSupervisorName!=null">
+				and indirect_supervisor_name like #{indirectSupervisorName}
+			</if>
+			<if test="firstLevelApprover!=null">
+				and first_level_approver like #{firstLevelApprover}
+			</if>
+			<if test="secondLevelApprover!=null">
+				and second_level_approver like #{secondLevelApprover}
+			</if>
+			<if test="thirdLevelApprover!=null">
+				and third_level_approver like #{thirdLevelApprover}
+			</if>
+			<if test="notes!=null">
+				and notes like #{notes}
+			</if>
+			<if test="departmentId!=null">
+				and department_id like #{departmentId}
+			</if>
+			<if test="workStationId!=null">
+				and work_station_id like #{workStationId}
+			</if>
+			<if test="jobTitleId!=null">
+				and job_title_id like #{jobTitleId}
+			</if>
+			<if test="payGradeId!=null">
+				and pay_grade_id like #{payGradeId}
+			</if>
+			<if test="employmentStatusId!=null">
+				and employment_status_id like #{employmentStatusId}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppEmployee">
+		select * from app_employee  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="employeeId!=null">
+				employee_id like #{employeeId}
+			</if>
+			<if test="employeeNumber!=null">
+				employee_number like #{employeeNumber}
+			</if>
+			<if test="firstname!=null">
+				firstname like #{firstname}
+			</if>
+			<if test="middlename!=null">
+				middlename like #{middlename}
+			</if>
+			<if test="lastname!=null">
+				lastname like #{lastname}
+			</if>
+			<if test="nationality!=null">
+				nationality like #{nationality}
+			</if>
+			<if test="dob!=null">
+				dob like #{dob}
+			</if>
+			<if test="gender!=null">
+				gender like #{gender}
+			</if>
+			<if test="maritalStatus!=null">
+				marital_status like #{maritalStatus}
+			</if>
+			<if test="ethnicity!=null">
+				ethnicity like #{ethnicity}
+			</if>
+			<if test="ktpNumber!=null">
+				ktp_number like #{ktpNumber}
+			</if>
+			<if test="passportNumber!=null">
+				passport_number like #{passportNumber}
+			</if>
+			<if test="drivingLicenceNo!=null">
+				driving_licence_no like #{drivingLicenceNo}
+			</if>
+			<if test="addressLine1!=null">
+				address_line1 like #{addressLine1}
+			</if>
+			<if test="addressLine2!=null">
+				address_line2 like #{addressLine2}
+			</if>
+			<if test="cityId!=null">
+				city_id like #{cityId}
+			</if>
+			<if test="countryId!=null">
+				country_id like #{countryId}
+			</if>
+			<if test="provinceId!=null">
+				province_id like #{provinceId}
+			</if>
+			<if test="postalCode!=null">
+				postal_code like #{postalCode}
+			</if>
+			<if test="homePhone!=null">
+				home_phone like #{homePhone}
+			</if>
+			<if test="mobilePhone!=null">
+				mobile_phone like #{mobilePhone}
+			</if>
+			<if test="workEmail!=null">
+				work_email like #{workEmail}
+			</if>
+			<if test="privateEmail!=null">
+				private_email like #{privateEmail}
+			</if>
+			<if test="joinedDate!=null">
+				joined_date like #{joinedDate}
+			</if>
+			<if test="confirmationDate!=null">
+				confirmation_date like #{confirmationDate}
+			</if>
+			<if test="terminationDate!=null">
+				termination_date like #{terminationDate}
+			</if>
+			<if test="supervisorName!=null">
+				supervisor_name like #{supervisorName}
+			</if>
+			<if test="indirectSupervisorName!=null">
+				indirect_supervisor_name like #{indirectSupervisorName}
+			</if>
+			<if test="firstLevelApprover!=null">
+				first_level_approver like #{firstLevelApprover}
+			</if>
+			<if test="secondLevelApprover!=null">
+				second_level_approver like #{secondLevelApprover}
+			</if>
+			<if test="thirdLevelApprover!=null">
+				third_level_approver like #{thirdLevelApprover}
+			</if>
+			<if test="notes!=null">
+				notes like #{notes}
+			</if>
+			<if test="departmentId!=null">
+				department_id like #{departmentId}
+			</if>
+			<if test="workStationId!=null">
+				work_station_id like #{workStationId}
+			</if>
+			<if test="jobTitleId!=null">
+				job_title_id like #{jobTitleId}
+			</if>
+			<if test="payGradeId!=null">
+				pay_grade_id like #{payGradeId}
+			</if>
+			<if test="employmentStatusId!=null">
+				employment_status_id like #{employmentStatusId}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

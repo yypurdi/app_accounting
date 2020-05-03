@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppProductMapper">			
+	
+	<select id="readAppProduct">
+		select * from app_product where product_id = #{productId};
+	</select>
+
+	<select id="appInventoryOpenBalance_KDUYA">         
+		select * from app_inventory_open_balance where product_id = #{productId};
+	</select>
+  
+	<select id="appProductAcctCode_OG255">         
+		select * from app_product_acct_code where product_id = #{productId};
+	</select>
+  
+	<select id="appProductImage_RM8SC">         
+		select * from app_product_image where product_id = #{productId};
+	</select>
+  
+	<select id="appProductSellingPrice_Y2QNG">         
+		select * from app_product_selling_price where product_id = #{productId};
+	</select>
+  
+	<select id="appProductStockInfo_RQZVC">         
+		select * from app_product_stock_info where product_id = #{productId};
+	</select>
+  
+	<select id="appStockCard_EF4N1">         
+		select * from app_stock_card where product_id = #{productId};
+	</select>
+  
+</mapper>

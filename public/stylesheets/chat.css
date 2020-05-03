@@ -1,0 +1,264 @@
+/************** NEW CSS ***************/
+.popup-box {
+    background: #643200;
+    border: 1px solid #fff;
+    bottom: 10px;
+    display: none;
+    height: 500px;
+    position: fixed;
+    right: 10px;
+    width: 270px;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 5px;
+}
+.popup-box-on {
+    display: block !important;
+}
+.popup-box .popup-head {
+    width: 100%;
+    border-radius: 5px;
+    color: #fff;
+}
+.popup-head .avatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 5%;
+    margin-top: 2px;
+    margin-left: 5px;
+}  
+.popup-box .popup-content {
+    top: 50px;
+    position: absolute;
+    height: 400px;
+    width: 100%;
+    background: #845220;
+    overflow: auto;
+}
+.popup-box .popup-content-contacts {
+    top: 50px;
+    position: absolute;
+    height: 400px;
+    width: 100%;
+    background: #845220;
+    overflow: auto;
+}
+.popup-box .popup-content-messages {
+    top: 50px;
+    position: absolute;
+    height: 365px;
+    width: 100%;
+    background: #845220;
+    overflow: auto;
+}
+.popup-box .popup-footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+.popup-content-contacts .form-control {
+    width: 100%;
+    height: 40px;
+    background: white url('../images/icons/search-line-icon.png') no-repeat 3px;
+    padding-left: 24px;
+    margin-top: 1px;
+}
+.popup-footer textarea {
+    overflow: auto;
+    height: 35px;
+    width: inherit;
+}
+.popup-footer .btn-footer {
+    padding-top: 5px;
+}
+.popup-footer .glyphicon {
+    margin-right: 0px;
+}
+.bg_none {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+}
+.bg_none i {
+    border: 1px solid #fff;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 17px;
+    height: 33px;
+    line-height: 30px;
+    width: 33px;
+}
+.bg_none:hover i {
+    border: 1px solid #000;
+    border-radius: 25px;
+    color: #000;
+    font-size: 17px;
+    height: 33px;
+    line-height: 30px;
+    width: 33px;
+}
+.login-form {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-family: Tahoma, Geneva, sans-serif;
+    background: #845220;
+}
+.login-form h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+.login-form input[type="password"],
+.login-form input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    margin-bottom: 15px;
+    box-sizing:border-box;
+}
+.login-form button[type="button"] {
+    width: 49%;
+    background-color: #643200;
+    color: #fff;
+    margin-bottom: 10px;
+    border: 0px;
+    display: inline-block;
+}
+.popup-content table tr {
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid #777;
+    color: #fff;
+}
+.popup-content-contacts table tr {
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #777;
+    color: #fff;
+}
+.popup-content table tr td .avatar {
+    vertical-align: middle;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.popup-content-contacts table tr td .avatar {
+    vertical-align: middle;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.card {
+    width: 100%;
+    padding-left: 10px;
+    font-family: initial;
+}
+.title {
+    padding-top:5px;
+    margin-bottom: 3px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.name {
+    padding-top:5px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.status {    
+    margin-bottom: 0px;
+    font-size: 12px;
+}
+.white {
+    border: 1px solid white;
+}  
+.gray {
+    border: 1px solid gray;    
+}
+.green {
+    border: 3px solid #02c402;
+}
+.yellow {
+    border: 3px solid yellow;
+}
+.red {
+    border: 3px solid red;
+}
+
+/* Container around content */
+.container {
+    padding: 5px 15px;
+    position: relative;
+    background-color: inherit;
+    width: 100%;
+}
+
+/* Place the container to the left */
+.left {
+    left: 0;
+    text-align: left;
+    font-size: 12px;
+    float: left;
+}
+
+/* Place the container to the right */
+.right {
+    right: 0;
+    text-align: left;
+    font-size: 12px;
+    float:right;    
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 10px;
+    width: 0;
+    z-index: 1;
+    left: 7px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 10px;
+    width: 0;
+    z-index: 1;
+    right: 7px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+    text-align: right;
+}
+
+/* The actual content */
+.content {
+    padding: 5px 5px 5px 5px;
+    background-color: white;
+    position: relative;
+    border-radius: 3px;
+    width: fit-content;
+    width: -moz-fit-content;
+}
+.content p {
+    margin: 0 11px 3px;
+}
+.dt {
+    font-size: 10px;
+    color:#555;
+    text-align: right;
+}

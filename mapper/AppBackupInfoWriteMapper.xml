@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppBackupInfoMapper">			
+	
+	<update id="writeAppBackupInfo">
+		update app_backup_info set backup_info_id = #{backupInfoId},
+		backup_folder = #{backupFolder},
+		archive_file_name = #{archiveFileName},
+		backup_date = #{backupDate},
+		backup_by = #{backupBy} where backup_info_id = #{backupInfoId};
+	</update>
+
+</mapper>

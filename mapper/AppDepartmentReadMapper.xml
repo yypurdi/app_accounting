@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppDepartmentMapper">			
+	
+	<select id="readAppDepartment">
+		select * from app_department where department_id = #{departmentId};
+	</select>
+
+	<select id="appBankCrFa_JNPDO">         
+		select * from app_bank_cr_fa where department_id = #{departmentId};
+	</select>
+  
+	<select id="appBankWcFa_VLJP4">         
+		select * from app_bank_wc_fa where department_id = #{departmentId};
+	</select>
+  
+	<select id="appChartOfAccount_M13WS">         
+		select * from app_chart_of_account where department_id = #{departmentId};
+	</select>
+  
+	<select id="appEmployee_PBS3Q">         
+		select * from app_employee where department_id = #{departmentId};
+	</select>
+  
+	<select id="appProductCategory_UR2CA">         
+		select * from app_product_category where department_id = #{departmentId};
+	</select>
+  
+	<select id="appRecurringBankCrFa_FVIQ9">         
+		select * from app_recurring_bank_cr_fa where department_id = #{departmentId};
+	</select>
+  
+	<select id="appRecurringBankWcFa_M6GUF">         
+		select * from app_recurring_bank_wc_fa where department_id = #{departmentId};
+	</select>
+  
+	<select id="appRptBalanceSheet_JORKY">         
+		select * from app_rpt_balance_sheet where department_id = #{departmentId};
+	</select>
+  
+	<select id="appRptProfitAndLoss_OMNTB">         
+		select * from app_rpt_profit_and_loss where department_id = #{departmentId};
+	</select>
+  
+	<select id="appRptTrialBalance_V023O">         
+		select * from app_rpt_trial_balance where department_id = #{departmentId};
+	</select>
+  
+</mapper>

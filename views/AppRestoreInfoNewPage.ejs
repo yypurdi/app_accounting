@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppRestoreInfo" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.RestoreInfoId.label%></td>
+                <td><input type="text" class="form-control" name="restoreInfoId" value="<%=record.restoreInfoId%>"/></td>
+            </tr><tr>
+                <td><%=resource.ArchiveFileName.label%></td>
+                <td><input type="text" class="form-control" name="archiveFileName" value="<%=record.archiveFileName%>"/></td>
+            </tr><tr>
+                <td><%=resource.NewLocationFolder.label%></td>
+                <td><input type="text" class="form-control" name="newLocationFolder" value="<%=record.newLocationFolder%>"/></td>
+            </tr><tr>
+                <td><%=resource.NewArchiveFileName.label%></td>
+                <td><input type="text" class="form-control" name="newArchiveFileName" value="<%=record.newArchiveFileName%>"/></td>
+            </tr><tr>
+                <td><%=resource.ServerName.label%></td>
+                <td><input type="text" class="form-control" name="serverName" value="<%=record.serverName%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

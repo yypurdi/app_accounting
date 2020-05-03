@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppPayGradeMapper">			
+	
+	<insert id="newAppPayGrade">
+		insert into app_pay_grade(pay_grade_id,pay_grade_name,min_salary,max_salary,currency) 
+		values (#{payGradeId},#{payGradeName},#{minSalary},#{maxSalary},#{currency});
+	</insert>
+
+</mapper>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appMessage-tab" data-toggle="tab" href="#appMessage" role="tab" aria-controls="appMessage" aria-selected="true"><h4><%=resource.AppMessage.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.Username.label%></td>
+                        <td><%=record.username%></td>						
+                    </tr><tr>
+                        <td><%=resource.Subscription.label%></td>
+                        <td><%=record.subscription%></td>						
+                    </tr><tr>
+                        <td><%=resource.Jid.label%></td>
+                        <td><%=record.jid%></td>						
+                    </tr><tr>
+                        <td><%=resource.Nickname.label%></td>
+                        <td><%=record.nickname%></td>						
+                    </tr><tr>
+                        <td><%=resource.Joindate.label%></td>
+                        <td><%=dateFormat(record.joindate,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.Show.label%></td>
+                        <td><%=record.show%></td>						
+                    </tr><tr>
+                        <td><%=resource.Status.label%></td>
+                        <td><%=record.status%></td>						
+                    </tr><tr>
+                        <td><%=resource.Lastseen.label%></td>
+                        <td><%=dateFormat(record.lastseen,'mmm-dd-yyyy HH:MM:ss')%></td>						
+                    </tr><tr>
+                        <td><%=resource.Unread.label%></td>
+                        <td><%=record.unread%></td>						
+                    </tr><tr>
+                        <td><%=resource.Key.label%></td>
+                        <td><%=record.key%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppContact?username=<%=record.username%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppContact?username=<%=record.username%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appMessage" role="tabpanel" aria-labelledby="appMessage-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppMessage.Username.header%></th>
+                    <th><%=resource.AppMessage.Jid.header%></th>
+                    <th><%=resource.AppMessage.Msgtime.header%></th>
+                    <th><%=resource.AppMessage.Msgtype.header%></th>
+                    <th><%=resource.AppMessage.Msgsubject.header%></th>
+                    <th><%=resource.AppMessage.Msgtext.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appMessage){ let rec = record.appMessage[i] %>
+                <tr>
+                    <td><a><%=rec.username%></a></td>
+                    <td><a><%=rec.jid%></a></td>
+                    <td><a><%=dateFormat(rec.msgtime,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.msgType%></a></td>
+                    <td><a><%=rec.msgSubject%></a></td>
+                    <td><a><%=rec.msgText%></a></td>
+                    
+                    <td><a href="/readAppMessage?username=<%=rec.username%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppMessage?username=<%=rec.username%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppMessage?username=<%=rec.username%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppMessage">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

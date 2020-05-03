@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppContactMapper">			
+	
+	<select id="countAppContactSearch">
+		select count(*) from app_contact
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				and username like #{username}
+			</if>
+			<if test="subscription!=null">
+				and subscription like #{subscription}
+			</if>
+			<if test="jid!=null">
+				and jid like #{jid}
+			</if>
+			<if test="nickname!=null">
+				and nickname like #{nickname}
+			</if>
+			<if test="joindate!=null">
+				and joindate like #{joindate}
+			</if>
+			<if test="show!=null">
+				and show like #{show}
+			</if>
+			<if test="status!=null">
+				and status like #{status}
+			</if>
+			<if test="lastseen!=null">
+				and lastseen like #{lastseen}
+			</if>
+			<if test="unread!=null">
+				and unread like #{unread}
+			</if>
+			<if test="key!=null">
+				and key like #{key}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppContact">
+		select * from app_contact  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				username like #{username}
+			</if>
+			<if test="subscription!=null">
+				subscription like #{subscription}
+			</if>
+			<if test="jid!=null">
+				jid like #{jid}
+			</if>
+			<if test="nickname!=null">
+				nickname like #{nickname}
+			</if>
+			<if test="joindate!=null">
+				joindate like #{joindate}
+			</if>
+			<if test="show!=null">
+				show like #{show}
+			</if>
+			<if test="status!=null">
+				status like #{status}
+			</if>
+			<if test="lastseen!=null">
+				lastseen like #{lastseen}
+			</if>
+			<if test="unread!=null">
+				unread like #{unread}
+			</if>
+			<if test="key!=null">
+				key like #{key}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

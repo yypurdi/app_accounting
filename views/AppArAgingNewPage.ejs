@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppArAging" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.ArAgingId.label%></td>
+                <td><input type="text" class="form-control" name="arAgingId" value="<%=record.arAgingId%>"/></td>
+            </tr><tr>
+                <td><%=resource.CustomerId.label%></td>
+                <td><input type="text" class="form-control" name="customerId" value="<%=record.customerId%>"/></td>
+            </tr><tr>
+                <td><%=resource.ReferenceNo.label%></td>
+                <td><input type="text" class="form-control" name="referenceNo" value="<%=record.referenceNo%>"/></td>
+            </tr><tr>
+                <td><%=resource.Debit.label%></td>
+                <td><input type="text" class="form-control" name="debit" value="<%=record.debit%>"/></td>
+            </tr><tr>
+                <td><%=resource.Credit.label%></td>
+                <td><input type="text" class="form-control" name="credit" value="<%=record.credit%>"/></td>
+            </tr><tr>
+                <td><%=resource.ArDueDate.label%></td>
+                <td><input type="text" class="form-control" name="arDueDate" value="<%=record.arDueDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.CurrentDate.label%></td>
+                <td><input type="text" class="form-control" name="currentDate" value="<%=record.currentDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.Age.label%></td>
+                <td><input type="text" class="form-control" name="age" value="<%=record.age%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

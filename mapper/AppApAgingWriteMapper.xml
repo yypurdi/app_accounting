@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppApAgingMapper">			
+	
+	<update id="writeAppApAging">
+		update app_ap_aging set ap_aging_id = #{apAgingId},
+		vendor_id = #{vendorId},
+		reference_no = #{referenceNo},
+		debit = #{debit},
+		credit = #{credit},
+		ap_due_date = #{apDueDate},
+		current_date = #{currentDate},
+		age = #{age} where ap_aging_id = #{apAgingId};
+	</update>
+
+</mapper>

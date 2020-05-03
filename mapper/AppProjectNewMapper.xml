@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppProjectMapper">			
+	
+	<insert id="newAppProject">
+		insert into app_project(project_id,name,project_manager,details,status,customer_id,is_job_order,is_active,job_order_no,is_use_phase,order_date,delivery_date,contact_person,percentage_finish,estimation_cost_budget,estimation_income_budget) 
+		values (#{projectId},#{name},#{projectManager},#{details},#{status},#{customerId},#{isJobOrder},#{isActive},#{jobOrderNo},#{isUsePhase},#{orderDate},#{deliveryDate},#{contactPerson},#{percentageFinish},#{estimationCostBudget},#{estimationIncomeBudget});
+	</insert>
+
+</mapper>

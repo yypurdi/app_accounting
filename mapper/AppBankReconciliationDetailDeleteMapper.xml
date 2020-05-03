@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="deleteAppBankReconciliationDetailMapper">			
+	
+	<delete id="deleteAppBankReconciliationDetail">
+		delete from app_bank_reconciliation_detail where bank_reconciliation_detail_id = #{bankReconciliationDetailId};
+	</delete>
+
+</mapper>

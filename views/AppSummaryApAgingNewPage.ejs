@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/newAppSummaryApAging" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.ApAgingId.label%></td>
+                <td><input type="text" class="form-control" name="apAgingId" value="<%=record.apAgingId%>"/></td>
+            </tr><tr>
+                <td><%=resource.VendorId.label%></td>
+                <td><input type="text" class="form-control" name="vendorId" value="<%=record.vendorId%>"/></td>
+            </tr><tr>
+                <td><%=resource.CurrentDate.label%></td>
+                <td><input type="text" class="form-control" name="currentDate" value="<%=record.currentDate%>"/></td>
+            </tr><tr>
+                <td><%=resource.Day030.label%></td>
+                <td><input type="text" class="form-control" name="day030" value="<%=record.day030%>"/></td>
+            </tr><tr>
+                <td><%=resource.Day3060.label%></td>
+                <td><input type="text" class="form-control" name="day3060" value="<%=record.day3060%>"/></td>
+            </tr><tr>
+                <td><%=resource.Day6090.label%></td>
+                <td><input type="text" class="form-control" name="day6090" value="<%=record.day6090%>"/></td>
+            </tr><tr>
+                <td><%=resource.DayMoreThan90.label%></td>
+                <td><input type="text" class="form-control" name="dayMoreThan90" value="<%=record.dayMoreThan90%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Add</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default"><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

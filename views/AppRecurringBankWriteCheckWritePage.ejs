@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <div style="width:40%">
+    <h3><%=resource.Title%></h3>
+    <form class="form-horizontal" action="/writeAppRecurringBankWriteCheck" method="post">
+        <table class="table table-striped">
+            <tr class="heading-tr">
+                <th><%=resource.Heading%></th>
+                <th style="text-align:right"><%=statusMessage%></th>
+            </tr>
+            <tr>
+                <td><%=resource.RecurringBankWriteCheckId.label%></td>
+                <td><input type="text" class="form-control" name="recurringBankWriteCheckId" value="<%=record.recurring_bank_write_check_id%>"/></td>
+            </tr><tr>
+                <td><%=resource.TransactionName.label%></td>
+                <td><input type="text" class="form-control" name="transactionName" value="<%=record.transaction_name%>"/></td>
+            </tr><tr>
+                <td><%=resource.Frequency.label%></td>
+                <td><input type="text" class="form-control" name="frequency" value="<%=record.frequency%>"/></td>
+            </tr><tr>
+                <td><%=resource.AccountNo.label%></td>
+                <td><input type="text" class="form-control" name="accountNo" value="<%=record.account_no%>"/></td>
+            </tr><tr>
+                <td><%=resource.IsPostDatedCheck.label%></td>
+                <td><input type="text" class="form-control" name="isPostDatedCheck" value="<%=record.is_post_dated_check%>"/></td>
+            </tr><tr>
+                <td><%=resource.ReceivedBy.label%></td>
+                <td><input type="text" class="form-control" name="receivedBy" value="<%=record.received_by%>"/></td>
+            </tr><tr>
+                <td><%=resource.Date.label%></td>
+                <td><input type="text" class="form-control" name="date" value="<%=record.date%>"/></td>
+            </tr><tr>
+                <td><%=resource.CheckNo.label%></td>
+                <td><input type="text" class="form-control" name="checkNo" value="<%=record.check_no%>"/></td>
+            </tr><tr>
+                <td><%=resource.Amount.label%></td>
+                <td><input type="text" class="form-control" name="amount" value="<%=record.amount%>"/></td>
+            </tr><tr>
+                <td><%=resource.Memo.label%></td>
+                <td><input type="text" class="form-control" name="memo" value="<%=record.memo%>"/></td>
+            </tr>
+        
+        </table>
+        <button type="submit" class="btn btn-default">Update</button>
+        <% if(statusCode == 200) { %>
+        <button type="button" class="btn btn-default""><a href="/<%=session.previouspath%>">Back</a></button>
+        <% }else{ %>
+        <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Cancel</button>
+        <% } %>
+    </form>
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

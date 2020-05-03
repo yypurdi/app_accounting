@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppBankCrFaMapper">			
+	
+	<update id="writeAppBankCrFa">
+		update app_bank_cr_fa set bank_cash_receive_detail_id = #{bankCashReceiveDetailId},
+		bank_cash_receive_id = #{bankCashReceiveId},
+		account_no = #{accountNo},
+		department_id = #{departmentId},
+		amount = #{amount},
+		job_order_no = #{jobOrderNo} where bank_cash_receive_detail_id = #{bankCashReceiveDetailId};
+	</update>
+
+</mapper>

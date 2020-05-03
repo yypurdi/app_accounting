@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppCompanyInfoAccPeriodMapper">			
+	
+	<update id="writeAppCompanyInfoAccPeriod">
+		update app_company_info_acc_period set accounting_period_id = #{accountingPeriodId},
+		month = #{month},
+		year = #{year},
+		year_end = #{yearEnd},
+		is_create_chart_of_account = #{isCreateChartOfAccount},
+		file_name = #{fileName} where accounting_period_id = #{accountingPeriodId};
+	</update>
+
+</mapper>

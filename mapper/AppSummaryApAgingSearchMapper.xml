@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppSummaryApAgingMapper">			
+	
+	<select id="countAppSummaryApAgingSearch">
+		select count(*) from app_summary_ap_aging
+		<trim prefix="where" prefixOverrides="and">
+			<if test="apAgingId!=null">
+				and ap_aging_id like #{apAgingId}
+			</if>
+			<if test="vendorId!=null">
+				and vendor_id like #{vendorId}
+			</if>
+			<if test="currentDate!=null">
+				and current_date like #{currentDate}
+			</if>
+			<if test="day030!=null">
+				and day_0_30 like #{day030}
+			</if>
+			<if test="day3060!=null">
+				and day_30_60 like #{day3060}
+			</if>
+			<if test="day6090!=null">
+				and day_60_90 like #{day6090}
+			</if>
+			<if test="dayMoreThan90!=null">
+				and day_more_than_90 like #{dayMoreThan90}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppSummaryApAging">
+		select * from app_summary_ap_aging  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="apAgingId!=null">
+				ap_aging_id like #{apAgingId}
+			</if>
+			<if test="vendorId!=null">
+				vendor_id like #{vendorId}
+			</if>
+			<if test="currentDate!=null">
+				current_date like #{currentDate}
+			</if>
+			<if test="day030!=null">
+				day_0_30 like #{day030}
+			</if>
+			<if test="day3060!=null">
+				day_30_60 like #{day3060}
+			</if>
+			<if test="day6090!=null">
+				day_60_90 like #{day6090}
+			</if>
+			<if test="dayMoreThan90!=null">
+				day_more_than_90 like #{dayMoreThan90}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

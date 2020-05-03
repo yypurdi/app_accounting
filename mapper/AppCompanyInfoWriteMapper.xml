@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppCompanyInfoMapper">			
+	
+	<update id="writeAppCompanyInfo">
+		update app_company_info set company_info_id = #{companyInfoId},
+		company_name = #{companyName},
+		address_line1 = #{addressLine1},
+		address_line2 = #{addressLine2},
+		city_id = #{cityId},
+		province_id = #{provinceId},
+		country_id = #{countryId},
+		postal_code = #{postalCode} where company_info_id = #{companyInfoId};
+	</update>
+
+</mapper>

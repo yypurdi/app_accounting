@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppGeneralJournalMapper">			
+	
+	<select id="countAppGeneralJournalSearch">
+		select count(*) from app_general_journal
+		<trim prefix="where" prefixOverrides="and">
+			<if test="generalJournalId!=null">
+				and general_journal_id like #{generalJournalId}
+			</if>
+			<if test="reference!=null">
+				and reference like #{reference}
+			</if>
+			<if test="date!=null">
+				and date like #{date}
+			</if>
+			<if test="note!=null">
+				and note like #{note}
+			</if>
+			<if test="createdDate!=null">
+				and created_date like #{createdDate}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppGeneralJournal">
+		select * from app_general_journal  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="generalJournalId!=null">
+				general_journal_id like #{generalJournalId}
+			</if>
+			<if test="reference!=null">
+				reference like #{reference}
+			</if>
+			<if test="date!=null">
+				date like #{date}
+			</if>
+			<if test="note!=null">
+				note like #{note}
+			</if>
+			<if test="createdDate!=null">
+				created_date like #{createdDate}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writeAppProductCategoryMapper">			
+	
+	<update id="writeAppProductCategory">
+		update app_product_category set product_category_id = #{productCategoryId},
+		category_name = #{categoryName},
+		location = #{location},
+		department_id = #{departmentId},
+		is_inventory = #{isInventory},
+		is_purchased = #{isPurchased},
+		is_sold = #{isSold},
+		inventory_method = #{inventoryMethod},
+		acct_code_cogs = #{acctCodeCogs},
+		acct_code_sales = #{acctCodeSales},
+		acct_code_sales_return = #{acctCodeSalesReturn},
+		acct_code_inventory = #{acctCodeInventory},
+		acct_code_consignment = #{acctCodeConsignment},
+		image = #{image} where product_category_id = #{productCategoryId};
+	</update>
+
+</mapper>

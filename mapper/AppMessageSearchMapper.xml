@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppMessageMapper">			
+	
+	<select id="countAppMessageSearch">
+		select count(*) from app_message
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				and username like #{username}
+			</if>
+			<if test="jid!=null">
+				and jid like #{jid}
+			</if>
+			<if test="msgtime!=null">
+				and msgtime like #{msgtime}
+			</if>
+			<if test="msgtype!=null">
+				and msgType like #{msgtype}
+			</if>
+			<if test="msgsubject!=null">
+				and msgSubject like #{msgsubject}
+			</if>
+			<if test="msgtext!=null">
+				and msgText like #{msgtext}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppMessage">
+		select * from app_message  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="username!=null">
+				username like #{username}
+			</if>
+			<if test="jid!=null">
+				jid like #{jid}
+			</if>
+			<if test="msgtime!=null">
+				msgtime like #{msgtime}
+			</if>
+			<if test="msgtype!=null">
+				msgType like #{msgtype}
+			</if>
+			<if test="msgsubject!=null">
+				msgSubject like #{msgsubject}
+			</if>
+			<if test="msgtext!=null">
+				msgText like #{msgtext}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="readAppTermOfPaymentMapper">			
+	
+	<select id="readAppTermOfPayment">
+		select * from app_term_of_payment where term_of_payment_id = #{termOfPaymentId};
+	</select>
+
+	<select id="appApOpeningBalance_GR0N0">         
+		select * from app_ap_opening_balance where term_of_payment_id = #{termOfPaymentId};
+	</select>
+  
+	<select id="appArOpeningBalance_KBMG7">         
+		select * from app_ar_opening_balance where term_of_payment_id = #{termOfPaymentId};
+	</select>
+  
+</mapper>

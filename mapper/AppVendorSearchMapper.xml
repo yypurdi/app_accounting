@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppVendorMapper">			
+	
+	<select id="countAppVendorSearch">
+		select count(*) from app_vendor
+		<trim prefix="where" prefixOverrides="and">
+			<if test="vendorId!=null">
+				and vendor_id like #{vendorId}
+			</if>
+			<if test="vendorNo!=null">
+				and vendor_no like #{vendorNo}
+			</if>
+			<if test="vendorName!=null">
+				and vendor_name like #{vendorName}
+			</if>
+			<if test="vendorType!=null">
+				and vendor_type like #{vendorType}
+			</if>
+			<if test="vendorClassification!=null">
+				and vendor_classification like #{vendorClassification}
+			</if>
+			<if test="vendorCategory!=null">
+				and vendor_category like #{vendorCategory}
+			</if>
+			<if test="contactPerson!=null">
+				and contact_person like #{contactPerson}
+			</if>
+			<if test="contactPosition!=null">
+				and contact_position like #{contactPosition}
+			</if>
+			<if test="contactPersonMobilePhone!=null">
+				and contact_person_mobile_phone like #{contactPersonMobilePhone}
+			</if>
+			<if test="contactPersonEmail!=null">
+				and contact_person_email like #{contactPersonEmail}
+			</if>
+			<if test="vendorTaxId!=null">
+				and vendor_tax_id like #{vendorTaxId}
+			</if>
+			<if test="vendorCreditLimit!=null">
+				and vendor_credit_limit like #{vendorCreditLimit}
+			</if>
+			<if test="vendorPhone1!=null">
+				and vendor_phone1 like #{vendorPhone1}
+			</if>
+			<if test="vendorPhone2!=null">
+				and vendor_phone2 like #{vendorPhone2}
+			</if>
+			<if test="vendorFax!=null">
+				and vendor_fax like #{vendorFax}
+			</if>
+			<if test="vendorEmailCompany!=null">
+				and vendor_email_company like #{vendorEmailCompany}
+			</if>
+			<if test="vendorWebsite!=null">
+				and vendor_website like #{vendorWebsite}
+			</if>
+			<if test="vendorCurrency!=null">
+				and vendor_currency like #{vendorCurrency}
+			</if>
+			<if test="vendorAddress1!=null">
+				and vendor_address1 like #{vendorAddress1}
+			</if>
+			<if test="vendorAddress2!=null">
+				and vendor_address2 like #{vendorAddress2}
+			</if>
+			<if test="vendorPostalCode!=null">
+				and vendor_postal_code like #{vendorPostalCode}
+			</if>
+			<if test="cityId!=null">
+				and city_id like #{cityId}
+			</if>
+			<if test="provinceId!=null">
+				and province_id like #{provinceId}
+			</if>
+			<if test="countryId!=null">
+				and country_id like #{countryId}
+			</if>
+			<if test="deliveryAddress1!=null">
+				and delivery_address1 like #{deliveryAddress1}
+			</if>
+			<if test="deliveryAddress2!=null">
+				and delivery_address2 like #{deliveryAddress2}
+			</if>
+			<if test="deliveryAddressPostalCode!=null">
+				and delivery_address_postal_code like #{deliveryAddressPostalCode}
+			</if>
+			<if test="deliveryAddressCity!=null">
+				and delivery_address_city like #{deliveryAddressCity}
+			</if>
+			<if test="deliveryAddressProvince!=null">
+				and delivery_address_province like #{deliveryAddressProvince}
+			</if>
+			<if test="deliveryAddressCountry!=null">
+				and delivery_address_country like #{deliveryAddressCountry}
+			</if>
+			<if test="contactPerson2nd!=null">
+				and contact_person_2nd like #{contactPerson2nd}
+			</if>
+			<if test="contactPosition2nd!=null">
+				and contact_position_2nd like #{contactPosition2nd}
+			</if>
+			<if test="contactPersonMobilePhone2nd!=null">
+				and contact_person_mobile_phone_2nd like #{contactPersonMobilePhone2nd}
+			</if>
+			<if test="contactPersonEmail2nd!=null">
+				and contact_person_email_2nd like #{contactPersonEmail2nd}
+			</if>
+			<if test="contactPerson3rd!=null">
+				and contact_person_3rd like #{contactPerson3rd}
+			</if>
+			<if test="contactPosition3rd!=null">
+				and contact_position_3rd like #{contactPosition3rd}
+			</if>
+			<if test="contactPersonMobilePhone3rd!=null">
+				and contact_person_mobile_phone_3rd like #{contactPersonMobilePhone3rd}
+			</if>
+			<if test="contactPersonEmail3rd!=null">
+				and contact_person_email_3rd like #{contactPersonEmail3rd}
+			</if>
+			<if test="image!=null">
+				and image like #{image}
+			</if>
+			<if test="notesDetails!=null">
+				and notes_details like #{notesDetails}
+			</if>
+			<if test="status!=null">
+				and status like #{status}
+			</if>
+			<if test="firstContactDate!=null">
+				and first_contact_date like #{firstContactDate}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppVendor">
+		select * from app_vendor  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="vendorId!=null">
+				vendor_id like #{vendorId}
+			</if>
+			<if test="vendorNo!=null">
+				vendor_no like #{vendorNo}
+			</if>
+			<if test="vendorName!=null">
+				vendor_name like #{vendorName}
+			</if>
+			<if test="vendorType!=null">
+				vendor_type like #{vendorType}
+			</if>
+			<if test="vendorClassification!=null">
+				vendor_classification like #{vendorClassification}
+			</if>
+			<if test="vendorCategory!=null">
+				vendor_category like #{vendorCategory}
+			</if>
+			<if test="contactPerson!=null">
+				contact_person like #{contactPerson}
+			</if>
+			<if test="contactPosition!=null">
+				contact_position like #{contactPosition}
+			</if>
+			<if test="contactPersonMobilePhone!=null">
+				contact_person_mobile_phone like #{contactPersonMobilePhone}
+			</if>
+			<if test="contactPersonEmail!=null">
+				contact_person_email like #{contactPersonEmail}
+			</if>
+			<if test="vendorTaxId!=null">
+				vendor_tax_id like #{vendorTaxId}
+			</if>
+			<if test="vendorCreditLimit!=null">
+				vendor_credit_limit like #{vendorCreditLimit}
+			</if>
+			<if test="vendorPhone1!=null">
+				vendor_phone1 like #{vendorPhone1}
+			</if>
+			<if test="vendorPhone2!=null">
+				vendor_phone2 like #{vendorPhone2}
+			</if>
+			<if test="vendorFax!=null">
+				vendor_fax like #{vendorFax}
+			</if>
+			<if test="vendorEmailCompany!=null">
+				vendor_email_company like #{vendorEmailCompany}
+			</if>
+			<if test="vendorWebsite!=null">
+				vendor_website like #{vendorWebsite}
+			</if>
+			<if test="vendorCurrency!=null">
+				vendor_currency like #{vendorCurrency}
+			</if>
+			<if test="vendorAddress1!=null">
+				vendor_address1 like #{vendorAddress1}
+			</if>
+			<if test="vendorAddress2!=null">
+				vendor_address2 like #{vendorAddress2}
+			</if>
+			<if test="vendorPostalCode!=null">
+				vendor_postal_code like #{vendorPostalCode}
+			</if>
+			<if test="cityId!=null">
+				city_id like #{cityId}
+			</if>
+			<if test="provinceId!=null">
+				province_id like #{provinceId}
+			</if>
+			<if test="countryId!=null">
+				country_id like #{countryId}
+			</if>
+			<if test="deliveryAddress1!=null">
+				delivery_address1 like #{deliveryAddress1}
+			</if>
+			<if test="deliveryAddress2!=null">
+				delivery_address2 like #{deliveryAddress2}
+			</if>
+			<if test="deliveryAddressPostalCode!=null">
+				delivery_address_postal_code like #{deliveryAddressPostalCode}
+			</if>
+			<if test="deliveryAddressCity!=null">
+				delivery_address_city like #{deliveryAddressCity}
+			</if>
+			<if test="deliveryAddressProvince!=null">
+				delivery_address_province like #{deliveryAddressProvince}
+			</if>
+			<if test="deliveryAddressCountry!=null">
+				delivery_address_country like #{deliveryAddressCountry}
+			</if>
+			<if test="contactPerson2nd!=null">
+				contact_person_2nd like #{contactPerson2nd}
+			</if>
+			<if test="contactPosition2nd!=null">
+				contact_position_2nd like #{contactPosition2nd}
+			</if>
+			<if test="contactPersonMobilePhone2nd!=null">
+				contact_person_mobile_phone_2nd like #{contactPersonMobilePhone2nd}
+			</if>
+			<if test="contactPersonEmail2nd!=null">
+				contact_person_email_2nd like #{contactPersonEmail2nd}
+			</if>
+			<if test="contactPerson3rd!=null">
+				contact_person_3rd like #{contactPerson3rd}
+			</if>
+			<if test="contactPosition3rd!=null">
+				contact_position_3rd like #{contactPosition3rd}
+			</if>
+			<if test="contactPersonMobilePhone3rd!=null">
+				contact_person_mobile_phone_3rd like #{contactPersonMobilePhone3rd}
+			</if>
+			<if test="contactPersonEmail3rd!=null">
+				contact_person_email_3rd like #{contactPersonEmail3rd}
+			</if>
+			<if test="image!=null">
+				image like #{image}
+			</if>
+			<if test="notesDetails!=null">
+				notes_details like #{notesDetails}
+			</if>
+			<if test="status!=null">
+				status like #{status}
+			</if>
+			<if test="firstContactDate!=null">
+				first_contact_date like #{firstContactDate}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

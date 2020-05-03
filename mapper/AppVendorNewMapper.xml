@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppVendorMapper">			
+	
+	<insert id="newAppVendor">
+		insert into app_vendor(vendor_id,vendor_no,vendor_name,vendor_type,vendor_classification,vendor_category,contact_person,contact_position,contact_person_mobile_phone,contact_person_email,vendor_tax_id,vendor_credit_limit,vendor_phone1,vendor_phone2,vendor_fax,vendor_email_company,vendor_website,vendor_currency,vendor_address1,vendor_address2,vendor_postal_code,city_id,province_id,country_id,delivery_address1,delivery_address2,delivery_address_postal_code,delivery_address_city,delivery_address_province,delivery_address_country,contact_person_2nd,contact_position_2nd,contact_person_mobile_phone_2nd,contact_person_email_2nd,contact_person_3rd,contact_position_3rd,contact_person_mobile_phone_3rd,contact_person_email_3rd,image,notes_details,status,first_contact_date) 
+		values (#{vendorId},#{vendorNo},#{vendorName},#{vendorType},#{vendorClassification},#{vendorCategory},#{contactPerson},#{contactPosition},#{contactPersonMobilePhone},#{contactPersonEmail},#{vendorTaxId},#{vendorCreditLimit},#{vendorPhone1},#{vendorPhone2},#{vendorFax},#{vendorEmailCompany},#{vendorWebsite},#{vendorCurrency},#{vendorAddress1},#{vendorAddress2},#{vendorPostalCode},#{cityId},#{provinceId},#{countryId},#{deliveryAddress1},#{deliveryAddress2},#{deliveryAddressPostalCode},#{deliveryAddressCity},#{deliveryAddressProvince},#{deliveryAddressCountry},#{contactPerson2nd},#{contactPosition2nd},#{contactPersonMobilePhone2nd},#{contactPersonEmail2nd},#{contactPerson3rd},#{contactPosition3rd},#{contactPersonMobilePhone3rd},#{contactPersonEmail3rd},#{image},#{notesDetails},#{status},#{firstContactDate});
+	</insert>
+
+</mapper>

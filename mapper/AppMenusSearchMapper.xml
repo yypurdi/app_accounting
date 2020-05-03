@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchAppMenusMapper">			
+	
+	<select id="countAppMenusSearch">
+		select count(*) from app_menus
+		<trim prefix="where" prefixOverrides="and">
+			<if test="name!=null">
+				and name like #{name}
+			</if>
+			<if test="link!=null">
+				and link like #{link}
+			</if>
+			<if test="display!=null">
+				and display like #{display}
+			</if>
+		</where>		
+	</select>
+
+	<select id="searchAppMenus">
+		select * from app_menus  
+		<trim prefix="where" prefixOverrides="and">
+			<if test="name!=null">
+				name like #{name}
+			</if>
+			<if test="link!=null">
+				link like #{link}
+			</if>
+			<if test="display!=null">
+				display like #{display}
+			</if>
+		</where> limit 100 offset ${rowid}
+	</select>
+
+</mapper>

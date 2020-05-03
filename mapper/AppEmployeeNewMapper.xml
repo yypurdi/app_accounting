@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppEmployeeMapper">			
+	
+	<insert id="newAppEmployee">
+		insert into app_employee(employee_id,employee_number,firstname,middlename,lastname,nationality,dob,gender,marital_status,ethnicity,ktp_number,passport_number,driving_licence_no,address_line1,address_line2,city_id,country_id,province_id,postal_code,home_phone,mobile_phone,work_email,private_email,joined_date,confirmation_date,termination_date,supervisor_name,indirect_supervisor_name,first_level_approver,second_level_approver,third_level_approver,notes,department_id,work_station_id,job_title_id,pay_grade_id,employment_status_id) 
+		values (#{employeeId},#{employeeNumber},#{firstname},#{middlename},#{lastname},#{nationality},#{dob},#{gender},#{maritalStatus},#{ethnicity},#{ktpNumber},#{passportNumber},#{drivingLicenceNo},#{addressLine1},#{addressLine2},#{cityId},#{countryId},#{provinceId},#{postalCode},#{homePhone},#{mobilePhone},#{workEmail},#{privateEmail},#{joinedDate},#{confirmationDate},#{terminationDate},#{supervisorName},#{indirectSupervisorName},#{firstLevelApprover},#{secondLevelApprover},#{thirdLevelApprover},#{notes},#{departmentId},#{workStationId},#{jobTitleId},#{payGradeId},#{employmentStatusId});
+	</insert>
+
+</mapper>

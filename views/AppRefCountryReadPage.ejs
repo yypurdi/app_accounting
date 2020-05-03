@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<% include head %>
+</head>
+<body>
+<% include side-nav %>
+<div id="main">
+<% include header-nav %>
+<div class="container-fluid">
+<section id="main-content">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><h4><%=resource.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appCompanyInfo-tab" data-toggle="tab" href="#appCompanyInfo" role="tab" aria-controls="appCompanyInfo" aria-selected="true"><h4><%=resource.AppCompanyInfo.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appCustomer-tab" data-toggle="tab" href="#appCustomer" role="tab" aria-controls="appCustomer" aria-selected="true"><h4><%=resource.AppCustomer.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appEmployee-tab" data-toggle="tab" href="#appEmployee" role="tab" aria-controls="appEmployee" aria-selected="true"><h4><%=resource.AppEmployee.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appRefProvince-tab" data-toggle="tab" href="#appRefProvince" role="tab" aria-controls="appRefProvince" aria-selected="true"><h4><%=resource.AppRefProvince.Heading%></h4></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="appVendor-tab" data-toggle="tab" href="#appVendor" role="tab" aria-controls="appVendor" aria-selected="true"><h4><%=resource.AppVendor.Heading%></h4></a>
+      </li>
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+            <div style="width:40%">
+            <form class="form-horizontal">
+                <table class="table table-striped">
+                    <tr class="heading-tr">
+                        <th> <%=resource.Heading%></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><%=resource.CountryId.label%></td>
+                        <td><%=record.country_id%></td>						
+                    </tr><tr>
+                        <td><%=resource.Name.label%></td>
+                        <td><%=record.name%></td>						
+                    </tr><tr>
+                        <td><%=resource.Details.label%></td>
+                        <td><%=record.details%></td>						
+                    </tr>
+                
+                </table>
+                <% if(session.user_acl=='ROLE_ADMIN') { %>
+                <button type="submit" class="btn btn-default"><a href="/writeAppRefCountry?countryId=<%=record.country_id%>">Edit</a></button>
+                <button type="submit" class="btn btn-default"><a href="/deleteAppRefCountry?countryId=<%=record.country_id%>">Delete</a></button>
+                <% } %>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.back()">Back</button>
+            </form>
+            </div>
+        </div>
+        
+	<div class="tab-pane fade" id="appCompanyInfo" role="tabpanel" aria-labelledby="appCompanyInfo-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppCompanyInfo.CompanyInfoId.header%></th>
+                    <th><%=resource.AppCompanyInfo.CompanyName.header%></th>
+                    <th><%=resource.AppCompanyInfo.AddressLine1.header%></th>
+                    <th><%=resource.AppCompanyInfo.AddressLine2.header%></th>
+                    <th><%=resource.AppCompanyInfo.CityId.header%></th>
+                    <th><%=resource.AppCompanyInfo.ProvinceId.header%></th>
+                    <th><%=resource.AppCompanyInfo.CountryId.header%></th>
+                    <th><%=resource.AppCompanyInfo.PostalCode.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appCompanyInfo){ let rec = record.appCompanyInfo[i] %>
+                <tr>
+                    <td><a><%=rec.company_info_id%></a></td>
+                    <td><a><%=rec.company_name%></a></td>
+                    <td><a><%=rec.address_line1%></a></td>
+                    <td><a><%=rec.address_line2%></a></td>
+                    <td><a><%=rec.city_id%></a></td>
+                    <td><a><%=rec.province_id%></a></td>
+                    <td><a><%=rec.country_id%></a></td>
+                    <td><a><%=rec.postal_code%></a></td>
+                    
+                    <td><a href="/readAppCompanyInfo?companyInfoId=<%=rec.company_info_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppCompanyInfo?companyInfoId=<%=rec.company_info_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppCompanyInfo?companyInfoId=<%=rec.company_info_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppCompanyInfo">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appCustomer" role="tabpanel" aria-labelledby="appCustomer-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppCustomer.CustomerId.header%></th>
+                    <th><%=resource.AppCustomer.CustNo.header%></th>
+                    <th><%=resource.AppCustomer.CustName.header%></th>
+                    <th><%=resource.AppCustomer.CustType.header%></th>
+                    <th><%=resource.AppCustomer.CustClassification.header%></th>
+                    <th><%=resource.AppCustomer.CustCategory.header%></th>
+                    <th><%=resource.AppCustomer.ContactPerson.header%></th>
+                    <th><%=resource.AppCustomer.ContactPosition.header%></th>
+                    <th><%=resource.AppCustomer.ContactPersonMobilePhone.header%></th>
+                    <th><%=resource.AppCustomer.ContactPersonEmail.header%></th>
+                    <th><%=resource.AppCustomer.CustTaxId.header%></th>
+                    <th><%=resource.AppCustomer.CustCreditLimit.header%></th>
+                    <th><%=resource.AppCustomer.CustPhone1.header%></th>
+                    <th><%=resource.AppCustomer.CustPhone2.header%></th>
+                    <th><%=resource.AppCustomer.CustFax.header%></th>
+                    <th><%=resource.AppCustomer.CustEmailCompany.header%></th>
+                    <th><%=resource.AppCustomer.CustWebsite.header%></th>
+                    <th><%=resource.AppCustomer.CustCurrency.header%></th>
+                    <th><%=resource.AppCustomer.CustAddress1.header%></th>
+                    <th><%=resource.AppCustomer.CustAddress2.header%></th>
+                    <th><%=resource.AppCustomer.CustPostalCode.header%></th>
+                    <th><%=resource.AppCustomer.CityId.header%></th>
+                    <th><%=resource.AppCustomer.ProvinceId.header%></th>
+                    <th><%=resource.AppCustomer.CountryId.header%></th>
+                    <th><%=resource.AppCustomer.DeliveryAddress1.header%></th>
+                    <th><%=resource.AppCustomer.DeliveryAddress2.header%></th>
+                    <th><%=resource.AppCustomer.DeliveryAddressPostalCode.header%></th>
+                    <th><%=resource.AppCustomer.DeliveryAddressCity.header%></th>
+                    <th><%=resource.AppCustomer.DeliveryAddressProvince.header%></th>
+                    <th><%=resource.AppCustomer.DeliveryAddressCountry.header%></th>
+                    <th><%=resource.AppCustomer.ContactPerson2nd.header%></th>
+                    <th><%=resource.AppCustomer.ContactPosition2nd.header%></th>
+                    <th><%=resource.AppCustomer.ContactPersonMobilePhone2nd.header%></th>
+                    <th><%=resource.AppCustomer.ContactPersonEmail2nd.header%></th>
+                    <th><%=resource.AppCustomer.ContactPerson3rd.header%></th>
+                    <th><%=resource.AppCustomer.ContactPosition3rd.header%></th>
+                    <th><%=resource.AppCustomer.ContactPersonMobilePhone3rd.header%></th>
+                    <th><%=resource.AppCustomer.ContactPersonEmail3rd.header%></th>
+                    <th><%=resource.AppCustomer.Image.header%></th>
+                    <th><%=resource.AppCustomer.NotesDetails.header%></th>
+                    <th><%=resource.AppCustomer.Status.header%></th>
+                    <th><%=resource.AppCustomer.FirstContactDate.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appCustomer){ let rec = record.appCustomer[i] %>
+                <tr>
+                    <td><a><%=rec.customer_id%></a></td>
+                    <td><a><%=rec.cust_no%></a></td>
+                    <td><a><%=rec.cust_name%></a></td>
+                    <td><a><%=rec.cust_type%></a></td>
+                    <td><a><%=rec.cust_classification%></a></td>
+                    <td><a><%=rec.cust_category%></a></td>
+                    <td><a><%=rec.contact_person%></a></td>
+                    <td><a><%=rec.contact_position%></a></td>
+                    <td><a><%=rec.contact_person_mobile_phone%></a></td>
+                    <td><a><%=rec.contact_person_email%></a></td>
+                    <td><a><%=rec.cust_tax_id%></a></td>
+                    <td><a><%=rec.cust_credit_limit%></a></td>
+                    <td><a><%=rec.cust_phone1%></a></td>
+                    <td><a><%=rec.cust_phone2%></a></td>
+                    <td><a><%=rec.cust_fax%></a></td>
+                    <td><a><%=rec.cust_email_company%></a></td>
+                    <td><a><%=rec.cust_website%></a></td>
+                    <td><a><%=rec.cust_currency%></a></td>
+                    <td><a><%=rec.cust_address1%></a></td>
+                    <td><a><%=rec.cust_address2%></a></td>
+                    <td><a><%=rec.cust_postal_code%></a></td>
+                    <td><a><%=rec.city_id%></a></td>
+                    <td><a><%=rec.province_id%></a></td>
+                    <td><a><%=rec.country_id%></a></td>
+                    <td><a><%=rec.delivery_address1%></a></td>
+                    <td><a><%=rec.delivery_address2%></a></td>
+                    <td><a><%=rec.delivery_address_postal_code%></a></td>
+                    <td><a><%=rec.delivery_address_city%></a></td>
+                    <td><a><%=rec.delivery_address_province%></a></td>
+                    <td><a><%=rec.delivery_address_country%></a></td>
+                    <td><a><%=rec.contact_person_2nd%></a></td>
+                    <td><a><%=rec.contact_position_2nd%></a></td>
+                    <td><a><%=rec.contact_person_mobile_phone_2nd%></a></td>
+                    <td><a><%=rec.contact_person_email_2nd%></a></td>
+                    <td><a><%=rec.contact_person_3rd%></a></td>
+                    <td><a><%=rec.contact_position_3rd%></a></td>
+                    <td><a><%=rec.contact_person_mobile_phone_3rd%></a></td>
+                    <td><a><%=rec.contact_person_email_3rd%></a></td>
+                    <td><a><%=rec.image%></a></td>
+                    <td><a><%=rec.notes_details%></a></td>
+                    <td><a><%=rec.status%></a></td>
+                    <td><a><%=dateFormat(rec.first_contact_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    
+                    <td><a href="/readAppCustomer?customerId=<%=rec.customer_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppCustomer?customerId=<%=rec.customer_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppCustomer?customerId=<%=rec.customer_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppCustomer">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appEmployee" role="tabpanel" aria-labelledby="appEmployee-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppEmployee.EmployeeId.header%></th>
+                    <th><%=resource.AppEmployee.EmployeeNumber.header%></th>
+                    <th><%=resource.AppEmployee.Firstname.header%></th>
+                    <th><%=resource.AppEmployee.Middlename.header%></th>
+                    <th><%=resource.AppEmployee.Lastname.header%></th>
+                    <th><%=resource.AppEmployee.Nationality.header%></th>
+                    <th><%=resource.AppEmployee.Dob.header%></th>
+                    <th><%=resource.AppEmployee.Gender.header%></th>
+                    <th><%=resource.AppEmployee.MaritalStatus.header%></th>
+                    <th><%=resource.AppEmployee.Ethnicity.header%></th>
+                    <th><%=resource.AppEmployee.KtpNumber.header%></th>
+                    <th><%=resource.AppEmployee.PassportNumber.header%></th>
+                    <th><%=resource.AppEmployee.DrivingLicenceNo.header%></th>
+                    <th><%=resource.AppEmployee.AddressLine1.header%></th>
+                    <th><%=resource.AppEmployee.AddressLine2.header%></th>
+                    <th><%=resource.AppEmployee.CityId.header%></th>
+                    <th><%=resource.AppEmployee.CountryId.header%></th>
+                    <th><%=resource.AppEmployee.ProvinceId.header%></th>
+                    <th><%=resource.AppEmployee.PostalCode.header%></th>
+                    <th><%=resource.AppEmployee.HomePhone.header%></th>
+                    <th><%=resource.AppEmployee.MobilePhone.header%></th>
+                    <th><%=resource.AppEmployee.WorkEmail.header%></th>
+                    <th><%=resource.AppEmployee.PrivateEmail.header%></th>
+                    <th><%=resource.AppEmployee.JoinedDate.header%></th>
+                    <th><%=resource.AppEmployee.ConfirmationDate.header%></th>
+                    <th><%=resource.AppEmployee.TerminationDate.header%></th>
+                    <th><%=resource.AppEmployee.SupervisorName.header%></th>
+                    <th><%=resource.AppEmployee.IndirectSupervisorName.header%></th>
+                    <th><%=resource.AppEmployee.FirstLevelApprover.header%></th>
+                    <th><%=resource.AppEmployee.SecondLevelApprover.header%></th>
+                    <th><%=resource.AppEmployee.ThirdLevelApprover.header%></th>
+                    <th><%=resource.AppEmployee.Notes.header%></th>
+                    <th><%=resource.AppEmployee.DepartmentId.header%></th>
+                    <th><%=resource.AppEmployee.WorkStationId.header%></th>
+                    <th><%=resource.AppEmployee.JobTitleId.header%></th>
+                    <th><%=resource.AppEmployee.PayGradeId.header%></th>
+                    <th><%=resource.AppEmployee.EmploymentStatusId.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appEmployee){ let rec = record.appEmployee[i] %>
+                <tr>
+                    <td><a><%=rec.employee_id%></a></td>
+                    <td><a><%=rec.employee_number%></a></td>
+                    <td><a><%=rec.firstname%></a></td>
+                    <td><a><%=rec.middlename%></a></td>
+                    <td><a><%=rec.lastname%></a></td>
+                    <td><a><%=rec.nationality%></a></td>
+                    <td><a><%=dateFormat(rec.dob,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.gender%></a></td>
+                    <td><a><%=rec.marital_status%></a></td>
+                    <td><a><%=rec.ethnicity%></a></td>
+                    <td><a><%=rec.ktp_number%></a></td>
+                    <td><a><%=rec.passport_number%></a></td>
+                    <td><a><%=rec.driving_licence_no%></a></td>
+                    <td><a><%=rec.address_line1%></a></td>
+                    <td><a><%=rec.address_line2%></a></td>
+                    <td><a><%=rec.city_id%></a></td>
+                    <td><a><%=rec.country_id%></a></td>
+                    <td><a><%=rec.province_id%></a></td>
+                    <td><a><%=rec.postal_code%></a></td>
+                    <td><a><%=rec.home_phone%></a></td>
+                    <td><a><%=rec.mobile_phone%></a></td>
+                    <td><a><%=rec.work_email%></a></td>
+                    <td><a><%=rec.private_email%></a></td>
+                    <td><a><%=dateFormat(rec.joined_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=dateFormat(rec.confirmation_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=dateFormat(rec.termination_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    <td><a><%=rec.supervisor_name%></a></td>
+                    <td><a><%=rec.indirect_supervisor_name%></a></td>
+                    <td><a><%=rec.first_level_approver%></a></td>
+                    <td><a><%=rec.second_level_approver%></a></td>
+                    <td><a><%=rec.third_level_approver%></a></td>
+                    <td><a><%=rec.notes%></a></td>
+                    <td><a><%=rec.department_id%></a></td>
+                    <td><a><%=rec.work_station_id%></a></td>
+                    <td><a><%=rec.job_title_id%></a></td>
+                    <td><a><%=rec.pay_grade_id%></a></td>
+                    <td><a><%=rec.employment_status_id%></a></td>
+                    
+                    <td><a href="/readAppEmployee?employeeId=<%=rec.employee_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppEmployee?employeeId=<%=rec.employee_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppEmployee?employeeId=<%=rec.employee_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppEmployee">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appRefProvince" role="tabpanel" aria-labelledby="appRefProvince-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppRefProvince.ProvinceId.header%></th>
+                    <th><%=resource.AppRefProvince.Name.header%></th>
+                    <th><%=resource.AppRefProvince.Details.header%></th>
+                    <th><%=resource.AppRefProvince.CountryId.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appRefProvince){ let rec = record.appRefProvince[i] %>
+                <tr>
+                    <td><a><%=rec.province_id%></a></td>
+                    <td><a><%=rec.name%></a></td>
+                    <td><a><%=rec.details%></a></td>
+                    <td><a><%=rec.country_id%></a></td>
+                    
+                    <td><a href="/readAppRefProvince?provinceId=<%=rec.province_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppRefProvince?provinceId=<%=rec.province_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppRefProvince?provinceId=<%=rec.province_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppRefProvince">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+	<div class="tab-pane fade" id="appVendor" role="tabpanel" aria-labelledby="appVendor-tab">
+            <div style="width:75%">
+            <table class="table table-striped">
+                <tr class="heading-tr">
+                    <th><%=resource.AppVendor.VendorId.header%></th>
+                    <th><%=resource.AppVendor.VendorNo.header%></th>
+                    <th><%=resource.AppVendor.VendorName.header%></th>
+                    <th><%=resource.AppVendor.VendorType.header%></th>
+                    <th><%=resource.AppVendor.VendorClassification.header%></th>
+                    <th><%=resource.AppVendor.VendorCategory.header%></th>
+                    <th><%=resource.AppVendor.ContactPerson.header%></th>
+                    <th><%=resource.AppVendor.ContactPosition.header%></th>
+                    <th><%=resource.AppVendor.ContactPersonMobilePhone.header%></th>
+                    <th><%=resource.AppVendor.ContactPersonEmail.header%></th>
+                    <th><%=resource.AppVendor.VendorTaxId.header%></th>
+                    <th><%=resource.AppVendor.VendorCreditLimit.header%></th>
+                    <th><%=resource.AppVendor.VendorPhone1.header%></th>
+                    <th><%=resource.AppVendor.VendorPhone2.header%></th>
+                    <th><%=resource.AppVendor.VendorFax.header%></th>
+                    <th><%=resource.AppVendor.VendorEmailCompany.header%></th>
+                    <th><%=resource.AppVendor.VendorWebsite.header%></th>
+                    <th><%=resource.AppVendor.VendorCurrency.header%></th>
+                    <th><%=resource.AppVendor.VendorAddress1.header%></th>
+                    <th><%=resource.AppVendor.VendorAddress2.header%></th>
+                    <th><%=resource.AppVendor.VendorPostalCode.header%></th>
+                    <th><%=resource.AppVendor.CityId.header%></th>
+                    <th><%=resource.AppVendor.ProvinceId.header%></th>
+                    <th><%=resource.AppVendor.CountryId.header%></th>
+                    <th><%=resource.AppVendor.DeliveryAddress1.header%></th>
+                    <th><%=resource.AppVendor.DeliveryAddress2.header%></th>
+                    <th><%=resource.AppVendor.DeliveryAddressPostalCode.header%></th>
+                    <th><%=resource.AppVendor.DeliveryAddressCity.header%></th>
+                    <th><%=resource.AppVendor.DeliveryAddressProvince.header%></th>
+                    <th><%=resource.AppVendor.DeliveryAddressCountry.header%></th>
+                    <th><%=resource.AppVendor.ContactPerson2nd.header%></th>
+                    <th><%=resource.AppVendor.ContactPosition2nd.header%></th>
+                    <th><%=resource.AppVendor.ContactPersonMobilePhone2nd.header%></th>
+                    <th><%=resource.AppVendor.ContactPersonEmail2nd.header%></th>
+                    <th><%=resource.AppVendor.ContactPerson3rd.header%></th>
+                    <th><%=resource.AppVendor.ContactPosition3rd.header%></th>
+                    <th><%=resource.AppVendor.ContactPersonMobilePhone3rd.header%></th>
+                    <th><%=resource.AppVendor.ContactPersonEmail3rd.header%></th>
+                    <th><%=resource.AppVendor.Image.header%></th>
+                    <th><%=resource.AppVendor.NotesDetails.header%></th>
+                    <th><%=resource.AppVendor.Status.header%></th>
+                    <th><%=resource.AppVendor.FirstContactDate.header%></th>
+                                        
+                    <th>View</th>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <% } %>
+                </tr>
+                <% for(let i in record.appVendor){ let rec = record.appVendor[i] %>
+                <tr>
+                    <td><a><%=rec.vendor_id%></a></td>
+                    <td><a><%=rec.vendor_no%></a></td>
+                    <td><a><%=rec.vendor_name%></a></td>
+                    <td><a><%=rec.vendor_type%></a></td>
+                    <td><a><%=rec.vendor_classification%></a></td>
+                    <td><a><%=rec.vendor_category%></a></td>
+                    <td><a><%=rec.contact_person%></a></td>
+                    <td><a><%=rec.contact_position%></a></td>
+                    <td><a><%=rec.contact_person_mobile_phone%></a></td>
+                    <td><a><%=rec.contact_person_email%></a></td>
+                    <td><a><%=rec.vendor_tax_id%></a></td>
+                    <td><a><%=rec.vendor_credit_limit%></a></td>
+                    <td><a><%=rec.vendor_phone1%></a></td>
+                    <td><a><%=rec.vendor_phone2%></a></td>
+                    <td><a><%=rec.vendor_fax%></a></td>
+                    <td><a><%=rec.vendor_email_company%></a></td>
+                    <td><a><%=rec.vendor_website%></a></td>
+                    <td><a><%=rec.vendor_currency%></a></td>
+                    <td><a><%=rec.vendor_address1%></a></td>
+                    <td><a><%=rec.vendor_address2%></a></td>
+                    <td><a><%=rec.vendor_postal_code%></a></td>
+                    <td><a><%=rec.city_id%></a></td>
+                    <td><a><%=rec.province_id%></a></td>
+                    <td><a><%=rec.country_id%></a></td>
+                    <td><a><%=rec.delivery_address1%></a></td>
+                    <td><a><%=rec.delivery_address2%></a></td>
+                    <td><a><%=rec.delivery_address_postal_code%></a></td>
+                    <td><a><%=rec.delivery_address_city%></a></td>
+                    <td><a><%=rec.delivery_address_province%></a></td>
+                    <td><a><%=rec.delivery_address_country%></a></td>
+                    <td><a><%=rec.contact_person_2nd%></a></td>
+                    <td><a><%=rec.contact_position_2nd%></a></td>
+                    <td><a><%=rec.contact_person_mobile_phone_2nd%></a></td>
+                    <td><a><%=rec.contact_person_email_2nd%></a></td>
+                    <td><a><%=rec.contact_person_3rd%></a></td>
+                    <td><a><%=rec.contact_position_3rd%></a></td>
+                    <td><a><%=rec.contact_person_mobile_phone_3rd%></a></td>
+                    <td><a><%=rec.contact_person_email_3rd%></a></td>
+                    <td><a><%=rec.image%></a></td>
+                    <td><a><%=rec.notes_details%></a></td>
+                    <td><a><%=rec.status%></a></td>
+                    <td><a><%=dateFormat(rec.first_contact_date,'mmm-dd-yyyy h:MM:ss TT')%></a></td>
+                    
+                    <td><a href="/readAppVendor?vendorId=<%=rec.vendor_id%>"><span class="glyphicon glyphicon-open"></span></a></td>
+                    <% if(session.user_acl=='ROLE_ADMIN') { %>
+                    <td><a href="/writeAppVendor?vendorId=<%=rec.vendor_id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/deleteAppVendor?vendorId=<%=rec.vendor_id%>"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>        
+	    <button type="submit" class="btn btn-default"><a href="/newAppVendor">Add</a></button>
+	    <button type="submit" class="btn btn-default">Clear</button>
+	    </div>	    
+        </div>            
+        
+    </div>
+
+</section>
+</div>
+</div>
+<% include footer %>
+</body>
+</html>

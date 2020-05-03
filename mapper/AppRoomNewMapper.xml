@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="newAppRoomMapper">			
+	
+	<insert id="newAppRoom">
+		insert into app_room(meeting_room,subject,participant,start_date,end_date,status,ref_value) 
+		values (#{meetingRoom},#{subject},#{participant},#{startDate},#{endDate},#{status},#{refValue});
+	</insert>
+
+</mapper>

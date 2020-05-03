@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="deleteAppWorkStationMapper">			
+	
+	<delete id="deleteAppWorkStation">
+		delete from app_work_station where work_station_id = #{workStationId};
+	</delete>
+
+</mapper>
