@@ -12,16 +12,16 @@ Base Functions : <br />
 Additional Funcations : <br />
 <br />
 1. Messaging <br />
-2. Video Conference for Agent Meeting (WFH or Remote Work) <br />
-3. Customer Line for Customer Interactive by Video Call (for next implementation : customer face recognation) <br />
+2. Video Conference for Sales Meeting <br />
+3. Customer Line for Customer Interactive by Video Call <br />
 <br />
 Requirement : <br />
 <br />
 1. Install MySQL Server and load file import.sql (for DB Simulation) <br />
 2. Install MQTT Broker (the default using mqtt://test.mosquitto.org) <br />
-3. Change configuration in file cx_replication/routes/dao.js for MySQL DB access <br />
-4. Change configuration in file cx_replication/routes/dao.js for MQTT Broker address <br />
-5. Change Security Certificate in directory cx_replication/encryption (Optional) <br />
+3. Change configuration in file accounting/routes/dao.js for MySQL DB access <br />
+4. Change configuration in file accounting/routes/dao.js for MQTT Broker address <br />
+5. Change Security Certificate in directory accounting/encryption (Optional) <br />
 <br />
 Run: <br />
 <br />
